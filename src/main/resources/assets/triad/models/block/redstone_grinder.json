@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "triad:block/redstone_grinder_front",
+    "side": "triad:block/redstone_grinder_side",
+    "top": "triad:block/redstone_grinder_top"
+  }
+}

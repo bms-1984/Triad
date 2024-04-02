@@ -1,0 +1,11 @@
+{
+  "type": "triad:grinding",
+  "ingredient":
+  {
+    "tag": "forge:raw_materials/tin"
+  },
+  "result": {
+    "count": 2,
+    "item": "triad:tin_dust"
+  }
+}

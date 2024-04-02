@@ -1,0 +1,10 @@
+{
+  "type": "triad:grinding",
+  "ingredient":
+  {
+    "tag": "forge:ingots/copper"
+  },
+  "result": {
+    "item": "triad:copper_dust"
+  }
+}

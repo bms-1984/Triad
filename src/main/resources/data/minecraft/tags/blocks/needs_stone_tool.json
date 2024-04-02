@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "triad:tin_ore",
+    "triad:deepslate_tin_ore",
+    "triad:tin_block",
+    "triad:raw_tin_block",
+    "triad:bronze_block"
+  ]
+}

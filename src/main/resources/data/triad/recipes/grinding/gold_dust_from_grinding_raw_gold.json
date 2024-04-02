@@ -1,0 +1,11 @@
+{
+  "type": "triad:grinding",
+  "ingredient":
+  {
+    "tag": "forge:raw_materials/gold"
+  },
+  "result": {
+    "count": 2,
+    "item": "triad:gold_dust"
+  }
+}

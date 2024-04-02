@@ -1,0 +1,11 @@
+{
+  "type": "triad:grinding",
+  "ingredient":
+  {
+    "tag": "forge:raw_materials/iron"
+  },
+  "result": {
+    "count": 2,
+    "item": "triad:iron_dust"
+  }
+}

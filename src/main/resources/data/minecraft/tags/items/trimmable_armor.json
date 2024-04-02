@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "triad:bronze_chestplate",
+    "triad:bronze_helmet",
+    "triad:bronze_boots",
+    "triad:bronze_leggings",
+    "triad:steel_chestplate",
+    "triad:steel_helmet",
+    "triad:steel_boots",
+    "triad:steel_leggings"
+  ]
+}

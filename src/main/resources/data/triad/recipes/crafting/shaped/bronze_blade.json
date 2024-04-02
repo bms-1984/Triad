@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "forge:ingots/bronze"
+    }
+  },
+  "pattern": [
+    " ##",
+    "   ",
+    "   "
+  ],
+  "result": {
+    "item": "triad:bronze_blade"
+  }
+}

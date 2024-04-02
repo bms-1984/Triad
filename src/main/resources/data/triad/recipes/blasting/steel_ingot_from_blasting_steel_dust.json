@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 300,
+  "experience": 0.7,
+  "group": "steel_ingot",
+  "ingredient": {
+    "tag": "forge:dusts/steel"
+  },
+  "result": "triad:steel_ingot"
+}

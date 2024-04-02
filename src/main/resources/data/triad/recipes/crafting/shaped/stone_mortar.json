@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "@": {
+      "item": "minecraft:flint"
+    },
+    "#": {
+      "tag": "minecraft:stone_crafting_materials"
+    }
+  },
+  "pattern": [
+    " @ ",
+    "#@#",
+    "###"
+  ],
+  "result": {
+    "item": "triad:stone_mortar"
+  }
+}

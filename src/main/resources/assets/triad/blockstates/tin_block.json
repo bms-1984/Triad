@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "triad:block/tin_block"
+    }
+  }
+}

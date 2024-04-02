@@ -1,0 +1,11 @@
+{
+  "type": "triad:grinding",
+  "ingredient":
+  {
+    "tag": "forge:ores/copper"
+  },
+  "result": {
+    "count": 2,
+    "item": "triad:copper_dust"
+  }
+}

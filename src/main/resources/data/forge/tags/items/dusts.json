@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:dusts/bronze",
+    "#forge:dusts/tin",
+    "#forge:dusts/iron",
+    "#forge:dusts/gold",
+    "#forge:dusts/copper",
+    "#forge:dusts/steel"
+  ]
+}
