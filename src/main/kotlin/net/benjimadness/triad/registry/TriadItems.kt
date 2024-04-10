@@ -44,10 +44,10 @@ object TriadItems {
         ItemReusable(Item.Properties().durability(100).setNoRepair())
     }
     val STEEL_BLADE: Item by registerItem("steel_blade") {
-        ItemReusable(Item.Properties().durability(100).setNoRepair())
+        ItemReusable(Item.Properties().durability(100).setNoRepair(), "steel")
     }
     val BRONZE_BLADE: Item by registerItem("bronze_blade") {
-        ItemReusable(Item.Properties().durability(10).setNoRepair())
+        ItemReusable(Item.Properties().durability(10).setNoRepair(), "bronze")
     }
     val BRONZE_PICKAXE: Item by registerItem("bronze_pickaxe") {
         PickaxeItem(Tiers.IRON, 2, -3F, Item.Properties())

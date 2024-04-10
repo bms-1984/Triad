@@ -3,6 +3,7 @@
   "textures": {
     "front": "triad:block/redstone_grinder_front_on",
     "side": "triad:block/redstone_grinder_side",
-    "top": "triad:block/redstone_grinder_top"
+    "top": "triad:block/redstone_grinder_top",
+    "bottom": "triad:block/redstone_grinder_bottom"
   }
 }

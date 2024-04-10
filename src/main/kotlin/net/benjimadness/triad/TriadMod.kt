@@ -45,7 +45,6 @@ import thedarkcolour.kotlinforforge.neoforge.forge.runForDist
 object TriadMod {
     const val MODID = "triad"
     val LOGGER: Logger = LogUtils.getLogger()
-
     init {
         TierSortingRegistry.registerTier(
             TriadToolTiers.BRONZE,

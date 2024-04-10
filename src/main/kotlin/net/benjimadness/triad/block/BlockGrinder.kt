@@ -25,6 +25,7 @@ import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.network.chat.Component
 import net.minecraft.server.level.ServerPlayer
+import net.minecraft.util.StringRepresentable
 import net.minecraft.world.InteractionHand
 import net.minecraft.world.InteractionResult
 import net.minecraft.world.MenuProvider
@@ -34,6 +35,7 @@ import net.minecraft.world.item.context.BlockPlaceContext
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.EntityBlock
+import net.minecraft.world.level.block.RedstoneLampBlock
 import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.world.level.block.entity.BlockEntityTicker
 import net.minecraft.world.level.block.entity.BlockEntityType
@@ -42,23 +44,30 @@ import net.minecraft.world.level.block.state.StateDefinition
 import net.minecraft.world.level.block.state.properties.BlockStateProperties
 import net.minecraft.world.level.block.state.properties.BooleanProperty
 import net.minecraft.world.level.block.state.properties.DirectionProperty
+import net.minecraft.world.level.block.state.properties.EnumProperty
 import net.minecraft.world.phys.BlockHitResult
 
 class BlockGrinder(properties: Properties) : Block(properties), EntityBlock {
     companion object {
-        val FACING: DirectionProperty = BlockStateProperties.FACING
+        val FACING: DirectionProperty = BlockStateProperties.HORIZONTAL_FACING
         val LIT: BooleanProperty = BlockStateProperties.LIT
+        val BLADE: EnumProperty<Blades> = EnumProperty.create("blade", Blades::class.java)
+        val RUNNING: BooleanProperty = BooleanProperty.create("running")
     }
 
     init {
-        registerDefaultState(stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(LIT, false))
+        registerDefaultState(stateDefinition.any()
+            .setValue(FACING, Direction.NORTH)
+            .setValue(LIT, false)
+            .setValue(BLADE, Blades.NONE)
+            .setValue(RUNNING, false))
     }
 
     override fun getStateForPlacement(context: BlockPlaceContext): BlockState =
         defaultBlockState().setValue(FACING, context.horizontalDirection.opposite)
 
     override fun createBlockStateDefinition(builder: StateDefinition.Builder<Block, BlockState>) {
-        builder.add(FACING, LIT)
+        builder.add(FACING, LIT, BLADE, RUNNING)
     }
 
     override fun newBlockEntity(pos: BlockPos, state: BlockState): BlockEntity = BlockEntityRedstoneGrinder(pos, state)
@@ -91,4 +100,9 @@ class BlockGrinder(properties: Properties) : Block(properties), EntityBlock {
         return InteractionResult.sidedSuccess(level.isClientSide())
     }
 
+    enum class Blades : StringRepresentable {
+        NONE, BRONZE, STEEL;
+        override fun getSerializedName(): String = name.lowercase()
+        override fun toString(): String = serializedName
+    }
 }

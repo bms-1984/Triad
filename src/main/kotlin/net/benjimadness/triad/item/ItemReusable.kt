@@ -22,7 +22,7 @@ import net.minecraft.util.RandomSource
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemStack
 
-class ItemReusable(properties: Properties) : Item(properties) {
+class ItemReusable(properties: Properties, val materialName: String = "none") : Item(properties) {
     private val rand: RandomSource = RandomSource.create()
     override fun hasCraftingRemainingItem(stack: ItemStack?): Boolean = true
 
@@ -32,5 +32,4 @@ class ItemReusable(properties: Properties) : Item(properties) {
             val ret = stack.copy()
             if (ret.hurt(1, rand, null)) ItemStack.EMPTY else ret
         }
-
 }
