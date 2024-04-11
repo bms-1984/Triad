@@ -58,7 +58,7 @@ enum class TriadToolTiers(
 
     override fun getAttackDamageBonus(): Float = damageBonus
 
-    @Deprecated("Deprecated by Mojang")
+    @Deprecated("Deprecated in Java")
     override fun getLevel(): Int = level
 
     override fun getEnchantmentValue(): Int = enchantmentValue

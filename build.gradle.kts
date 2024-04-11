@@ -22,9 +22,9 @@ plugins {
     id("java-library")
     idea
     `maven-publish`
-    id("net.neoforged.gradle.userdev") version "7.0.80"
-    kotlin("jvm") version "1.9.22"
-    kotlin("plugin.serialization") version "1.9.22"
+    id("net.neoforged.gradle.userdev") version "7.0.96"
+    kotlin("jvm") version "1.9.23"
+    kotlin("plugin.serialization") version "1.9.23"
 }
 
 val version: String by project
@@ -35,6 +35,7 @@ val neo_version: String by project
 val kotlinforforge_version: String by project
 val kotlinforforge_version_range: String by project
 val minecraft_version: String by project
+val mappings_version: String by project
 val minecraft_version_range: String by project
 val neo_version_range: String by project
 val loader_version_range: String by project
@@ -44,6 +45,8 @@ val mod_version: String by project
 val mod_authors: String by project
 val mod_description: String by project
 val pack_format_id: String by project
+val jei_version: String by project
+val top_version: String by project
 
 repositories {
     mavenLocal()
@@ -51,10 +54,25 @@ repositories {
         name = "Kotlin for Forge"
         setUrl("https://thedarkcolour.github.io/KotlinForForge/")
     }
+    maven {
+        name = "JEI"
+        setUrl("https://maven.blamejared.com")
+    }
+    maven {
+        name = "The One Probe"
+        setUrl("https://maven.k-4u.nl")
+    }
 }
 
 minecraft {
     mappings
+}
+
+subsystems {
+    parchment {
+        minecraftVersion(minecraft_version)
+        mappingsVersion(mappings_version)
+    }
 }
 
 java {
@@ -90,7 +108,14 @@ runs {
 
 dependencies {
     implementation("net.neoforged:neoforge:${neo_version}")
+
     implementation("thedarkcolour:kotlinforforge-neoforge:${kotlinforforge_version}")
+
+    compileOnly("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
+    compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
+    runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
+
+    implementation ("mcjty.theoneprobe:theoneprobe:${minecraft_version}_neo-${top_version}")
 }
 
 tasks {

@@ -19,14 +19,19 @@
 package net.benjimadness.triad.registry
 
 import net.benjimadness.triad.TriadMod
-import net.benjimadness.triad.block.BlockGrinder
+import net.benjimadness.triad.block.GrinderBlock
+import net.benjimadness.triad.block.TriadBlockStateProperties
+import net.benjimadness.triad.blockentity.RedstoneGrinderBlockEntity
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties
+import net.minecraft.world.level.block.state.BlockState
+import net.minecraft.world.level.block.state.properties.BooleanProperty
 import net.neoforged.neoforge.registries.DeferredBlock
 import net.neoforged.neoforge.registries.DeferredRegister
 import thedarkcolour.kotlinforforge.neoforge.forge.getValue
 import java.util.function.Supplier
+import java.util.function.ToIntFunction
 
 object TriadBlocks {
     val REGISTRY: DeferredRegister.Blocks = DeferredRegister.createBlocks(TriadMod.MODID)
@@ -50,12 +55,17 @@ object TriadBlocks {
         Block(Properties.ofFullCopy(Blocks.IRON_BLOCK).strength(6F, 8F))
     }
     val REDSTONE_GRINDER by registerBlock("redstone_grinder") {
-        BlockGrinder(Properties.ofFullCopy(Blocks.FURNACE))
+        GrinderBlock(Properties.ofFullCopy(Blocks.STONE).lightLevel(calculateLightLevel(13, TriadBlockStateProperties.POWERED)),
+            RedstoneGrinderBlockEntity::class)
     }
 
     private fun <T : Block> registerBlock(name: String, block: Supplier<T>): DeferredBlock<T> {
         val ret = REGISTRY.register(name, block)
         TriadItems.REGISTRY.registerSimpleBlockItem(name, ret)
         return ret
+    }
+
+    private fun calculateLightLevel(level: Int, prop: BooleanProperty) = { state: BlockState ->
+        if (state.getValue(prop)) level else 0
     }
 }

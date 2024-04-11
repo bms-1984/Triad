@@ -32,9 +32,9 @@ object TriadTabs {
         TriadMod.MODID
     )
     private val TRIAD_RAW_MATERIALS_TAB: DeferredHolder<CreativeModeTab, CreativeModeTab> =
-        REGISTRY.register("triad_raw_materials") { ->
+        REGISTRY.register("${TriadMod.MODID}_raw_materials") { ->
             CreativeModeTab.builder()
-                .title(Component.translatable("itemGroup.triad_raw_materials"))
+                .title(Component.translatableWithFallback("itemGroup.${TriadMod.MODID}_raw_materials", "Triad Raw Materials"))
                 .withTabsBefore(CreativeModeTabs.COMBAT)
                 .icon { TriadItems.RAW_TIN.defaultInstance }
                 .displayItems { _, output ->
@@ -60,9 +60,9 @@ object TriadTabs {
                 .build()
         }
     private val TRIAD_TOOLS_TAB: DeferredHolder<CreativeModeTab, CreativeModeTab> =
-        REGISTRY.register("triad_tools") { ->
+        REGISTRY.register("${TriadMod.MODID}_tools") { ->
             CreativeModeTab.builder()
-                .title(Component.translatable("itemGroup.triad_tools"))
+                .title(Component.translatableWithFallback("itemGroup.${TriadMod.MODID}_tools", "Triad Tools"))
                 .withTabsBefore(TRIAD_RAW_MATERIALS_TAB.key)
                 .icon { TriadItems.STONE_MORTAR.defaultInstance }
                 .displayItems { _, output ->
@@ -80,9 +80,9 @@ object TriadTabs {
                 }
                 .build()
         }
-    private val TRIAD_COMBAT_TAB = REGISTRY.register("triad_combat") { ->
+    private val TRIAD_COMBAT_TAB = REGISTRY.register("${TriadMod.MODID}_combat") { ->
         CreativeModeTab.builder()
-            .title(Component.translatable("itemGroup.triad_combat"))
+            .title(Component.translatableWithFallback("itemGroup.${TriadMod.MODID}_combat", "Triad Combat"))
             .withTabsBefore(TRIAD_TOOLS_TAB.key)
             .icon { TriadItems.BRONZE_SWORD.defaultInstance }
             .displayItems { _, output ->
@@ -104,9 +104,9 @@ object TriadTabs {
             .build()
     }
     private val TRIAD_MACHINES_TAB: DeferredHolder<CreativeModeTab, CreativeModeTab> =
-        REGISTRY.register("triad_machines") { ->
+        REGISTRY.register("${TriadMod.MODID}_machines") { ->
             CreativeModeTab.builder()
-                .title(Component.translatable("itemGroup.triad_machines"))
+                .title(Component.translatableWithFallback("itemGroup.${TriadMod.MODID}_machines", "Triad Machines"))
                 .withTabsBefore(TRIAD_COMBAT_TAB.key)
                 .icon { TriadBlocks.REDSTONE_GRINDER.asItem().defaultInstance }
                 .displayItems { _, output ->
@@ -116,9 +116,9 @@ object TriadTabs {
                 }
                 .build()
         }
-    private val TRIAD_PARTS_TAB = REGISTRY.register("triad_parts") { ->
+    private val TRIAD_PARTS_TAB = REGISTRY.register("${TriadMod.MODID}_parts") { ->
         CreativeModeTab.builder()
-            .title(Component.translatable("itemGroup.triad_parts"))
+            .title(Component.translatableWithFallback("itemGroup.${TriadMod.MODID}_parts", "Triad Parts"))
             .withTabsBefore(TRIAD_MACHINES_TAB.key)
             .icon { TriadItems.BRONZE_BLADE.defaultInstance }
             .displayItems { _, output ->

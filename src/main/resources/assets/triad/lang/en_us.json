@@ -42,5 +42,9 @@
   "itemGroup.triad_tools": "Triad Tools",
   "itemGroup.triad_combat": "Triad Combat",
   "itemGroup.triad_parts": "Triad Parts",
-  "menu.title.triad.grinder_menu": "Grinder"
+  "menu.title.triad.grinder_menu": "Grinder",
+  "triad.message.blade": "Blade",
+  "triad.message.blade.none": "None",
+  "triad.message.blade.steel": "Steel",
+  "triad.message.blade.bronze": "Bronze"
 }

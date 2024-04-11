@@ -19,7 +19,7 @@
 package net.benjimadness.triad.gui
 
 import net.benjimadness.triad.TriadMod
-import net.benjimadness.triad.blockentity.BlockEntityGrinder
+import net.benjimadness.triad.blockentity.GrinderBlockEntity
 import net.benjimadness.triad.registry.TriadMenus
 import net.minecraft.core.BlockPos
 import net.minecraft.resources.ResourceLocation
@@ -43,7 +43,7 @@ class GrinderMenu(
 
     init {
         val entity = playerInventory.player.level().getBlockEntity(pos)
-        if (entity is BlockEntityGrinder) {
+        if (entity is GrinderBlockEntity) {
             addSlot(SlotItemHandler(entity.itemHandler, 0, 56, 17)) // input
             addSlot(SlotItemHandler(entity.itemHandler, 1, 56, 53)) // blade
             addSlot(SlotItemHandler(entity.itemHandler, 2, 116, 35)) // result

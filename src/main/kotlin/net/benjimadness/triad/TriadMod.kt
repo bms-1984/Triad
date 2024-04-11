@@ -19,6 +19,7 @@
 package net.benjimadness.triad
 
 import com.mojang.logging.LogUtils
+import net.benjimadness.triad.compat.TheOneProbe
 import net.benjimadness.triad.config.TriadConfig
 import net.benjimadness.triad.gui.GrinderScreen
 import net.benjimadness.triad.item.tool.TriadToolTiers
@@ -26,6 +27,7 @@ import net.benjimadness.triad.registry.*
 import net.minecraft.client.gui.screens.MenuScreens
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.item.Tiers
+import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity
 import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.fml.ModLoadingContext
 import net.neoforged.fml.common.Mod
@@ -78,6 +80,7 @@ object TriadMod {
         if (TriadConfig.disableVanillaBees) {
             LOGGER.info("Disabling vanilla bees, sir! Send her on forward.")
         }
+        TheOneProbe.register()
     }
 
     private fun registerCapabilities(event: RegisterCapabilitiesEvent) {

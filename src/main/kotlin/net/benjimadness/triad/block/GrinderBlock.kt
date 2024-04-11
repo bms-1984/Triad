@@ -18,8 +18,8 @@
 
 package net.benjimadness.triad.block
 
-import net.benjimadness.triad.blockentity.BlockEntityGrinder
-import net.benjimadness.triad.blockentity.BlockEntityRedstoneGrinder
+import net.benjimadness.triad.TriadMod
+import net.benjimadness.triad.blockentity.GrinderBlockEntity
 import net.benjimadness.triad.gui.GrinderMenu
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
@@ -35,58 +35,61 @@ import net.minecraft.world.item.context.BlockPlaceContext
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.EntityBlock
-import net.minecraft.world.level.block.RedstoneLampBlock
 import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.world.level.block.entity.BlockEntityTicker
 import net.minecraft.world.level.block.entity.BlockEntityType
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.StateDefinition
 import net.minecraft.world.level.block.state.properties.BlockStateProperties
-import net.minecraft.world.level.block.state.properties.BooleanProperty
 import net.minecraft.world.level.block.state.properties.DirectionProperty
-import net.minecraft.world.level.block.state.properties.EnumProperty
 import net.minecraft.world.phys.BlockHitResult
+import kotlin.reflect.KClass
+import kotlin.reflect.full.primaryConstructor
 
-class BlockGrinder(properties: Properties) : Block(properties), EntityBlock {
+class GrinderBlock(properties: Properties, private val blockEntity: KClass<out GrinderBlockEntity>) : Block(properties), EntityBlock {
     companion object {
-        val FACING: DirectionProperty = BlockStateProperties.HORIZONTAL_FACING
-        val LIT: BooleanProperty = BlockStateProperties.LIT
-        val BLADE: EnumProperty<Blades> = EnumProperty.create("blade", Blades::class.java)
-        val RUNNING: BooleanProperty = BooleanProperty.create("running")
+        private val FACING: DirectionProperty = BlockStateProperties.HORIZONTAL_FACING
+        private val POWERED = TriadBlockStateProperties.POWERED
+        private val BLADE = TriadBlockStateProperties.BLADE
+        private val RUNNING = TriadBlockStateProperties.RUNNING
+        private val LEVER = TriadBlockStateProperties.LEVER
     }
 
     init {
         registerDefaultState(stateDefinition.any()
             .setValue(FACING, Direction.NORTH)
-            .setValue(LIT, false)
+            .setValue(POWERED, false)
             .setValue(BLADE, Blades.NONE)
-            .setValue(RUNNING, false))
+            .setValue(RUNNING, false)
+            .setValue(LEVER, LeverPositions.NONE))
     }
 
     override fun getStateForPlacement(context: BlockPlaceContext): BlockState =
         defaultBlockState().setValue(FACING, context.horizontalDirection.opposite)
 
     override fun createBlockStateDefinition(builder: StateDefinition.Builder<Block, BlockState>) {
-        builder.add(FACING, LIT, BLADE, RUNNING)
+        builder.add(FACING, POWERED, BLADE, RUNNING, LEVER)
     }
 
-    override fun newBlockEntity(pos: BlockPos, state: BlockState): BlockEntity = BlockEntityRedstoneGrinder(pos, state)
+    override fun newBlockEntity(pos: BlockPos, state: BlockState): BlockEntity = blockEntity.primaryConstructor!!.call(pos, state)
     override fun <T : BlockEntity?> getTicker(
         level: Level,
         state: BlockState,
         type: BlockEntityType<T>
     ): BlockEntityTicker<T> =
-        BlockEntityTicker { lLevel, pos, lState, blockEntity ->
+        BlockEntityTicker { lLevel, pos, _, lBlockEntity ->
             if (level.isClientSide) return@BlockEntityTicker
-            else if (blockEntity is BlockEntityGrinder) blockEntity.serverTick(lLevel, pos, lState, blockEntity)
+            else if (lBlockEntity is GrinderBlockEntity) lBlockEntity.serverTick(lLevel, pos, lBlockEntity)
         }
 
+    @Deprecated("Deprecated in Java")
     override fun getMenuProvider(state: BlockState, level: Level, pos: BlockPos): MenuProvider =
         SimpleMenuProvider(
             { id, inv, _ -> GrinderMenu(id, inv, pos) },
-            Component.translatable("menu.title.triad.grinder_menu")
+            Component.translatableWithFallback("menu.title.${TriadMod.MODID}.grinder_menu", "Grinder")
         )
 
+    @Deprecated("Deprecated in Java")
     override fun use(
         state: BlockState,
         level: Level,
@@ -96,12 +99,21 @@ class BlockGrinder(properties: Properties) : Block(properties), EntityBlock {
         hit: BlockHitResult
     ): InteractionResult {
         if (!level.isClientSide && player is ServerPlayer)
-            player.openMenu(state.getMenuProvider(level, pos)) { buf -> buf.writeBlockPos(pos) }
+            state.getMenuProvider(level, pos)?.let { player.openMenu(it) { buf -> buf.writeBlockPos(pos) } }
         return InteractionResult.sidedSuccess(level.isClientSide())
     }
 
     enum class Blades : StringRepresentable {
         NONE, BRONZE, STEEL;
+        override fun getSerializedName(): String = name.lowercase()
+        override fun toString(): String = serializedName
+        fun getComponent(): Component = Component.translatableWithFallback(
+            "${TriadMod.MODID}.message.blade.${serializedName}",
+            serializedName.replaceFirstChar { it.uppercase() })
+    }
+
+    enum class LeverPositions : StringRepresentable {
+        NONE, SOUTH, EAST, WEST, BOTTOM, TOP;
         override fun getSerializedName(): String = name.lowercase()
         override fun toString(): String = serializedName
     }

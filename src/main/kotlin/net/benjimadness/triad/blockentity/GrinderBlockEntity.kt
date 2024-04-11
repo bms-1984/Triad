@@ -19,10 +19,10 @@
 package net.benjimadness.triad.blockentity
 
 import net.benjimadness.triad.TriadMod
-import net.benjimadness.triad.block.BlockGrinder
-import net.benjimadness.triad.item.ItemReusable
+import net.benjimadness.triad.block.GrinderBlock
+import net.benjimadness.triad.block.TriadBlockStateProperties
+import net.benjimadness.triad.item.ReusableItem
 import net.benjimadness.triad.recipe.GrinderRecipe
-import net.benjimadness.triad.registry.TriadItems
 import net.benjimadness.triad.registry.TriadRecipes
 import net.minecraft.core.BlockPos
 import net.minecraft.nbt.CompoundTag
@@ -44,7 +44,7 @@ import net.neoforged.neoforge.items.IItemHandler
 import net.neoforged.neoforge.items.ItemStackHandler
 import net.neoforged.neoforge.items.wrapper.RecipeWrapper
 
-abstract class BlockEntityGrinder(type: BlockEntityType<*>, pos: BlockPos, state: BlockState) : BlockEntity(
+abstract class GrinderBlockEntity(type: BlockEntityType<*>, pos: BlockPos, state: BlockState) : BlockEntity(
     type, pos, state
 ) {
     companion object {
@@ -63,45 +63,45 @@ abstract class BlockEntityGrinder(type: BlockEntityType<*>, pos: BlockPos, state
     }
     val itemHandler: IItemHandler by lazy { items }
     private var isOn = false
-    private var blade = BlockGrinder.Blades.NONE
+    private var blade = GrinderBlock.Blades.NONE
     private var isRunning = false
     var progress = 0
     private val check = RecipeManager.createCheck(TriadRecipes.GRINDER_RECIPE_TYPE)
     private val random = RandomSource.create()
 
-    fun serverTick(level: Level, pos: BlockPos, state: BlockState, blockEntity: BlockEntityGrinder) {
+    open fun serverTick(level: Level, pos: BlockPos, blockEntity: GrinderBlockEntity) {
         val input = blockEntity.items.getStackInSlot(INPUT_SLOT)
         val bladeStack = blockEntity.items.getStackInSlot(BLADE_SLOT)
         val result = blockEntity.items.getStackInSlot(OUTPUT_SLOT)
         if (bladeStack.`is`(ItemTags.create(ResourceLocation(TriadMod.MODID, "blades")))) {
-            blade = BlockGrinder.BLADE.getValue((bladeStack.item as ItemReusable).materialName).get()
-            level.setBlock(pos, level.getBlockState(pos).setValue(BlockGrinder.BLADE, blade), Block.UPDATE_CLIENTS)
+            blade = TriadBlockStateProperties.BLADE.getValue((bladeStack.item as ReusableItem).materialName).get()
+            level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.BLADE, blade), Block.UPDATE_CLIENTS)
         }
         else {
-            blade = BlockGrinder.Blades.NONE
-            level.setBlock(pos, level.getBlockState(pos).setValue(BlockGrinder.BLADE, blade), Block.UPDATE_CLIENTS)
+            blade = GrinderBlock.Blades.NONE
+            level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.BLADE, blade), Block.UPDATE_CLIENTS)
         }
         if (blockEntity.isPowered(level)) {
             isOn = true
-            level.setBlock(pos, level.getBlockState(pos).setValue(BlockGrinder.LIT, true), Block.UPDATE_CLIENTS)
+            level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.POWERED, true), Block.UPDATE_CLIENTS)
         }
         else {
             isOn = false
-            level.setBlock(pos, level.getBlockState(pos).setValue(BlockGrinder.LIT, false), Block.UPDATE_CLIENTS)
+            level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.POWERED, false), Block.UPDATE_CLIENTS)
         }
-        if (isRunning && (!isOn || blade == BlockGrinder.Blades.NONE || input.isEmpty ||
+        if (isRunning && (!isOn || blade == GrinderBlock.Blades.NONE || input.isEmpty ||
                     result.count >= result.maxStackSize)) {
             isRunning = false
-            level.setBlock(pos, level.getBlockState(pos).setValue(BlockGrinder.RUNNING, false), Block.UPDATE_CLIENTS)
+            level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.RUNNING, false), Block.UPDATE_CLIENTS)
         }
-        if (isOn && blade != BlockGrinder.Blades.NONE && input != ItemStack.EMPTY) {
+        if (isOn && blade != GrinderBlock.Blades.NONE && input != ItemStack.EMPTY) {
             val holder = blockEntity.check.getRecipeFor(RecipeWrapper(items), level)
             if (holder.isPresent) {
                 val recipe = holder.get().value as GrinderRecipe
                 if ((result.item == recipe.output.item && result.count <= (result.maxStackSize - recipe.output.count)) || result.isEmpty) {
                     if (!isRunning) {
                         isRunning = true
-                        level.setBlock(pos, level.getBlockState(pos).setValue(BlockGrinder.RUNNING, true), Block.UPDATE_CLIENTS)
+                        level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.RUNNING, true), Block.UPDATE_CLIENTS)
                     }
                     else if ((level.gameTime % 20).toInt() == 0) {
                         if (progress >= getTime()) {
@@ -144,7 +144,7 @@ abstract class BlockEntityGrinder(type: BlockEntityType<*>, pos: BlockPos, state
     private fun loadClientData(tag: CompoundTag) {
         if (tag.contains("IsOn")) isOn = tag.getBoolean("IsOn")
         if (tag.contains("IsRunning")) isRunning = tag.getBoolean("IsRunning")
-        if (tag.contains("Blade")) blade = BlockGrinder.Blades.valueOf(tag.getString("Blade").uppercase())
+        if (tag.contains("Blade")) blade = GrinderBlock.Blades.valueOf(tag.getString("Blade").uppercase())
     }
 
     override fun getUpdateTag(): CompoundTag {
@@ -153,17 +153,16 @@ abstract class BlockEntityGrinder(type: BlockEntityType<*>, pos: BlockPos, state
         return tag
     }
 
-    override fun handleUpdateTag(tag: CompoundTag?) {
-        if (tag != null)
-            loadClientData(tag)
+    override fun handleUpdateTag(tag: CompoundTag) {
+        loadClientData(tag)
     }
 
     override fun getUpdatePacket(): Packet<ClientGamePacketListener>? =
         ClientboundBlockEntityDataPacket.create(this)
 
-    override fun onDataPacket(network: Connection?, packet: ClientboundBlockEntityDataPacket?) {
-        if (packet?.tag != null)
-            handleUpdateTag(packet.tag)
+    override fun onDataPacket(network: Connection, packet: ClientboundBlockEntityDataPacket) {
+        if (packet.tag != null)
+            handleUpdateTag(packet.tag!!)
     }
 
     abstract fun getTime(): Int

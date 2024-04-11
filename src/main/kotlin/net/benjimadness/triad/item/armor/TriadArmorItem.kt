@@ -26,8 +26,8 @@ import net.minecraft.world.item.ArmorMaterial
 import net.minecraft.world.item.ItemStack
 
 class TriadArmorItem(material: ArmorMaterial, type: Type) : ArmorItem(material, type, Properties()) {
-    override fun getArmorTexture(stack: ItemStack?, entity: Entity?, slot: EquipmentSlot?, type: String?): String? =
-        if (stack == null || stack.item !is ArmorItem) null
+    override fun getArmorTexture(stack: ItemStack, entity: Entity, slot: EquipmentSlot, type: String): String? =
+        if (stack.item !is ArmorItem) null
         else if ((stack.item as ArmorItem).type == Type.LEGGINGS) TriadMod.MODID + ":" + "textures/models/armor/" + material.name + "_layer_2.png"
         else TriadMod.MODID + ":" + "textures/models/armor/" + material.name + "_layer_1.png"
 }

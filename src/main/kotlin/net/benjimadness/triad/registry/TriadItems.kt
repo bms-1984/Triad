@@ -19,7 +19,7 @@
 package net.benjimadness.triad.registry
 
 import net.benjimadness.triad.TriadMod
-import net.benjimadness.triad.item.ItemReusable
+import net.benjimadness.triad.item.ReusableItem
 import net.benjimadness.triad.item.armor.TriadArmorItem
 import net.benjimadness.triad.item.armor.TriadArmorMaterials
 import net.minecraft.world.item.*
@@ -41,13 +41,13 @@ object TriadItems {
     val IRON_DUST: Item by registerItem("iron_dust")
     val GOLD_DUST: Item by registerItem("gold_dust")
     val STONE_MORTAR: Item by registerItem("stone_mortar") {
-        ItemReusable(Item.Properties().durability(100).setNoRepair())
+        ReusableItem(Item.Properties().durability(100).setNoRepair())
     }
     val STEEL_BLADE: Item by registerItem("steel_blade") {
-        ItemReusable(Item.Properties().durability(100).setNoRepair(), "steel")
+        ReusableItem(Item.Properties().durability(100).setNoRepair(), "steel")
     }
     val BRONZE_BLADE: Item by registerItem("bronze_blade") {
-        ItemReusable(Item.Properties().durability(10).setNoRepair(), "bronze")
+        ReusableItem(Item.Properties().durability(10).setNoRepair(), "bronze")
     }
     val BRONZE_PICKAXE: Item by registerItem("bronze_pickaxe") {
         PickaxeItem(Tiers.IRON, 2, -3F, Item.Properties())

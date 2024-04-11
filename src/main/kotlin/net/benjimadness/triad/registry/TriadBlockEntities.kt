@@ -19,7 +19,7 @@
 package net.benjimadness.triad.registry
 
 import net.benjimadness.triad.TriadMod
-import net.benjimadness.triad.blockentity.BlockEntityRedstoneGrinder
+import net.benjimadness.triad.blockentity.RedstoneGrinderBlockEntity
 import net.minecraft.core.registries.Registries
 import net.minecraft.world.level.block.entity.BlockEntityType
 import net.neoforged.neoforge.registries.DeferredRegister
@@ -30,8 +30,8 @@ object TriadBlockEntities {
     val REGISTRY: DeferredRegister<BlockEntityType<*>> =
         DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, TriadMod.MODID)
 
-    val REDSTONE_GRINDER_BLOCK_ENTITY_TYPE: BlockEntityType<BlockEntityRedstoneGrinder> by registerBlockEntity("redstone_grinder_block_entity") {
-        BlockEntityType.Builder.of(::BlockEntityRedstoneGrinder, TriadBlocks.REDSTONE_GRINDER).build(null)
+    val REDSTONE_GRINDER_BLOCK_ENTITY_TYPE: BlockEntityType<RedstoneGrinderBlockEntity> by registerBlockEntity("redstone_grinder_block_entity") {
+        BlockEntityType.Builder.of(::RedstoneGrinderBlockEntity, TriadBlocks.REDSTONE_GRINDER).build(null)
     }
 
     private fun <T : BlockEntityType<*>> registerBlockEntity(name: String, blockEntity: Supplier<T>) =
