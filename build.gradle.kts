@@ -22,7 +22,7 @@ plugins {
     id("java-library")
     idea
     `maven-publish`
-    id("net.neoforged.gradle.userdev") version "7.0.96"
+    id("net.neoforged.gradle.userdev") version "7.0.105"
     kotlin("jvm") version "1.9.23"
     kotlin("plugin.serialization") version "1.9.23"
 }

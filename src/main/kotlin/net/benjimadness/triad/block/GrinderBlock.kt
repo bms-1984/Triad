@@ -19,17 +19,19 @@
 package net.benjimadness.triad.block
 
 import net.benjimadness.triad.TriadMod
-import net.benjimadness.triad.blockentity.GrinderBlockEntity
+import net.benjimadness.triad.blockentity.AbstractGrinderBlockEntity
 import net.benjimadness.triad.gui.GrinderMenu
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.network.chat.Component
 import net.minecraft.server.level.ServerPlayer
+import net.minecraft.util.RandomSource
 import net.minecraft.util.StringRepresentable
 import net.minecraft.world.InteractionHand
 import net.minecraft.world.InteractionResult
 import net.minecraft.world.MenuProvider
 import net.minecraft.world.SimpleMenuProvider
+import net.minecraft.world.entity.item.ItemEntity
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.context.BlockPlaceContext
 import net.minecraft.world.level.Level
@@ -46,7 +48,7 @@ import net.minecraft.world.phys.BlockHitResult
 import kotlin.reflect.KClass
 import kotlin.reflect.full.primaryConstructor
 
-class GrinderBlock(properties: Properties, private val blockEntity: KClass<out GrinderBlockEntity>) : Block(properties), EntityBlock {
+class GrinderBlock(properties: Properties, private val blockEntity: KClass<out AbstractGrinderBlockEntity>) : Block(properties), EntityBlock {
     companion object {
         private val FACING: DirectionProperty = BlockStateProperties.HORIZONTAL_FACING
         private val POWERED = TriadBlockStateProperties.POWERED
@@ -54,6 +56,7 @@ class GrinderBlock(properties: Properties, private val blockEntity: KClass<out G
         private val RUNNING = TriadBlockStateProperties.RUNNING
         private val LEVER = TriadBlockStateProperties.LEVER
     }
+    private val randomSource = RandomSource.create()
 
     init {
         registerDefaultState(stateDefinition.any()
@@ -79,7 +82,7 @@ class GrinderBlock(properties: Properties, private val blockEntity: KClass<out G
     ): BlockEntityTicker<T> =
         BlockEntityTicker { lLevel, pos, _, lBlockEntity ->
             if (level.isClientSide) return@BlockEntityTicker
-            else if (lBlockEntity is GrinderBlockEntity) lBlockEntity.serverTick(lLevel, pos, lBlockEntity)
+            else if (lBlockEntity is AbstractGrinderBlockEntity) lBlockEntity.serverTick(lLevel, pos, lBlockEntity)
         }
 
     @Deprecated("Deprecated in Java")
@@ -103,6 +106,29 @@ class GrinderBlock(properties: Properties, private val blockEntity: KClass<out G
         return InteractionResult.sidedSuccess(level.isClientSide())
     }
 
+    @Deprecated("Deprecated in Java", ReplaceWith(
+        "super.onRemove(pState, pLevel, pPos, pNewState, pMovedByPiston)",
+        "net.minecraft.world.level.block.Block"))
+    override fun onRemove(
+        state: BlockState,
+        level: Level,
+        pos: BlockPos,
+        newState: BlockState,
+        movedByPiston: Boolean
+    ) {
+        if (state.block != newState.block && !movedByPiston) {
+            val blockEntity = level.getBlockEntity(pos)
+            if (blockEntity is AbstractGrinderBlockEntity) {
+                for (slot in 0 until blockEntity.itemHandler.slots) {
+                    val stack = blockEntity.itemHandler.getStackInSlot(slot)
+                    if (!stack.isEmpty)
+                        level.addFreshEntity(ItemEntity(level, pos.x.toDouble(), pos.y.toDouble(), pos.z.toDouble(), stack))
+                }
+            }
+        }
+        super.onRemove(state, level, pos, newState, movedByPiston)
+    }
+
     enum class Blades : StringRepresentable {
         NONE, BRONZE, STEEL;
         override fun getSerializedName(): String = name.lowercase()
@@ -113,7 +139,7 @@ class GrinderBlock(properties: Properties, private val blockEntity: KClass<out G
     }
 
     enum class LeverPositions : StringRepresentable {
-        NONE, SOUTH, EAST, WEST, BOTTOM, TOP;
+        NONE, SOUTH, EAST, WEST, BOTTOM, TOP, BOTTOM_ROT, TOP_ROT;
         override fun getSerializedName(): String = name.lowercase()
         override fun toString(): String = serializedName
     }

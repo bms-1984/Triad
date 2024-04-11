@@ -1007,6 +1007,342 @@
     },
     "blade=none,facing=west,powered=true,running=true,lever=west": {
       "model": "triad:block/redstone_grinder"
+    },
+    "facing=east,powered=false,blade=none,running=false,lever=top_rot": {
+      "model": "triad:block/redstone_grinder_lever_top_rot",
+      "y": 90
+    },
+    "facing=east,powered=true,blade=none,running=false,lever=top_rot": {
+      "model": "triad:block/redstone_grinder_on_lever_top_rot",
+      "y": 90
+    },
+    "facing=east,powered=false,blade=bronze,running=false,lever=top_rot": {
+      "model": "triad:block/redstone_grinder_bronze_lever_top_rot",
+      "y": 90
+    },
+    "facing=east,powered=true,blade=bronze,running=false,lever=top_rot": {
+      "model": "triad:block/redstone_grinder_on_bronze_lever_top_rot",
+      "y": 90
+    },
+    "facing=east,powered=false,blade=steel,running=false,lever=top_rot": {
+      "model": "triad:block/redstone_grinder_steel_lever_top_rot",
+      "y": 90
+    },
+    "facing=east,powered=true,blade=steel,running=false,lever=top_rot": {
+      "model": "triad:block/redstone_grinder_on_steel_lever_top_rot",
+      "y": 90
+    },
+    "facing=east,powered=true,blade=bronze,running=true,lever=top_rot": {
+      "model": "triad:block/redstone_grinder_on_bronze_lever_top_rot_running",
+      "y": 90
+    },
+    "facing=east,powered=true,blade=steel,running=true,lever=top_rot": {
+      "model": "triad:block/redstone_grinder_on_steel_lever_top_rot_running",
+      "y": 90
+    },
+    "facing=north,powered=false,blade=none,running=false,lever=top_rot": {
+      "model": "triad:block/redstone_grinder_lever_top_rot"
+    },
+    "facing=north,powered=true,blade=none,running=false,lever=top_rot": {
+      "model": "triad:block/redstone_grinder_on_lever_top_rot"
+    },
+    "facing=north,powered=false,blade=bronze,running=false,lever=top_rot": {
+      "model": "triad:block/redstone_grinder_bronze_lever_top_rot"
+    },
+    "facing=north,powered=true,blade=bronze,running=false,lever=top_rot": {
+      "model": "triad:block/redstone_grinder_on_bronze_lever_top_rot"
+    },
+    "facing=north,powered=false,blade=steel,running=false,lever=top_rot": {
+      "model": "triad:block/redstone_grinder_steel_lever_top_rot"
+    },
+    "facing=north,powered=true,blade=steel,running=false,lever=top_rot": {
+      "model": "triad:block/redstone_grinder_on_steel_lever_top_rot"
+    },
+    "facing=north,powered=true,blade=bronze,running=true,lever=top_rot": {
+      "model": "triad:block/redstone_grinder_on_bronze_lever_top_rot_running"
+    },
+    "facing=north,powered=true,blade=steel,running=true,lever=top_rot": {
+      "model": "triad:block/redstone_grinder_on_steel_lever_top_rot_running"
+    },
+    "facing=south,powered=false,blade=none,running=false,lever=top_rot": {
+      "model": "triad:block/redstone_grinder_lever_top_rot",
+      "y": 180
+    },
+    "facing=south,powered=true,blade=none,running=false,lever=top_rot": {
+      "model": "triad:block/redstone_grinder_on_lever_top_rot",
+      "y": 180
+    },
+    "facing=south,powered=false,blade=bronze,running=false,lever=top_rot": {
+      "model": "triad:block/redstone_grinder_bronze_lever_top_rot",
+      "y": 180
+    },
+    "facing=south,powered=true,blade=bronze,running=false,lever=top_rot": {
+      "model": "triad:block/redstone_grinder_on_bronze_lever_top_rot",
+      "y": 180
+    },
+    "facing=south,powered=false,blade=steel,running=false,lever=top_rot": {
+      "model": "triad:block/redstone_grinder_steel_lever_top_rot",
+      "y": 180
+    },
+    "facing=south,powered=true,blade=steel,running=false,lever=top_rot": {
+      "model": "triad:block/redstone_grinder_on_steel_lever_top_rot",
+      "y": 180
+    },
+    "facing=south,powered=true,blade=bronze,running=true,lever=top_rot": {
+      "model": "triad:block/redstone_grinder_on_bronze_lever_top_rot_running",
+      "y": 180
+    },
+    "facing=south,powered=true,blade=steel,running=true,lever=top_rot": {
+      "model": "triad:block/redstone_grinder_on_steel_lever_top_rot_running",
+      "y": 180
+    },
+    "facing=west,powered=false,blade=none,running=false,lever=top_rot": {
+      "model": "triad:block/redstone_grinder_lever_top_rot",
+      "y": 270
+    },
+    "facing=west,powered=true,blade=none,running=false,lever=top_rot": {
+      "model": "triad:block/redstone_grinder_on_lever_top_rot",
+      "y": 270
+    },
+    "facing=west,powered=false,blade=bronze,running=false,lever=top_rot": {
+      "model": "triad:block/redstone_grinder_bronze_lever_top_rot",
+      "y": 270
+    },
+    "facing=west,powered=true,blade=bronze,running=false,lever=top_rot": {
+      "model": "triad:block/redstone_grinder_on_bronze_lever_top_rot",
+      "y": 270
+    },
+    "facing=west,powered=false,blade=steel,running=false,lever=top_rot": {
+      "model": "triad:block/redstone_grinder_steel_lever_top_rot",
+      "y": 270
+    },
+    "facing=west,powered=true,blade=steel,running=false,lever=top_rot": {
+      "model": "triad:block/redstone_grinder_on_steel_lever_top_rot",
+      "y": 270
+    },
+    "facing=west,powered=true,blade=bronze,running=true,lever=top_rot": {
+      "model": "triad:block/redstone_grinder_on_bronze_lever_top_rot_running",
+      "y": 270
+    },
+    "facing=west,powered=true,blade=steel,running=true,lever=top_rot": {
+      "model": "triad:block/redstone_grinder_on_steel_lever_top_rot_running",
+      "y": 270
+    },
+    "blade=steel,facing=south,powered=false,running=true,lever=top_rot": {
+      "model": "triad:block/redstone_grinder"
+    },
+    "blade=none,facing=south,powered=true,running=true,lever=top_rot": {
+      "model": "triad:block/redstone_grinder"
+    },
+    "blade=none,facing=north,powered=true,running=true,lever=top_rot": {
+      "model": "triad:block/redstone_grinder"
+    },
+    "blade=none,facing=east,powered=false,running=true,lever=top_rot": {
+      "model": "triad:block/redstone_grinder"
+    },
+    "blade=none,facing=north,powered=false,running=true,lever=top_rot": {
+      "model": "triad:block/redstone_grinder"
+    },
+    "blade=bronze,facing=south,powered=false,running=true,lever=top_rot": {
+      "model": "triad:block/redstone_grinder"
+    },
+    "blade=bronze,facing=west,powered=false,running=true,lever=top_rot": {
+      "model": "triad:block/redstone_grinder"
+    },
+    "blade=none,facing=east,powered=true,running=true,lever=top_rot": {
+      "model": "triad:block/redstone_grinder"
+    },
+    "blade=steel,facing=north,powered=false,running=true,lever=top_rot": {
+      "model": "triad:block/redstone_grinder"
+    },
+    "blade=steel,facing=east,powered=false,running=true,lever=top_rot": {
+      "model": "triad:block/redstone_grinder"
+    },
+    "blade=none,facing=west,powered=false,running=true,lever=top_rot": {
+      "model": "triad:block/redstone_grinder"
+    },
+    "blade=steel,facing=west,powered=false,running=true,lever=top_rot": {
+      "model": "triad:block/redstone_grinder"
+    },
+    "blade=bronze,facing=north,powered=false,running=true,lever=top_rot": {
+      "model": "triad:block/redstone_grinder"
+    },
+    "blade=bronze,facing=east,powered=false,running=true,lever=top_rot": {
+      "model": "triad:block/redstone_grinder"
+    },
+    "blade=none,facing=south,powered=false,running=true,lever=top_rot": {
+      "model": "triad:block/redstone_grinder"
+    },
+    "blade=none,facing=west,powered=true,running=true,lever=top_rot": {
+      "model": "triad:block/redstone_grinder"
+    },
+    "facing=east,powered=false,blade=none,running=false,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder_lever_bottom_rot",
+      "y": 90
+    },
+    "facing=east,powered=true,blade=none,running=false,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder_on_lever_bottom_rot",
+      "y": 90
+    },
+    "facing=east,powered=false,blade=bronze,running=false,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder_bronze_lever_bottom_rot",
+      "y": 90
+    },
+    "facing=east,powered=true,blade=bronze,running=false,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder_on_bronze_lever_bottom_rot",
+      "y": 90
+    },
+    "facing=east,powered=false,blade=steel,running=false,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder_steel_lever_bottom_rot",
+      "y": 90
+    },
+    "facing=east,powered=true,blade=steel,running=false,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder_on_steel_lever_bottom_rot",
+      "y": 90
+    },
+    "facing=east,powered=true,blade=bronze,running=true,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder_on_bronze_lever_bottom_rot_running",
+      "y": 90
+    },
+    "facing=east,powered=true,blade=steel,running=true,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder_on_steel_lever_bottom_rot_running",
+      "y": 90
+    },
+    "facing=north,powered=false,blade=none,running=false,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder_lever_bottom_rot"
+    },
+    "facing=north,powered=true,blade=none,running=false,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder_on_lever_bottom_rot"
+    },
+    "facing=north,powered=false,blade=bronze,running=false,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder_bronze_lever_bottom_rot"
+    },
+    "facing=north,powered=true,blade=bronze,running=false,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder_on_bronze_lever_bottom_rot"
+    },
+    "facing=north,powered=false,blade=steel,running=false,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder_steel_lever_bottom_rot"
+    },
+    "facing=north,powered=true,blade=steel,running=false,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder_on_steel_lever_bottom_rot"
+    },
+    "facing=north,powered=true,blade=bronze,running=true,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder_on_bronze_lever_bottom_rot_running"
+    },
+    "facing=north,powered=true,blade=steel,running=true,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder_on_steel_lever_bottom_rot_running"
+    },
+    "facing=south,powered=false,blade=none,running=false,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder_lever_bottom_rot",
+      "y": 180
+    },
+    "facing=south,powered=true,blade=none,running=false,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder_on_lever_bottom_rot",
+      "y": 180
+    },
+    "facing=south,powered=false,blade=bronze,running=false,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder_bronze_lever_bottom_rot",
+      "y": 180
+    },
+    "facing=south,powered=true,blade=bronze,running=false,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder_on_bronze_lever_bottom_rot",
+      "y": 180
+    },
+    "facing=south,powered=false,blade=steel,running=false,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder_steel_lever_bottom_rot",
+      "y": 180
+    },
+    "facing=south,powered=true,blade=steel,running=false,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder_on_steel_lever_bottom_rot",
+      "y": 180
+    },
+    "facing=south,powered=true,blade=bronze,running=true,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder_on_bronze_lever_bottom_rot_running",
+      "y": 180
+    },
+    "facing=south,powered=true,blade=steel,running=true,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder_on_steel_lever_bottom_rot_running",
+      "y": 180
+    },
+    "facing=west,powered=false,blade=none,running=false,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder_lever_bottom_rot",
+      "y": 270
+    },
+    "facing=west,powered=true,blade=none,running=false,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder_on_lever_bottom_rot",
+      "y": 270
+    },
+    "facing=west,powered=false,blade=bronze,running=false,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder_bronze_lever_bottom_rot",
+      "y": 270
+    },
+    "facing=west,powered=true,blade=bronze,running=false,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder_on_bronze_lever_bottom_rot",
+      "y": 270
+    },
+    "facing=west,powered=false,blade=steel,running=false,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder_steel_lever_bottom_rot",
+      "y": 270
+    },
+    "facing=west,powered=true,blade=steel,running=false,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder_on_steel_lever_bottom_rot",
+      "y": 270
+    },
+    "facing=west,powered=true,blade=bronze,running=true,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder_on_bronze_lever_bottom_rot_running",
+      "y": 270
+    },
+    "facing=west,powered=true,blade=steel,running=true,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder_on_steel_lever_bottom_rot_running",
+      "y": 270
+    },
+    "blade=steel,facing=south,powered=false,running=true,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder"
+    },
+    "blade=none,facing=south,powered=true,running=true,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder"
+    },
+    "blade=none,facing=north,powered=true,running=true,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder"
+    },
+    "blade=none,facing=east,powered=false,running=true,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder"
+    },
+    "blade=none,facing=north,powered=false,running=true,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder"
+    },
+    "blade=bronze,facing=south,powered=false,running=true,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder"
+    },
+    "blade=bronze,facing=west,powered=false,running=true,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder"
+    },
+    "blade=none,facing=east,powered=true,running=true,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder"
+    },
+    "blade=steel,facing=north,powered=false,running=true,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder"
+    },
+    "blade=steel,facing=east,powered=false,running=true,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder"
+    },
+    "blade=none,facing=west,powered=false,running=true,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder"
+    },
+    "blade=steel,facing=west,powered=false,running=true,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder"
+    },
+    "blade=bronze,facing=north,powered=false,running=true,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder"
+    },
+    "blade=bronze,facing=east,powered=false,running=true,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder"
+    },
+    "blade=none,facing=south,powered=false,running=true,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder"
+    },
+    "blade=none,facing=west,powered=true,running=true,lever=bottom_rot": {
+      "model": "triad:block/redstone_grinder"
     }
   }
 }

@@ -44,7 +44,7 @@ import net.neoforged.neoforge.items.IItemHandler
 import net.neoforged.neoforge.items.ItemStackHandler
 import net.neoforged.neoforge.items.wrapper.RecipeWrapper
 
-abstract class GrinderBlockEntity(type: BlockEntityType<*>, pos: BlockPos, state: BlockState) : BlockEntity(
+abstract class AbstractGrinderBlockEntity(type: BlockEntityType<*>, pos: BlockPos, state: BlockState) : BlockEntity(
     type, pos, state
 ) {
     companion object {
@@ -69,7 +69,7 @@ abstract class GrinderBlockEntity(type: BlockEntityType<*>, pos: BlockPos, state
     private val check = RecipeManager.createCheck(TriadRecipes.GRINDER_RECIPE_TYPE)
     private val random = RandomSource.create()
 
-    open fun serverTick(level: Level, pos: BlockPos, blockEntity: GrinderBlockEntity) {
+    open fun serverTick(level: Level, pos: BlockPos, blockEntity: AbstractGrinderBlockEntity) {
         val input = blockEntity.items.getStackInSlot(INPUT_SLOT)
         val bladeStack = blockEntity.items.getStackInSlot(BLADE_SLOT)
         val result = blockEntity.items.getStackInSlot(OUTPUT_SLOT)

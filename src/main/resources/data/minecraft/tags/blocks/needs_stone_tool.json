@@ -5,6 +5,8 @@
     "triad:deepslate_tin_ore",
     "triad:tin_block",
     "triad:raw_tin_block",
-    "triad:bronze_block"
+    "triad:bronze_block",
+    "triad:steel_block",
+    "triad:redstone_grinder"
   ]
 }

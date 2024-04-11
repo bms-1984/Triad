@@ -26,96 +26,108 @@ import net.minecraft.core.Direction
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
-import net.minecraft.world.level.block.LeverBlock
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.properties.AttachFace
 import net.minecraft.world.level.block.state.properties.BlockStateProperties
 
 class RedstoneGrinderBlockEntity(pos: BlockPos, state: BlockState) :
-    GrinderBlockEntity(TriadBlockEntities.REDSTONE_GRINDER_BLOCK_ENTITY_TYPE, pos, state) {
+    AbstractGrinderBlockEntity(TriadBlockEntities.REDSTONE_GRINDER_BLOCK_ENTITY_TYPE, pos, state) {
     override fun getTime(): Int = 240
     override fun isPowered(level: Level): Boolean = level.hasNeighborSignal(blockPos)
-    // TODO: Handle sideways placed levers on top and bottom with two new possible values in GrinderBlock.LeverPositions and corresponding property
-    override fun serverTick(level: Level, pos: BlockPos, blockEntity: GrinderBlockEntity) {
-        val facing = level.getBlockState(pos).getValue(BlockStateProperties.HORIZONTAL_FACING)
-        if (level.getBlockState(pos.above()).`is`(Blocks.LEVER) &&
-            level.getBlockState(pos.above()).getValue(BlockStateProperties.ATTACH_FACE) == AttachFace.FLOOR)
-            level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.LEVER,
-                GrinderBlock.LeverPositions.TOP), Block.UPDATE_CLIENTS)
+    override fun serverTick(level: Level, pos: BlockPos, blockEntity: AbstractGrinderBlockEntity) {
+        val state = level.getBlockState(pos)
+        level.setBlock(pos, state.setValue(TriadBlockStateProperties.LEVER, state.getLeverOrientation(level, pos)), Block.UPDATE_CLIENTS)
+        super.serverTick(level, pos, blockEntity)
+    }
+
+    private fun BlockState.getLeverOrientation(level: Level, pos: BlockPos): GrinderBlock.LeverPositions {
+        val facing = this.getValue(BlockStateProperties.HORIZONTAL_FACING)
+        return if (level.getBlockState(pos.above()).`is`(Blocks.LEVER) &&
+            level.getBlockState(pos.above()).getValue(BlockStateProperties.ATTACH_FACE) == AttachFace.FLOOR) {
+            val leverFacing = level.getBlockState(pos.above()).getValue(BlockStateProperties.HORIZONTAL_FACING)
+            when (leverFacing) {
+                Direction.SOUTH, Direction.NORTH -> {
+                    when (facing) {
+                        Direction.NORTH, Direction.SOUTH -> GrinderBlock.LeverPositions.TOP
+                        Direction.EAST, Direction.WEST -> GrinderBlock.LeverPositions.TOP_ROT
+                        else -> GrinderBlock.LeverPositions.NONE
+                    }
+                }
+                Direction.EAST, Direction.WEST -> {
+                    when (facing) {
+                        Direction.NORTH, Direction.SOUTH -> GrinderBlock.LeverPositions.TOP_ROT
+                        Direction.EAST, Direction.WEST -> GrinderBlock.LeverPositions.TOP
+                        else -> GrinderBlock.LeverPositions.NONE
+                    }
+                }
+                else -> GrinderBlock.LeverPositions.NONE
+            }
+        }
         else if(level.getBlockState(pos.below()).`is`(Blocks.LEVER) &&
             level.getBlockState(pos.below()).getValue(BlockStateProperties.ATTACH_FACE) == AttachFace.CEILING) {
-            level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.LEVER,
-                GrinderBlock.LeverPositions.BOTTOM), Block.UPDATE_CLIENTS)
+            val leverFacing = level.getBlockState(pos.below()).getValue(BlockStateProperties.HORIZONTAL_FACING)
+            when (leverFacing) {
+                Direction.SOUTH, Direction.NORTH -> {
+                    when (facing) {
+                        Direction.NORTH, Direction.SOUTH -> GrinderBlock.LeverPositions.BOTTOM
+                        Direction.EAST, Direction.WEST -> GrinderBlock.LeverPositions.BOTTOM_ROT
+                        else -> GrinderBlock.LeverPositions.NONE
+                    }
+                }
+                Direction.EAST, Direction.WEST -> {
+                    when (facing) {
+                        Direction.NORTH, Direction.SOUTH -> GrinderBlock.LeverPositions.BOTTOM_ROT
+                        Direction.EAST, Direction.WEST -> GrinderBlock.LeverPositions.BOTTOM
+                        else -> GrinderBlock.LeverPositions.NONE
+                    }
+                }
+                else -> GrinderBlock.LeverPositions.NONE
+            }
         }
         else if(level.getBlockState(pos.south()).`is`(Blocks.LEVER) &&
             level.getBlockState(pos.south()).getValue(BlockStateProperties.ATTACH_FACE) == AttachFace.WALL &&
             level.getBlockState(pos.south()).getValue(BlockStateProperties.HORIZONTAL_FACING) == Direction.SOUTH) {
             when (facing) {
-                Direction.NORTH -> level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.LEVER,
-                    GrinderBlock.LeverPositions.SOUTH), Block.UPDATE_CLIENTS)
-                Direction.SOUTH -> level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.LEVER,
-                    GrinderBlock.LeverPositions.NONE), Block.UPDATE_CLIENTS)
-                Direction.EAST -> level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.LEVER,
-                    GrinderBlock.LeverPositions.EAST), Block.UPDATE_CLIENTS)
-                Direction.WEST -> level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.LEVER,
-                    GrinderBlock.LeverPositions.WEST), Block.UPDATE_CLIENTS)
-                else -> level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.LEVER,
-                    GrinderBlock.LeverPositions.NONE), Block.UPDATE_CLIENTS)
+                Direction.NORTH -> GrinderBlock.LeverPositions.SOUTH
+                Direction.SOUTH -> GrinderBlock.LeverPositions.NONE
+                Direction.EAST -> GrinderBlock.LeverPositions.EAST
+                Direction.WEST -> GrinderBlock.LeverPositions.WEST
+                else -> GrinderBlock.LeverPositions.NONE
             }
         }
         else if(level.getBlockState(pos.east()).`is`(Blocks.LEVER) &&
             level.getBlockState(pos.east()).getValue(BlockStateProperties.ATTACH_FACE) == AttachFace.WALL &&
             level.getBlockState(pos.east()).getValue(BlockStateProperties.HORIZONTAL_FACING) == Direction.EAST) {
             when (facing) {
-                Direction.NORTH -> level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.LEVER,
-                    GrinderBlock.LeverPositions.EAST), Block.UPDATE_CLIENTS)
-                Direction.SOUTH -> level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.LEVER,
-                    GrinderBlock.LeverPositions.WEST), Block.UPDATE_CLIENTS)
-                Direction.EAST -> level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.LEVER,
-                    GrinderBlock.LeverPositions.NONE), Block.UPDATE_CLIENTS)
-                Direction.WEST -> level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.LEVER,
-                    GrinderBlock.LeverPositions.SOUTH), Block.UPDATE_CLIENTS)
-                else -> level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.LEVER,
-                    GrinderBlock.LeverPositions.NONE), Block.UPDATE_CLIENTS)
+                Direction.NORTH -> GrinderBlock.LeverPositions.EAST
+                Direction.SOUTH -> GrinderBlock.LeverPositions.WEST
+                Direction.EAST -> GrinderBlock.LeverPositions.NONE
+                Direction.WEST -> GrinderBlock.LeverPositions.SOUTH
+                else -> GrinderBlock.LeverPositions.NONE
             }
         }
         else if(level.getBlockState(pos.west()).`is`(Blocks.LEVER) &&
             level.getBlockState(pos.west()).getValue(BlockStateProperties.ATTACH_FACE) == AttachFace.WALL &&
             level.getBlockState(pos.west()).getValue(BlockStateProperties.HORIZONTAL_FACING) == Direction.WEST) {
             when (facing) {
-                Direction.NORTH -> level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.LEVER,
-                    GrinderBlock.LeverPositions.WEST), Block.UPDATE_CLIENTS)
-                Direction.SOUTH -> level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.LEVER,
-                    GrinderBlock.LeverPositions.EAST), Block.UPDATE_CLIENTS)
-                Direction.EAST -> level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.LEVER,
-                    GrinderBlock.LeverPositions.SOUTH), Block.UPDATE_CLIENTS)
-                Direction.WEST -> level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.LEVER,
-                    GrinderBlock.LeverPositions.NONE), Block.UPDATE_CLIENTS)
-                else -> level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.LEVER,
-                    GrinderBlock.LeverPositions.NONE), Block.UPDATE_CLIENTS)
+                Direction.NORTH -> GrinderBlock.LeverPositions.WEST
+                Direction.SOUTH -> GrinderBlock.LeverPositions.EAST
+                Direction.EAST -> GrinderBlock.LeverPositions.SOUTH
+                Direction.WEST -> GrinderBlock.LeverPositions.NONE
+                else -> GrinderBlock.LeverPositions.NONE
             }
         }
         else if(level.getBlockState(pos.north()).`is`(Blocks.LEVER) &&
             level.getBlockState(pos.north()).getValue(BlockStateProperties.ATTACH_FACE) == AttachFace.WALL &&
             level.getBlockState(pos.north()).getValue(BlockStateProperties.HORIZONTAL_FACING) == Direction.NORTH) {
             when (facing) {
-                Direction.NORTH -> level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.LEVER,
-                    GrinderBlock.LeverPositions.NONE), Block.UPDATE_CLIENTS)
-                Direction.SOUTH -> level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.LEVER,
-                    GrinderBlock.LeverPositions.SOUTH), Block.UPDATE_CLIENTS)
-                Direction.EAST -> level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.LEVER,
-                    GrinderBlock.LeverPositions.WEST), Block.UPDATE_CLIENTS)
-                Direction.WEST -> level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.LEVER,
-                    GrinderBlock.LeverPositions.EAST), Block.UPDATE_CLIENTS)
-                else -> level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.LEVER,
-                    GrinderBlock.LeverPositions.NONE), Block.UPDATE_CLIENTS)
+                Direction.NORTH -> GrinderBlock.LeverPositions.NONE
+                Direction.SOUTH -> GrinderBlock.LeverPositions.SOUTH
+                Direction.EAST -> GrinderBlock.LeverPositions.WEST
+                Direction.WEST -> GrinderBlock.LeverPositions.EAST
+                else -> GrinderBlock.LeverPositions.NONE
             }
         }
-        else {
-            level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.LEVER,
-                GrinderBlock.LeverPositions.NONE), Block.UPDATE_CLIENTS)
-        }
-
-        super.serverTick(level, pos, blockEntity)
+        else GrinderBlock.LeverPositions.NONE
     }
 }
