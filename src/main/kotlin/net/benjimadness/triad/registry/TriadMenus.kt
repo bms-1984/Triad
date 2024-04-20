@@ -19,6 +19,7 @@
 package net.benjimadness.triad.registry
 
 import net.benjimadness.triad.TriadMod
+import net.benjimadness.triad.gui.GeneratorMenu
 import net.benjimadness.triad.gui.GrinderMenu
 import net.minecraft.core.registries.Registries
 import net.minecraft.world.flag.FeatureFlags
@@ -34,6 +35,12 @@ object TriadMenus {
     val GRINDER_MENU_TYPE: DeferredHolder<MenuType<*>, MenuType<GrinderMenu>> = register("grinder_menu") {
         MenuType(
             IContainerFactory { id, inv, data -> GrinderMenu(id, inv, data.readBlockPos()) },
+            FeatureFlags.DEFAULT_FLAGS
+        )
+    }
+    val GENERATOR_MENU_TYPE: DeferredHolder<MenuType<*>, MenuType<GeneratorMenu>> = register("generator_menu") {
+        MenuType(
+            IContainerFactory { id, inv, data -> GeneratorMenu(id, inv, data.readBlockPos()) },
             FeatureFlags.DEFAULT_FLAGS
         )
     }

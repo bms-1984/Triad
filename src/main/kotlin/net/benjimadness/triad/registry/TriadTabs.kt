@@ -112,6 +112,7 @@ object TriadTabs {
                 .displayItems { _, output ->
                     run {
                         output.accept(TriadBlocks.REDSTONE_GRINDER)
+                        output.accept(TriadBlocks.COAL_GENERATOR)
                     }
                 }
                 .build()

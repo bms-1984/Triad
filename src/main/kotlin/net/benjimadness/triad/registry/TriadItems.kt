@@ -19,7 +19,7 @@
 package net.benjimadness.triad.registry
 
 import net.benjimadness.triad.TriadMod
-import net.benjimadness.triad.item.ReusableItem
+import net.benjimadness.triad.api.item.ReusableItem
 import net.benjimadness.triad.item.armor.TriadArmorItem
 import net.benjimadness.triad.item.armor.TriadArmorMaterials
 import net.minecraft.world.item.*
@@ -43,6 +43,7 @@ object TriadItems {
     val STONE_MORTAR: Item by registerItem("stone_mortar") {
         ReusableItem(Item.Properties().durability(100).setNoRepair())
     }
+    // TODO: Properly registerize blades (mostly in the grinder blade checks) to allow externally added blade types
     val STEEL_BLADE: Item by registerItem("steel_blade") {
         ReusableItem(Item.Properties().durability(100).setNoRepair(), "steel")
     }

@@ -19,6 +19,7 @@
 package net.benjimadness.triad.registry
 
 import net.benjimadness.triad.TriadMod
+import net.benjimadness.triad.blockentity.CoalGeneratorBlockEntity
 import net.benjimadness.triad.blockentity.RedstoneGrinderBlockEntity
 import net.minecraft.core.registries.Registries
 import net.minecraft.world.level.block.entity.BlockEntityType
@@ -32,6 +33,10 @@ object TriadBlockEntities {
 
     val REDSTONE_GRINDER_BLOCK_ENTITY_TYPE: BlockEntityType<RedstoneGrinderBlockEntity> by registerBlockEntity("redstone_grinder_block_entity") {
         BlockEntityType.Builder.of(::RedstoneGrinderBlockEntity, TriadBlocks.REDSTONE_GRINDER).build(null)
+    }
+
+    val COAL_GENERATOR_BLOCK_ENTITY_TYPE: BlockEntityType<CoalGeneratorBlockEntity> by registerBlockEntity("coal_generator_block_entity") {
+        BlockEntityType.Builder.of(::CoalGeneratorBlockEntity, TriadBlocks.COAL_GENERATOR).build(null)
     }
 
     private fun <T : BlockEntityType<*>> registerBlockEntity(name: String, blockEntity: Supplier<T>) =

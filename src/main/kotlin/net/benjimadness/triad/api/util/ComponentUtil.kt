@@ -1,4 +1,4 @@
-package net.benjimadness.triad.util
+package net.benjimadness.triad.api.util
 
 import net.minecraft.network.chat.Component
 import net.minecraft.network.chat.MutableComponent

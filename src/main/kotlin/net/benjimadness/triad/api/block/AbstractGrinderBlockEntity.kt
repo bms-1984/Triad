@@ -1,27 +1,9 @@
-/*
- *     Triad, a tech mod for Minecraft
- *     Copyright (C) 2024  Ben M. Sutter
- *
- *     This program is free software: you can redistribute it and/or modify
- *     it under the terms of the GNU General Public License as published by
- *     the Free Software Foundation, either version 3 of the License, or
- *     (at your option) any later version.
- *
- *     This program is distributed in the hope that it will be useful,
- *     but WITHOUT ANY WARRANTY; without even the implied warranty of
- *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *     GNU General Public License for more details.
- *
- *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
- */
-
-package net.benjimadness.triad.blockentity
+package net.benjimadness.triad.api.block
 
 import net.benjimadness.triad.TriadMod
 import net.benjimadness.triad.block.GrinderBlock
 import net.benjimadness.triad.block.TriadBlockStateProperties
-import net.benjimadness.triad.item.ReusableItem
+import net.benjimadness.triad.api.item.ReusableItem
 import net.benjimadness.triad.recipe.GrinderRecipe
 import net.benjimadness.triad.registry.TriadRecipes
 import net.minecraft.core.BlockPos
@@ -44,9 +26,8 @@ import net.neoforged.neoforge.items.IItemHandler
 import net.neoforged.neoforge.items.ItemStackHandler
 import net.neoforged.neoforge.items.wrapper.RecipeWrapper
 
-abstract class AbstractGrinderBlockEntity(type: BlockEntityType<*>, pos: BlockPos, state: BlockState) : BlockEntity(
-    type, pos, state
-) {
+abstract class AbstractGrinderBlockEntity(type: BlockEntityType<*>, pos: BlockPos, state: BlockState) :
+    BlockEntity(type, pos, state) {
     companion object {
         private const val INPUT_SLOT = 0
         private const val BLADE_SLOT = 1
@@ -75,24 +56,34 @@ abstract class AbstractGrinderBlockEntity(type: BlockEntityType<*>, pos: BlockPo
         val result = blockEntity.items.getStackInSlot(OUTPUT_SLOT)
         if (bladeStack.`is`(ItemTags.create(ResourceLocation(TriadMod.MODID, "blades")))) {
             blade = TriadBlockStateProperties.BLADE.getValue((bladeStack.item as ReusableItem).materialName).get()
-            level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.BLADE, blade), Block.UPDATE_CLIENTS)
+            level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.BLADE, blade),
+                Block.UPDATE_CLIENTS
+            )
         }
         else {
             blade = GrinderBlock.Blades.NONE
-            level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.BLADE, blade), Block.UPDATE_CLIENTS)
+            level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.BLADE, blade),
+                Block.UPDATE_CLIENTS
+            )
         }
         if (blockEntity.isPowered(level)) {
             isOn = true
-            level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.POWERED, true), Block.UPDATE_CLIENTS)
+            level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.POWERED, true),
+                Block.UPDATE_CLIENTS
+            )
         }
         else {
             isOn = false
-            level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.POWERED, false), Block.UPDATE_CLIENTS)
+            level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.POWERED, false),
+                Block.UPDATE_CLIENTS
+            )
         }
         if (isRunning && (!isOn || blade == GrinderBlock.Blades.NONE || input.isEmpty ||
                     result.count >= result.maxStackSize)) {
             isRunning = false
-            level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.RUNNING, false), Block.UPDATE_CLIENTS)
+            level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.RUNNING, false),
+                Block.UPDATE_CLIENTS
+            )
         }
         if (isOn && blade != GrinderBlock.Blades.NONE && input != ItemStack.EMPTY) {
             val holder = blockEntity.check.getRecipeFor(RecipeWrapper(items), level)
@@ -101,7 +92,9 @@ abstract class AbstractGrinderBlockEntity(type: BlockEntityType<*>, pos: BlockPo
                 if ((result.item == recipe.output.item && result.count <= (result.maxStackSize - recipe.output.count)) || result.isEmpty) {
                     if (!isRunning) {
                         isRunning = true
-                        level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.RUNNING, true), Block.UPDATE_CLIENTS)
+                        level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.RUNNING, true),
+                            Block.UPDATE_CLIENTS
+                        )
                     }
                     else if ((level.gameTime % 20).toInt() == 0) {
                         if (progress >= getTime()) {

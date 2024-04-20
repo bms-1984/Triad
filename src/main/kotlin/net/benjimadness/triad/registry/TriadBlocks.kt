@@ -19,8 +19,10 @@
 package net.benjimadness.triad.registry
 
 import net.benjimadness.triad.TriadMod
+import net.benjimadness.triad.block.GeneratorBlock
 import net.benjimadness.triad.block.GrinderBlock
 import net.benjimadness.triad.block.TriadBlockStateProperties
+import net.benjimadness.triad.blockentity.CoalGeneratorBlockEntity
 import net.benjimadness.triad.blockentity.RedstoneGrinderBlockEntity
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
@@ -57,6 +59,10 @@ object TriadBlocks {
     val REDSTONE_GRINDER by registerBlock("redstone_grinder") {
         GrinderBlock(Properties.ofFullCopy(Blocks.STONE).lightLevel(calculateLightLevel(13, TriadBlockStateProperties.POWERED)),
             RedstoneGrinderBlockEntity::class)
+    }
+    val COAL_GENERATOR by registerBlock("coal_generator") {
+        GeneratorBlock(Properties.ofFullCopy(STEEL_BLOCK).lightLevel(calculateLightLevel(13, TriadBlockStateProperties.RUNNING)),
+            CoalGeneratorBlockEntity::class)
     }
 
     private fun <T : Block> registerBlock(name: String, block: Supplier<T>): DeferredBlock<T> {

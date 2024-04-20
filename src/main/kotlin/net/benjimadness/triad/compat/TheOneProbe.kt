@@ -22,9 +22,8 @@ import mcjty.theoneprobe.api.*
 import net.benjimadness.triad.TriadMod
 import net.benjimadness.triad.block.GrinderBlock
 import net.benjimadness.triad.block.TriadBlockStateProperties
-import net.benjimadness.triad.util.ComponentUtil
+import net.benjimadness.triad.api.util.ComponentUtil
 import net.minecraft.network.chat.Component
-import net.minecraft.network.chat.MutableComponent
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.level.Level

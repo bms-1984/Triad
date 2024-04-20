@@ -1,0 +1,244 @@
+{
+  "variants": {
+    "facing=east,running=false,lever=none": {
+      "model": "triad:block/coal_generator",
+      "y": 90
+    },
+    "facing=east,running=true,lever=none": {
+      "model": "triad:block/coal_generator_running",
+      "y": 90
+    },
+    "facing=north,running=false,lever=none": {
+      "model": "triad:block/coal_generator"
+    },
+    "facing=north,running=true,lever=none": {
+      "model": "triad:block/coal_generator_running"
+    },
+    "facing=south,running=false,lever=none": {
+      "model": "triad:block/coal_generator",
+      "y": 180
+    },
+    "facing=south,running=true,lever=none": {
+      "model": "triad:block/coal_generator_running",
+      "y": 180
+    },
+    "facing=west,running=false,lever=none": {
+      "model": "triad:block/coal_generator",
+      "y": 270
+    },
+    "facing=west,running=true,lever=none": {
+      "model": "triad:block/coal_generator_running",
+      "y": 270
+    },
+    "facing=east,running=false,lever=top": {
+      "model": "triad:block/coal_generator_lever_top",
+      "y": 90
+    },
+    "facing=east,running=true,lever=top": {
+      "model": "triad:block/coal_generator_lever_top_running",
+      "y": 90
+    },
+    "facing=north,running=false,lever=top": {
+      "model": "triad:block/coal_generator_lever_top"
+    },
+    "facing=north,running=true,lever=top": {
+      "model": "triad:block/coal_generator_lever_top_running"
+    },
+    "facing=south,running=false,lever=top": {
+      "model": "triad:block/coal_generator_lever_top",
+      "y": 180
+    },
+    "facing=south,running=true,lever=top": {
+      "model": "triad:block/coal_generator_lever_top_running",
+      "y": 180
+    },
+    "facing=west,running=false,lever=top": {
+      "model": "triad:block/coal_generator_lever_top",
+      "y": 270
+    },
+    "facing=west,running=true,lever=top": {
+      "model": "triad:block/coal_generator_lever_top_running",
+      "y": 270
+    },
+    "facing=east,running=false,lever=bottom": {
+      "model": "triad:block/coal_generator_lever_bottom",
+      "y": 90
+    },
+    "facing=east,running=true,lever=bottom": {
+      "model": "triad:block/coal_generator_lever_bottom_running",
+      "y": 90
+    },
+    "facing=north,running=false,lever=bottom": {
+      "model": "triad:block/coal_generator_lever_bottom"
+    },
+    "facing=north,running=true,lever=bottom": {
+      "model": "triad:block/coal_generator_lever_bottom_running"
+    },
+    "facing=south,running=false,lever=bottom": {
+      "model": "triad:block/coal_generator_lever_bottom",
+      "y": 180
+    },
+    "facing=south,running=true,lever=bottom": {
+      "model": "triad:block/coal_generator_lever_bottom_running",
+      "y": 180
+    },
+    "facing=west,running=false,lever=bottom": {
+      "model": "triad:block/coal_generator_lever_bottom",
+      "y": 270
+    },
+    "facing=west,running=true,lever=bottom": {
+      "model": "triad:block/coal_generator_lever_bottom_running",
+      "y": 270
+    },
+    "facing=east,running=false,lever=top_rot": {
+      "model": "triad:block/coal_generator_lever_top_rot",
+      "y": 90
+    },
+    "facing=east,running=true,lever=top_rot": {
+      "model": "triad:block/coal_generator_lever_top_rot_running",
+      "y": 90
+    },
+    "facing=north,running=false,lever=top_rot": {
+      "model": "triad:block/coal_generator_lever_top_rot"
+    },
+    "facing=north,running=true,lever=top_rot": {
+      "model": "triad:block/coal_generator_lever_top_rot_running"
+    },
+    "facing=south,running=false,lever=top_rot": {
+      "model": "triad:block/coal_generator_lever_top_rot",
+      "y": 180
+    },
+    "facing=south,running=true,lever=top_rot": {
+      "model": "triad:block/coal_generator_lever_top_rot_running",
+      "y": 180
+    },
+    "facing=west,running=false,lever=top_rot": {
+      "model": "triad:block/coal_generator_lever_top_rot",
+      "y": 270
+    },
+    "facing=west,running=true,lever=top_rot": {
+      "model": "triad:block/coal_generator_lever_top_rot_running",
+      "y": 270
+    },
+    "facing=east,running=false,lever=bottom_rot": {
+      "model": "triad:block/coal_generator_lever_bottom_rot",
+      "y": 90
+    },
+    "facing=east,running=true,lever=bottom_rot": {
+      "model": "triad:block/coal_generator_lever_bottom_rot_running",
+      "y": 90
+    },
+    "facing=north,running=false,lever=bottom_rot": {
+      "model": "triad:block/coal_generator_lever_bottom_rot"
+    },
+    "facing=north,running=true,lever=bottom_rot": {
+      "model": "triad:block/coal_generator_lever_bottom_rot_running"
+    },
+    "facing=south,running=false,lever=bottom_rot": {
+      "model": "triad:block/coal_generator_lever_bottom_rot",
+      "y": 180
+    },
+    "facing=south,running=true,lever=bottom_rot": {
+      "model": "triad:block/coal_generator_lever_bottom_rot_running",
+      "y": 180
+    },
+    "facing=west,running=false,lever=bottom_rot": {
+      "model": "triad:block/coal_generator_lever_bottom_rot",
+      "y": 270
+    },
+    "facing=west,running=true,lever=bottom_rot": {
+      "model": "triad:block/coal_generator_lever_bottom_rot_running",
+      "y": 270
+    },
+    "facing=east,running=false,lever=east": {
+      "model": "triad:block/coal_generator_lever_east",
+      "y": 90
+    },
+    "facing=east,running=true,lever=east": {
+      "model": "triad:block/coal_generator_lever_east_running",
+      "y": 90
+    },
+    "facing=north,running=false,lever=east": {
+      "model": "triad:block/coal_generator_lever_east"
+    },
+    "facing=north,running=true,lever=east": {
+      "model": "triad:block/coal_generator_lever_east_running"
+    },
+    "facing=south,running=false,lever=east": {
+      "model": "triad:block/coal_generator_lever_east",
+      "y": 180
+    },
+    "facing=south,running=true,lever=east": {
+      "model": "triad:block/coal_generator_lever_east_running",
+      "y": 180
+    },
+    "facing=west,running=false,lever=east": {
+      "model": "triad:block/coal_generator_lever_east",
+      "y": 270
+    },
+    "facing=west,running=true,lever=east": {
+      "model": "triad:block/coal_generator_lever_east_running",
+      "y": 270
+    },
+    "facing=east,running=false,lever=west": {
+      "model": "triad:block/coal_generator_lever_west",
+      "y": 90
+    },
+    "facing=east,running=true,lever=west": {
+      "model": "triad:block/coal_generator_lever_west_running",
+      "y": 90
+    },
+    "facing=north,running=false,lever=west": {
+      "model": "triad:block/coal_generator_lever_west"
+    },
+    "facing=north,running=true,lever=west": {
+      "model": "triad:block/coal_generator_lever_west_running"
+    },
+    "facing=south,running=false,lever=west": {
+      "model": "triad:block/coal_generator_lever_west",
+      "y": 180
+    },
+    "facing=south,running=true,lever=west": {
+      "model": "triad:block/coal_generator_lever_west_running",
+      "y": 180
+    },
+    "facing=west,running=false,lever=west": {
+      "model": "triad:block/coal_generator_lever_west",
+      "y": 270
+    },
+    "facing=west,running=true,lever=west": {
+      "model": "triad:block/coal_generator_lever_west_running",
+      "y": 270
+    },
+    "facing=east,running=false,lever=south": {
+      "model": "triad:block/coal_generator_lever_south",
+      "y": 90
+    },
+    "facing=east,running=true,lever=south": {
+      "model": "triad:block/coal_generator_lever_south_running",
+      "y": 90
+    },
+    "facing=north,running=false,lever=south": {
+      "model": "triad:block/coal_generator_lever_south"
+    },
+    "facing=north,running=true,lever=south": {
+      "model": "triad:block/coal_generator_lever_south_running"
+    },
+    "facing=south,running=false,lever=south": {
+      "model": "triad:block/coal_generator_lever_south",
+      "y": 180
+    },
+    "facing=south,running=true,lever=south": {
+      "model": "triad:block/coal_generator_lever_south_running",
+      "y": 180
+    },
+    "facing=west,running=false,lever=south": {
+      "model": "triad:block/coal_generator_lever_south",
+      "y": 270
+    },
+    "facing=west,running=true,lever=south": {
+      "model": "triad:block/coal_generator_lever_south_running",
+      "y": 270
+    }
+  }
+}

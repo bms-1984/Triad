@@ -19,6 +19,7 @@
 package net.benjimadness.triad.gui
 
 import net.benjimadness.triad.TriadMod
+import net.benjimadness.triad.api.block.AbstractGeneratorBlockEntity
 import net.benjimadness.triad.api.block.AbstractGrinderBlockEntity
 import net.benjimadness.triad.registry.TriadMenus
 import net.minecraft.core.BlockPos
@@ -35,19 +36,19 @@ import net.minecraft.world.inventory.Slot
 import net.minecraft.world.item.ItemStack
 import net.neoforged.neoforge.items.SlotItemHandler
 
-class GrinderMenu(
+class GeneratorMenu(
     id: Int, playerInventory: Inventory,
     private val pos: BlockPos
-) : AbstractContainerMenu(TriadMenus.GRINDER_MENU_TYPE.get(), id) {
+) : AbstractContainerMenu(TriadMenus.GENERATOR_MENU_TYPE.get(), id) {
     private var progress = 0
     private var totalTime = 0
+    private var power = 0
+    private var totalPower = 0
 
     init {
         val entity = playerInventory.player.level().getBlockEntity(pos)
-        if (entity is AbstractGrinderBlockEntity) {
-            addSlot(SlotItemHandler(entity.itemHandler, 0, 56, 17)) // input
-            addSlot(SlotItemHandler(entity.itemHandler, 1, 56, 53)) // blade
-            addSlot(SlotItemHandler(entity.itemHandler, 2, 116, 35)) // result
+        if (entity is AbstractGeneratorBlockEntity) {
+            addSlot(SlotItemHandler(entity.itemHandler, 0, 62, 48)) // input
             // player inventory
             for (y in 0 until 3) {
                 for (x in 0 until 9) {
@@ -65,9 +66,21 @@ class GrinderMenu(
                 }
             })
             addDataSlot(object : DataSlot() { // totalTime
-                override fun get(): Int = entity.getTime()
+                override fun get(): Int = entity.getTotalTime()
                 override fun set(t: Int) {
                     totalTime = t
+                }
+            })
+            addDataSlot(object : DataSlot() { // power
+                override fun get(): Int = entity.energyStorage.energyStored
+                override fun set(p: Int) {
+                    power = p
+                }
+            })
+            addDataSlot(object : DataSlot() { // totalPower
+                override fun get(): Int = entity.energyStorage.maxEnergyStored
+                override fun set(t: Int) {
+                    totalPower = t
                 }
             })
         }
@@ -76,29 +89,23 @@ class GrinderMenu(
     override fun quickMoveStack(player: Player, slotIndex: Int): ItemStack {
         var stack = ItemStack.EMPTY
         val slot = slots[slotIndex]
+        val entity = player.level().getBlockEntity(pos) as AbstractGeneratorBlockEntity
         if (slot.hasItem()) {
             val slotStack = slot.item
             stack = slotStack.copy()
-            if ((0 until 3).contains(slotIndex)) {
-                if (!moveItemStackTo(slotStack, 3, 39, true))
+            if (slotIndex == 0) {
+                if (!moveItemStackTo(slotStack, 1, 37, true))
                     return ItemStack.EMPTY
                 slot.onQuickCraft(slotStack, stack)
-            } else if ((3 until 40).contains(slotIndex)) {
-                if (slot.item.`is`(ItemTags.create(ResourceLocation(TriadMod.MODID, "blades")))) {
-                    if (!moveItemStackTo(slotStack, 1, 2, false))
-                        return ItemStack.EMPTY
-                } else if (
-                    slot.item.`is`(ItemTags.create(ResourceLocation("forge", "ingots"))) ||
-                    slot.item.`is`(ItemTags.create(ResourceLocation("forge", "ores"))) ||
-                    slot.item.`is`(ItemTags.create(ResourceLocation("forge", "raw_materials")))
-                ) {
+            } else if ((1 until 38).contains(slotIndex)) {
+                if (entity.isFuel(slot.item)) {
                     if (!moveItemStackTo(slotStack, 0, 1, false))
                         return ItemStack.EMPTY
-                } else if ((3 until 30).contains(slotIndex)) {
-                    if (!moveItemStackTo(slotStack, 30, 39, true))
+                } else if ((1 until 28).contains(slotIndex)) {
+                    if (!moveItemStackTo(slotStack, 28, 37, true))
                         return ItemStack.EMPTY
-                } else if ((30 until 40).contains(slotIndex)) {
-                    if (!moveItemStackTo(slotStack, 3, 30, true))
+                } else if ((28 until 38).contains(slotIndex)) {
+                    if (!moveItemStackTo(slotStack, 1, 28, true))
                         return ItemStack.EMPTY
                 } else return ItemStack.EMPTY
             }
@@ -119,4 +126,11 @@ class GrinderMenu(
     fun getProgress(): Float =
         if (progress == 0 || totalTime == 0) 0F
         else clamp(progress.toFloat() / totalTime.toFloat(), 0F, 1F)
+
+    fun getPower(): Float =
+        if (power == 0 || totalPower == 0) 0F
+        else clamp(power.toFloat() / totalPower.toFloat(), 0F, 1F)
+
+    fun getAbsolutePower() = power
+    fun isPowered(): Boolean = progress > 0
 }

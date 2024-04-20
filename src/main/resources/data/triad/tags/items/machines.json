@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "#triad:machines/grinder"
+    "#triad:machines/grinder",
+    "#triad:machines/generator"
   ]
 }

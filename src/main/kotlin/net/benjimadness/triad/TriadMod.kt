@@ -21,6 +21,7 @@ package net.benjimadness.triad
 import com.mojang.logging.LogUtils
 import net.benjimadness.triad.compat.TheOneProbe
 import net.benjimadness.triad.config.TriadConfig
+import net.benjimadness.triad.gui.GeneratorScreen
 import net.benjimadness.triad.gui.GrinderScreen
 import net.benjimadness.triad.item.tool.TriadToolTiers
 import net.benjimadness.triad.registry.*
@@ -88,10 +89,19 @@ object TriadMod {
             Capabilities.ItemHandler.BLOCK,
             TriadBlockEntities.REDSTONE_GRINDER_BLOCK_ENTITY_TYPE
         ) { o, _ -> o.itemHandler }
+        event.registerBlockEntity(
+            Capabilities.ItemHandler.BLOCK,
+            TriadBlockEntities.COAL_GENERATOR_BLOCK_ENTITY_TYPE
+        ) { o, _ -> o.itemHandler }
+        event.registerBlockEntity(
+            Capabilities.EnergyStorage.BLOCK,
+            TriadBlockEntities.COAL_GENERATOR_BLOCK_ENTITY_TYPE
+        ) { o, _ -> o.energyStorage }
     }
 
     private fun onClientSetup(event: FMLClientSetupEvent) {
         event.enqueueWork { MenuScreens.register(TriadMenus.GRINDER_MENU_TYPE.get(), ::GrinderScreen) }
+        event.enqueueWork { MenuScreens.register(TriadMenus.GENERATOR_MENU_TYPE.get(), ::GeneratorScreen) }
     }
 
     private fun onServerSetup(event: FMLDedicatedServerSetupEvent) {}

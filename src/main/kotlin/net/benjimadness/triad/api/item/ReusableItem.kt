@@ -16,7 +16,7 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.benjimadness.triad.item
+package net.benjimadness.triad.api.item
 
 import net.minecraft.util.RandomSource
 import net.minecraft.world.item.Item
