@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "forge:storage_blocks/bronze"
+    },
+    "$": {
+      "item": "minecraft:redstone_block"
+    },
+    "@": {
+      "tag": "forge:storage_blocks/steel"
+    },
+    "&": {
+      "tag": "triad:blades"
+    }
+  },
+  "pattern": [
+    "#@#",
+    "&$&",
+    "#@#"
+  ],
+  "result": {
+    "item": "triad:bronze_turbine"
+  }
+}

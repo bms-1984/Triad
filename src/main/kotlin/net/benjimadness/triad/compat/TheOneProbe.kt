@@ -21,7 +21,7 @@ package net.benjimadness.triad.compat
 import mcjty.theoneprobe.api.*
 import net.benjimadness.triad.TriadMod
 import net.benjimadness.triad.block.GrinderBlock
-import net.benjimadness.triad.block.TriadBlockStateProperties
+import net.benjimadness.triad.api.block.TriadBlockStateProperties
 import net.benjimadness.triad.api.util.ComponentUtil
 import net.minecraft.network.chat.Component
 import net.minecraft.resources.ResourceLocation

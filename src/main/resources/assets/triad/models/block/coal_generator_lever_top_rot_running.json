@@ -1,9 +1,0 @@
-{
-  "parent": "minecraft:block/orientable",
-  "textures": {
-    "front": "triad:block/coal_generator_front_running",
-    "side": "triad:block/bronze_block",
-    "top": "triad:block/coal_generator_lever_rot",
-    "bottom": "triad:block/bronze_block"
-  }
-}

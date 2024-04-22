@@ -21,14 +21,14 @@ package net.benjimadness.triad
 import com.mojang.logging.LogUtils
 import net.benjimadness.triad.compat.TheOneProbe
 import net.benjimadness.triad.config.TriadConfig
-import net.benjimadness.triad.gui.GeneratorScreen
+import net.benjimadness.triad.gui.BoilerScreen
+import net.benjimadness.triad.gui.TurbineScreen
 import net.benjimadness.triad.gui.GrinderScreen
 import net.benjimadness.triad.item.tool.TriadToolTiers
 import net.benjimadness.triad.registry.*
 import net.minecraft.client.gui.screens.MenuScreens
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.item.Tiers
-import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity
 import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.fml.ModLoadingContext
 import net.neoforged.fml.common.Mod
@@ -67,6 +67,7 @@ object TriadMod {
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, TriadConfig.SPEC)
         TriadBlocks.REGISTRY.register(MOD_BUS)
         TriadItems.REGISTRY.register(MOD_BUS)
+        TriadFluids.REGISTRY.register(MOD_BUS)
         TriadBlockEntities.REGISTRY.register(MOD_BUS)
         MOD_BUS.addListener(::registerCapabilities)
         TriadRecipes.TYPE_REGISTRY.register(MOD_BUS)
@@ -91,17 +92,30 @@ object TriadMod {
         ) { o, _ -> o.itemHandler }
         event.registerBlockEntity(
             Capabilities.ItemHandler.BLOCK,
-            TriadBlockEntities.COAL_GENERATOR_BLOCK_ENTITY_TYPE
-        ) { o, _ -> o.itemHandler }
+            TriadBlockEntities.BRONZE_ITEM_BOILER_BLOCK_ENTITY_TYPE
+        ) { o, _ -> o.itemHandler}
+        event.registerBlockEntity(
+            Capabilities.FluidHandler.BLOCK,
+            TriadBlockEntities.BRONZE_ITEM_BOILER_BLOCK_ENTITY_TYPE
+        ) { o, _ -> o.steamTank}
+        event.registerBlockEntity(
+            Capabilities.FluidHandler.BLOCK,
+            TriadBlockEntities.BRONZE_ITEM_BOILER_BLOCK_ENTITY_TYPE
+        ) { o, _ -> o.waterTank}
+        event.registerBlockEntity(
+            Capabilities.FluidHandler.BLOCK,
+            TriadBlockEntities.BRONZE_TURBINE_BLOCK_ENTITY_TYPE
+        ) { o, _ -> o.steamTank}
         event.registerBlockEntity(
             Capabilities.EnergyStorage.BLOCK,
-            TriadBlockEntities.COAL_GENERATOR_BLOCK_ENTITY_TYPE
-        ) { o, _ -> o.energyStorage }
+            TriadBlockEntities.BRONZE_TURBINE_BLOCK_ENTITY_TYPE
+        ) { o, _ -> o.energyStorage}
     }
 
     private fun onClientSetup(event: FMLClientSetupEvent) {
         event.enqueueWork { MenuScreens.register(TriadMenus.GRINDER_MENU_TYPE.get(), ::GrinderScreen) }
-        event.enqueueWork { MenuScreens.register(TriadMenus.GENERATOR_MENU_TYPE.get(), ::GeneratorScreen) }
+        event.enqueueWork { MenuScreens.register(TriadMenus.ITEM_BOILER_MENU_TYPE.get(), ::BoilerScreen) }
+        event.enqueueWork { MenuScreens.register(TriadMenus.TURBINE_MENU_TYPE.get(), ::TurbineScreen) }
     }
 
     private fun onServerSetup(event: FMLDedicatedServerSetupEvent) {}

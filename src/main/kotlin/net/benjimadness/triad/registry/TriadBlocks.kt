@@ -19,11 +19,13 @@
 package net.benjimadness.triad.registry
 
 import net.benjimadness.triad.TriadMod
-import net.benjimadness.triad.block.GeneratorBlock
+import net.benjimadness.triad.block.BoilerBlock
 import net.benjimadness.triad.block.GrinderBlock
-import net.benjimadness.triad.block.TriadBlockStateProperties
-import net.benjimadness.triad.blockentity.CoalGeneratorBlockEntity
-import net.benjimadness.triad.blockentity.RedstoneGrinderBlockEntity
+import net.benjimadness.triad.api.block.TriadBlockStateProperties
+import net.benjimadness.triad.block.entity.BronzeItemBoilerBlockEntity
+import net.benjimadness.triad.block.entity.RedstoneGrinderBlockEntity
+import net.benjimadness.triad.block.TurbineBlock
+import net.benjimadness.triad.block.entity.BronzeTurbineBlockEntity
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties
@@ -33,7 +35,6 @@ import net.neoforged.neoforge.registries.DeferredBlock
 import net.neoforged.neoforge.registries.DeferredRegister
 import thedarkcolour.kotlinforforge.neoforge.forge.getValue
 import java.util.function.Supplier
-import java.util.function.ToIntFunction
 
 object TriadBlocks {
     val REGISTRY: DeferredRegister.Blocks = DeferredRegister.createBlocks(TriadMod.MODID)
@@ -60,9 +61,13 @@ object TriadBlocks {
         GrinderBlock(Properties.ofFullCopy(Blocks.STONE).lightLevel(calculateLightLevel(13, TriadBlockStateProperties.POWERED)),
             RedstoneGrinderBlockEntity::class)
     }
-    val COAL_GENERATOR by registerBlock("coal_generator") {
-        GeneratorBlock(Properties.ofFullCopy(STEEL_BLOCK).lightLevel(calculateLightLevel(13, TriadBlockStateProperties.RUNNING)),
-            CoalGeneratorBlockEntity::class)
+    val BRONZE_ITEM_BOILER by registerBlock("bronze_item_boiler") {
+        BoilerBlock(Properties.ofFullCopy(BRONZE_BLOCK).lightLevel(calculateLightLevel(13, TriadBlockStateProperties.RUNNING)),
+            BronzeItemBoilerBlockEntity::class)
+    }
+    val BRONZE_TURBINE by registerBlock("bronze_turbine") {
+        TurbineBlock(Properties.ofFullCopy(BRONZE_BLOCK).lightLevel(calculateLightLevel(13, TriadBlockStateProperties.RUNNING)),
+            BronzeTurbineBlockEntity::class)
     }
 
     private fun <T : Block> registerBlock(name: String, block: Supplier<T>): DeferredBlock<T> {

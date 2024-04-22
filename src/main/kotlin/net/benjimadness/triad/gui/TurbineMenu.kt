@@ -18,12 +18,10 @@
 
 package net.benjimadness.triad.gui
 
-import net.benjimadness.triad.TriadMod
-import net.benjimadness.triad.api.block.entity.AbstractGrinderBlockEntity
+import net.benjimadness.triad.api.block.entity.AbstractGeneratorBlockEntity
+import net.benjimadness.triad.api.block.entity.AbstractTurbineBlockEntity
 import net.benjimadness.triad.registry.TriadMenus
 import net.minecraft.core.BlockPos
-import net.minecraft.resources.ResourceLocation
-import net.minecraft.tags.ItemTags
 import net.minecraft.util.Mth.clamp
 import net.minecraft.world.entity.player.Inventory
 import net.minecraft.world.entity.player.Player
@@ -34,19 +32,20 @@ import net.minecraft.world.inventory.Slot
 import net.minecraft.world.item.ItemStack
 import net.neoforged.neoforge.items.SlotItemHandler
 
-class GrinderMenu(
+class TurbineMenu(
     id: Int, playerInventory: Inventory,
     private val pos: BlockPos
-) : AbstractContainerMenu(TriadMenus.GRINDER_MENU_TYPE.get(), id) {
+) : AbstractContainerMenu(TriadMenus.TURBINE_MENU_TYPE.get(), id) {
     private var progress = 0
     private var totalTime = 0
+    private var power = 0
+    private var totalPower = 0
+    private var steam = 0
+    private var totalSteam = 0
 
     init {
         val entity = playerInventory.player.level().getBlockEntity(pos)
-        if (entity is AbstractGrinderBlockEntity) {
-            addSlot(SlotItemHandler(entity.itemHandler, 0, 56, 17)) // input
-            addSlot(SlotItemHandler(entity.itemHandler, 1, 56, 53)) // blade
-            addSlot(SlotItemHandler(entity.itemHandler, 2, 116, 35)) // result
+        if (entity is AbstractTurbineBlockEntity) {
             // player inventory
             for (y in 0 until 3) {
                 for (x in 0 until 9) {
@@ -64,9 +63,33 @@ class GrinderMenu(
                 }
             })
             addDataSlot(object : DataSlot() { // totalTime
-                override fun get(): Int = entity.getTime()
+                override fun get(): Int = entity.getBurnTime()
                 override fun set(t: Int) {
                     totalTime = t
+                }
+            })
+            addDataSlot(object : DataSlot() { // power
+                override fun get(): Int = entity.energyStorage.energyStored
+                override fun set(p: Int) {
+                    power = p
+                }
+            })
+            addDataSlot(object : DataSlot() { // totalPower
+                override fun get(): Int = entity.energyStorage.maxEnergyStored
+                override fun set(t: Int) {
+                    totalPower = t
+                }
+            })
+            addDataSlot(object : DataSlot() { // steam
+                override fun get(): Int = entity.steamTank.getFluidInTank(0).amount
+                override fun set(s: Int) {
+                    steam = s
+                }
+            })
+            addDataSlot(object : DataSlot() { // totalSteam
+                override fun get(): Int = entity.steamTank.getTankCapacity(0)
+                override fun set(t: Int) {
+                    totalSteam = t
                 }
             })
         }
@@ -78,26 +101,12 @@ class GrinderMenu(
         if (slot.hasItem()) {
             val slotStack = slot.item
             stack = slotStack.copy()
-            if ((0 until 3).contains(slotIndex)) {
-                if (!moveItemStackTo(slotStack, 3, 39, true))
-                    return ItemStack.EMPTY
-                slot.onQuickCraft(slotStack, stack)
-            } else if ((3 until 40).contains(slotIndex)) {
-                if (slot.item.`is`(ItemTags.create(ResourceLocation(TriadMod.MODID, "blades")))) {
-                    if (!moveItemStackTo(slotStack, 1, 2, false))
+            if ((0 until 37).contains(slotIndex)) {
+                if ((0 until 27).contains(slotIndex)) {
+                    if (!moveItemStackTo(slotStack, 28, 36, true))
                         return ItemStack.EMPTY
-                } else if (
-                    slot.item.`is`(ItemTags.create(ResourceLocation("forge", "ingots"))) ||
-                    slot.item.`is`(ItemTags.create(ResourceLocation("forge", "ores"))) ||
-                    slot.item.`is`(ItemTags.create(ResourceLocation("forge", "raw_materials")))
-                ) {
-                    if (!moveItemStackTo(slotStack, 0, 1, false))
-                        return ItemStack.EMPTY
-                } else if ((3 until 30).contains(slotIndex)) {
-                    if (!moveItemStackTo(slotStack, 30, 39, true))
-                        return ItemStack.EMPTY
-                } else if ((30 until 40).contains(slotIndex)) {
-                    if (!moveItemStackTo(slotStack, 3, 30, true))
+                } else if ((27 until 37).contains(slotIndex)) {
+                    if (!moveItemStackTo(slotStack, 0, 27, true))
                         return ItemStack.EMPTY
                 } else return ItemStack.EMPTY
             }
@@ -118,4 +127,16 @@ class GrinderMenu(
     fun getProgress(): Float =
         if (progress == 0 || totalTime == 0) 0F
         else clamp(progress.toFloat() / totalTime.toFloat(), 0F, 1F)
+
+    fun getPower(): Float =
+        if (power == 0 || totalPower == 0) 0F
+        else clamp(power.toFloat() / totalPower.toFloat(), 0F, 1F)
+
+    fun getSteam(): Float =
+        if (steam == 0 || totalSteam == 0) 0F
+        else clamp(steam.toFloat() / totalSteam.toFloat(), 0F, 1F)
+
+    fun getAbsolutePower() = power
+    fun getAbsoluteSteam() = steam
+    fun isPowered(): Boolean = progress > 0
 }

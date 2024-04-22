@@ -1,7 +1,8 @@
 {
   "replace": false,
   "values": [
-    "#triad:machines/grinder",
-    "#triad:machines/generator"
+    "#triad:machines/grinders",
+    "#triad:machines/generators",
+    "#triad:machines/boilers"
   ]
 }
