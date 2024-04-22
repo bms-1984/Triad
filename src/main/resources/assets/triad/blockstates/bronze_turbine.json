@@ -1,243 +1,483 @@
 {
   "variants": {
-    "facing=east,running=false,lever=none": {
+    "facing=east,running=false,steam=false,lever=none": {
       "model": "triad:block/bronze_turbine",
       "y": 90
     },
-    "facing=east,running=true,lever=none": {
+    "facing=east,running=true,steam=false,lever=none": {
       "model": "triad:block/bronze_turbine_running",
       "y": 90
     },
-    "facing=north,running=false,lever=none": {
+    "facing=north,running=false,steam=false,lever=none": {
       "model": "triad:block/bronze_turbine"
     },
-    "facing=north,running=true,lever=none": {
+    "facing=north,running=true,steam=false,lever=none": {
       "model": "triad:block/bronze_turbine_running"
     },
-    "facing=south,running=false,lever=none": {
+    "facing=south,running=false,steam=false,lever=none": {
       "model": "triad:block/bronze_turbine",
       "y": 180
     },
-    "facing=south,running=true,lever=none": {
+    "facing=south,running=true,steam=false,lever=none": {
       "model": "triad:block/bronze_turbine_running",
       "y": 180
     },
-    "facing=west,running=false,lever=none": {
+    "facing=west,running=false,steam=false,lever=none": {
       "model": "triad:block/bronze_turbine",
       "y": 270
     },
-    "facing=west,running=true,lever=none": {
+    "facing=west,running=true,steam=false,lever=none": {
       "model": "triad:block/bronze_turbine_running",
       "y": 270
     },
-    "facing=east,running=false,lever=top": {
+    "facing=east,running=false,steam=false,lever=top": {
       "model": "triad:block/bronze_turbine_lever_top",
       "y": 90
     },
-    "facing=east,running=true,lever=top": {
+    "facing=east,running=true,steam=false,lever=top": {
       "model": "triad:block/bronze_turbine_lever_top_running",
       "y": 90
     },
-    "facing=north,running=false,lever=top": {
+    "facing=north,running=false,steam=false,lever=top": {
       "model": "triad:block/bronze_turbine_lever_top"
     },
-    "facing=north,running=true,lever=top": {
+    "facing=north,running=true,steam=false,lever=top": {
       "model": "triad:block/bronze_turbine_lever_top_running"
     },
-    "facing=south,running=false,lever=top": {
+    "facing=south,running=false,steam=false,lever=top": {
       "model": "triad:block/bronze_turbine_lever_top",
       "y": 180
     },
-    "facing=south,running=true,lever=top": {
+    "facing=south,running=true,steam=false,lever=top": {
       "model": "triad:block/bronze_turbine_lever_top_running",
       "y": 180
     },
-    "facing=west,running=false,lever=top": {
+    "facing=west,running=false,steam=false,lever=top": {
       "model": "triad:block/bronze_turbine_lever_top",
       "y": 270
     },
-    "facing=west,running=true,lever=top": {
+    "facing=west,running=true,steam=false,lever=top": {
       "model": "triad:block/bronze_turbine_lever_top_running",
       "y": 270
     },
-    "facing=east,running=false,lever=bottom": {
+    "facing=east,running=false,steam=false,lever=bottom": {
       "model": "triad:block/bronze_turbine_lever_bottom",
       "y": 90
     },
-    "facing=east,running=true,lever=bottom": {
+    "facing=east,running=true,steam=false,lever=bottom": {
       "model": "triad:block/bronze_turbine_lever_bottom_running",
       "y": 90
     },
-    "facing=north,running=false,lever=bottom": {
+    "facing=north,running=false,steam=false,lever=bottom": {
       "model": "triad:block/bronze_turbine_lever_bottom"
     },
-    "facing=north,running=true,lever=bottom": {
+    "facing=north,running=true,steam=false,lever=bottom": {
       "model": "triad:block/bronze_turbine_lever_bottom_running"
     },
-    "facing=south,running=false,lever=bottom": {
+    "facing=south,running=false,steam=false,lever=bottom": {
       "model": "triad:block/bronze_turbine_lever_bottom",
       "y": 180
     },
-    "facing=south,running=true,lever=bottom": {
+    "facing=south,running=true,steam=false,lever=bottom": {
       "model": "triad:block/bronze_turbine_lever_bottom_running",
       "y": 180
     },
-    "facing=west,running=false,lever=bottom": {
+    "facing=west,running=false,steam=false,lever=bottom": {
       "model": "triad:block/bronze_turbine_lever_bottom",
       "y": 270
     },
-    "facing=west,running=true,lever=bottom": {
+    "facing=west,running=true,steam=false,lever=bottom": {
       "model": "triad:block/bronze_turbine_lever_bottom_running",
       "y": 270
     },
-    "facing=east,running=false,lever=top_rot": {
+    "facing=east,running=false,steam=false,lever=top_rot": {
       "model": "triad:block/bronze_turbine_lever_top_rot",
       "y": 90
     },
-    "facing=east,running=true,lever=top_rot": {
+    "facing=east,running=true,steam=false,lever=top_rot": {
       "model": "triad:block/bronze_turbine_lever_top_rot_running",
       "y": 90
     },
-    "facing=north,running=false,lever=top_rot": {
+    "facing=north,running=false,steam=false,lever=top_rot": {
       "model": "triad:block/bronze_turbine_lever_top_rot"
     },
-    "facing=north,running=true,lever=top_rot": {
+    "facing=north,running=true,steam=false,lever=top_rot": {
       "model": "triad:block/bronze_turbine_lever_top_rot_running"
     },
-    "facing=south,running=false,lever=top_rot": {
+    "facing=south,running=false,steam=false,lever=top_rot": {
       "model": "triad:block/bronze_turbine_lever_top_rot",
       "y": 180
     },
-    "facing=south,running=true,lever=top_rot": {
+    "facing=south,running=true,steam=false,lever=top_rot": {
       "model": "triad:block/bronze_turbine_lever_top_rot_running",
       "y": 180
     },
-    "facing=west,running=false,lever=top_rot": {
+    "facing=west,running=false,steam=false,lever=top_rot": {
       "model": "triad:block/bronze_turbine_lever_top_rot",
       "y": 270
     },
-    "facing=west,running=true,lever=top_rot": {
+    "facing=west,running=true,steam=false,lever=top_rot": {
       "model": "triad:block/bronze_turbine_lever_top_rot_running",
       "y": 270
     },
-    "facing=east,running=false,lever=bottom_rot": {
+    "facing=east,running=false,steam=false,lever=bottom_rot": {
       "model": "triad:block/bronze_turbine_lever_bottom_rot",
       "y": 90
     },
-    "facing=east,running=true,lever=bottom_rot": {
+    "facing=east,running=true,steam=false,lever=bottom_rot": {
       "model": "triad:block/bronze_turbine_lever_bottom_rot_running",
       "y": 90
     },
-    "facing=north,running=false,lever=bottom_rot": {
+    "facing=north,running=false,steam=false,lever=bottom_rot": {
       "model": "triad:block/bronze_turbine_lever_bottom_rot"
     },
-    "facing=north,running=true,lever=bottom_rot": {
+    "facing=north,running=true,steam=false,lever=bottom_rot": {
       "model": "triad:block/bronze_turbine_lever_bottom_rot_running"
     },
-    "facing=south,running=false,lever=bottom_rot": {
+    "facing=south,running=false,steam=false,lever=bottom_rot": {
       "model": "triad:block/bronze_turbine_lever_bottom_rot",
       "y": 180
     },
-    "facing=south,running=true,lever=bottom_rot": {
+    "facing=south,running=true,steam=false,lever=bottom_rot": {
       "model": "triad:block/bronze_turbine_lever_bottom_rot_running",
       "y": 180
     },
-    "facing=west,running=false,lever=bottom_rot": {
+    "facing=west,running=false,steam=false,lever=bottom_rot": {
       "model": "triad:block/bronze_turbine_lever_bottom_rot",
       "y": 270
     },
-    "facing=west,running=true,lever=bottom_rot": {
+    "facing=west,running=true,steam=false,lever=bottom_rot": {
       "model": "triad:block/bronze_turbine_lever_bottom_rot_running",
       "y": 270
     },
-    "facing=east,running=false,lever=east": {
+    "facing=east,running=false,steam=false,lever=east": {
       "model": "triad:block/bronze_turbine_lever_east",
       "y": 90
     },
-    "facing=east,running=true,lever=east": {
+    "facing=east,running=true,steam=false,lever=east": {
       "model": "triad:block/bronze_turbine_lever_east_running",
       "y": 90
     },
-    "facing=north,running=false,lever=east": {
+    "facing=north,running=false,steam=false,lever=east": {
       "model": "triad:block/bronze_turbine_lever_east"
     },
-    "facing=north,running=true,lever=east": {
+    "facing=north,running=true,steam=false,lever=east": {
       "model": "triad:block/bronze_turbine_lever_east_running"
     },
-    "facing=south,running=false,lever=east": {
+    "facing=south,running=false,steam=false,lever=east": {
       "model": "triad:block/bronze_turbine_lever_east",
       "y": 180
     },
-    "facing=south,running=true,lever=east": {
+    "facing=south,running=true,steam=false,lever=east": {
       "model": "triad:block/bronze_turbine_lever_east_running",
       "y": 180
     },
-    "facing=west,running=false,lever=east": {
+    "facing=west,running=false,steam=false,lever=east": {
       "model": "triad:block/bronze_turbine_lever_east",
       "y": 270
     },
-    "facing=west,running=true,lever=east": {
+    "facing=west,running=true,steam=false,lever=east": {
       "model": "triad:block/bronze_turbine_lever_east_running",
       "y": 270
     },
-    "facing=east,running=false,lever=west": {
+    "facing=east,running=false,steam=false,lever=west": {
       "model": "triad:block/bronze_turbine_lever_west",
       "y": 90
     },
-    "facing=east,running=true,lever=west": {
+    "facing=east,running=true,steam=false,lever=west": {
       "model": "triad:block/bronze_turbine_lever_west_running",
       "y": 90
     },
-    "facing=north,running=false,lever=west": {
+    "facing=north,running=false,steam=false,lever=west": {
       "model": "triad:block/bronze_turbine_lever_west"
     },
-    "facing=north,running=true,lever=west": {
+    "facing=north,running=true,steam=false,lever=west": {
       "model": "triad:block/bronze_turbine_lever_west_running"
     },
-    "facing=south,running=false,lever=west": {
+    "facing=south,running=false,steam=false,lever=west": {
       "model": "triad:block/bronze_turbine_lever_west",
       "y": 180
     },
-    "facing=south,running=true,lever=west": {
+    "facing=south,running=true,steam=false,lever=west": {
       "model": "triad:block/bronze_turbine_lever_west_running",
       "y": 180
     },
-    "facing=west,running=false,lever=west": {
+    "facing=west,running=false,steam=false,lever=west": {
       "model": "triad:block/bronze_turbine_lever_west",
       "y": 270
     },
-    "facing=west,running=true,lever=west": {
+    "facing=west,running=true,steam=false,lever=west": {
       "model": "triad:block/bronze_turbine_lever_west_running",
       "y": 270
     },
-    "facing=east,running=false,lever=south": {
+    "facing=east,running=false,steam=false,lever=south": {
       "model": "triad:block/bronze_turbine_lever_south",
       "y": 90
     },
-    "facing=east,running=true,lever=south": {
+    "facing=east,running=true,steam=false,lever=south": {
       "model": "triad:block/bronze_turbine_lever_south_running",
       "y": 90
     },
-    "facing=north,running=false,lever=south": {
+    "facing=north,running=false,steam=false,lever=south": {
       "model": "triad:block/bronze_turbine_lever_south"
     },
-    "facing=north,running=true,lever=south": {
+    "facing=north,running=true,steam=false,lever=south": {
       "model": "triad:block/bronze_turbine_lever_south_running"
     },
-    "facing=south,running=false,lever=south": {
+    "facing=south,running=false,steam=false,lever=south": {
       "model": "triad:block/bronze_turbine_lever_south",
       "y": 180
     },
-    "facing=south,running=true,lever=south": {
+    "facing=south,running=true,steam=false,lever=south": {
       "model": "triad:block/bronze_turbine_lever_south_running",
       "y": 180
     },
-    "facing=west,running=false,lever=south": {
+    "facing=west,running=false,steam=false,lever=south": {
       "model": "triad:block/bronze_turbine_lever_south",
       "y": 270
     },
-    "facing=west,running=true,lever=south": {
+    "facing=west,running=true,steam=false,lever=south": {
       "model": "triad:block/bronze_turbine_lever_south_running",
+      "y": 270
+    },
+    "facing=east,running=false,steam=true,lever=none": {
+      "model": "triad:block/bronze_turbine_steam",
+      "y": 90
+    },
+    "facing=east,running=true,steam=true,lever=none": {
+      "model": "triad:block/bronze_turbine_steam_running",
+      "y": 90
+    },
+    "facing=north,running=false,steam=true,lever=none": {
+      "model": "triad:block/bronze_turbine_steam"
+    },
+    "facing=north,running=true,steam=true,lever=none": {
+      "model": "triad:block/bronze_turbine_steam_running"
+    },
+    "facing=south,running=false,steam=true,lever=none": {
+      "model": "triad:block/bronze_turbine_steam",
+      "y": 180
+    },
+    "facing=south,running=true,steam=true,lever=none": {
+      "model": "triad:block/bronze_turbine_steam_running",
+      "y": 180
+    },
+    "facing=west,running=false,steam=true,lever=none": {
+      "model": "triad:block/bronze_turbine_steam",
+      "y": 270
+    },
+    "facing=west,running=true,steam=true,lever=none": {
+      "model": "triad:block/bronze_turbine_steam_running",
+      "y": 270
+    },
+    "facing=east,running=false,steam=true,lever=top": {
+      "model": "triad:block/bronze_turbine_steam_lever_top",
+      "y": 90
+    },
+    "facing=east,running=true,steam=true,lever=top": {
+      "model": "triad:block/bronze_turbine_steam_lever_top_running",
+      "y": 90
+    },
+    "facing=north,running=false,steam=true,lever=top": {
+      "model": "triad:block/bronze_turbine_steam_lever_top"
+    },
+    "facing=north,running=true,steam=true,lever=top": {
+      "model": "triad:block/bronze_turbine_steam_lever_top_running"
+    },
+    "facing=south,running=false,steam=true,lever=top": {
+      "model": "triad:block/bronze_turbine_steam_lever_top",
+      "y": 180
+    },
+    "facing=south,running=true,steam=true,lever=top": {
+      "model": "triad:block/bronze_turbine_steam_lever_top_running",
+      "y": 180
+    },
+    "facing=west,running=false,steam=true,lever=top": {
+      "model": "triad:block/bronze_turbine_steam_lever_top",
+      "y": 270
+    },
+    "facing=west,running=true,steam=true,lever=top": {
+      "model": "triad:block/bronze_turbine_steam_lever_top_running",
+      "y": 270
+    },
+    "facing=east,running=false,steam=true,lever=bottom": {
+      "model": "triad:block/bronze_turbine_steam_lever_bottom",
+      "y": 90
+    },
+    "facing=east,running=true,steam=true,lever=bottom": {
+      "model": "triad:block/bronze_turbine_steam_lever_bottom_running",
+      "y": 90
+    },
+    "facing=north,running=false,steam=true,lever=bottom": {
+      "model": "triad:block/bronze_turbine_steam_lever_bottom"
+    },
+    "facing=north,running=true,steam=true,lever=bottom": {
+      "model": "triad:block/bronze_turbine_steam_lever_bottom_running"
+    },
+    "facing=south,running=false,steam=true,lever=bottom": {
+      "model": "triad:block/bronze_turbine_steam_lever_bottom",
+      "y": 180
+    },
+    "facing=south,running=true,steam=true,lever=bottom": {
+      "model": "triad:block/bronze_turbine_steam_lever_bottom_running",
+      "y": 180
+    },
+    "facing=west,running=false,steam=true,lever=bottom": {
+      "model": "triad:block/bronze_turbine_steam_lever_bottom",
+      "y": 270
+    },
+    "facing=west,running=true,steam=true,lever=bottom": {
+      "model": "triad:block/bronze_turbine_steam_lever_bottom_running",
+      "y": 270
+    },
+    "facing=east,running=false,steam=true,lever=top_rot": {
+      "model": "triad:block/bronze_turbine_steam_lever_top_rot",
+      "y": 90
+    },
+    "facing=east,running=true,steam=true,lever=top_rot": {
+      "model": "triad:block/bronze_turbine_steam_lever_top_rot_running",
+      "y": 90
+    },
+    "facing=north,running=false,steam=true,lever=top_rot": {
+      "model": "triad:block/bronze_turbine_steam_lever_top_rot"
+    },
+    "facing=north,running=true,steam=true,lever=top_rot": {
+      "model": "triad:block/bronze_turbine_steam_lever_top_rot_running"
+    },
+    "facing=south,running=false,steam=true,lever=top_rot": {
+      "model": "triad:block/bronze_turbine_steam_lever_top_rot",
+      "y": 180
+    },
+    "facing=south,running=true,steam=true,lever=top_rot": {
+      "model": "triad:block/bronze_turbine_steam_lever_top_rot_running",
+      "y": 180
+    },
+    "facing=west,running=false,steam=true,lever=top_rot": {
+      "model": "triad:block/bronze_turbine_steam_lever_top_rot",
+      "y": 270
+    },
+    "facing=west,running=true,steam=true,lever=top_rot": {
+      "model": "triad:block/bronze_turbine_steam_lever_top_rot_running",
+      "y": 270
+    },
+    "facing=east,running=false,steam=true,lever=bottom_rot": {
+      "model": "triad:block/bronze_turbine_steam_lever_bottom_rot",
+      "y": 90
+    },
+    "facing=east,running=true,steam=true,lever=bottom_rot": {
+      "model": "triad:block/bronze_turbine_steam_lever_bottom_rot_running",
+      "y": 90
+    },
+    "facing=north,running=false,steam=true,lever=bottom_rot": {
+      "model": "triad:block/bronze_turbine_steam_lever_bottom_rot"
+    },
+    "facing=north,running=true,steam=true,lever=bottom_rot": {
+      "model": "triad:block/bronze_turbine_steam_lever_bottom_rot_running"
+    },
+    "facing=south,running=false,steam=true,lever=bottom_rot": {
+      "model": "triad:block/bronze_turbine_steam_lever_bottom_rot",
+      "y": 180
+    },
+    "facing=south,running=true,steam=true,lever=bottom_rot": {
+      "model": "triad:block/bronze_turbine_steam_lever_bottom_rot_running",
+      "y": 180
+    },
+    "facing=west,running=false,steam=true,lever=bottom_rot": {
+      "model": "triad:block/bronze_turbine_steam_lever_bottom_rot",
+      "y": 270
+    },
+    "facing=west,running=true,steam=true,lever=bottom_rot": {
+      "model": "triad:block/bronze_turbine_steam_lever_bottom_rot_running",
+      "y": 270
+    },
+    "facing=east,running=false,steam=true,lever=east": {
+      "model": "triad:block/bronze_turbine_steam_lever_east",
+      "y": 90
+    },
+    "facing=east,running=true,steam=true,lever=east": {
+      "model": "triad:block/bronze_turbine_steam_lever_east_running",
+      "y": 90
+    },
+    "facing=north,running=false,steam=true,lever=east": {
+      "model": "triad:block/bronze_turbine_steam_lever_east"
+    },
+    "facing=north,running=true,steam=true,lever=east": {
+      "model": "triad:block/bronze_turbine_steam_lever_east_running"
+    },
+    "facing=south,running=false,steam=true,lever=east": {
+      "model": "triad:block/bronze_turbine_steam_lever_east",
+      "y": 180
+    },
+    "facing=south,running=true,steam=true,lever=east": {
+      "model": "triad:block/bronze_turbine_steam_lever_east_running",
+      "y": 180
+    },
+    "facing=west,running=false,steam=true,lever=east": {
+      "model": "triad:block/bronze_turbine_steam_lever_east",
+      "y": 270
+    },
+    "facing=west,running=true,steam=true,lever=east": {
+      "model": "triad:block/bronze_turbine_steam_lever_east_running",
+      "y": 270
+    },
+    "facing=east,running=false,steam=true,lever=west": {
+      "model": "triad:block/bronze_turbine_steam_lever_west",
+      "y": 90
+    },
+    "facing=east,running=true,steam=true,lever=west": {
+      "model": "triad:block/bronze_turbine_steam_lever_west_running",
+      "y": 90
+    },
+    "facing=north,running=false,steam=true,lever=west": {
+      "model": "triad:block/bronze_turbine_steam_lever_west"
+    },
+    "facing=north,running=true,steam=true,lever=west": {
+      "model": "triad:block/bronze_turbine_steam_lever_west_running"
+    },
+    "facing=south,running=false,steam=true,lever=west": {
+      "model": "triad:block/bronze_turbine_steam_lever_west",
+      "y": 180
+    },
+    "facing=south,running=true,steam=true,lever=west": {
+      "model": "triad:block/bronze_turbine_steam_lever_west_running",
+      "y": 180
+    },
+    "facing=west,running=false,steam=true,lever=west": {
+      "model": "triad:block/bronze_turbine_steam_lever_west",
+      "y": 270
+    },
+    "facing=west,running=true,steam=true,lever=west": {
+      "model": "triad:block/bronze_turbine_steam_lever_west_running",
+      "y": 270
+    },
+    "facing=east,running=false,steam=true,lever=south": {
+      "model": "triad:block/bronze_turbine_steam_lever_south",
+      "y": 90
+    },
+    "facing=east,running=true,steam=true,lever=south": {
+      "model": "triad:block/bronze_turbine_steam_lever_south_running",
+      "y": 90
+    },
+    "facing=north,running=false,steam=true,lever=south": {
+      "model": "triad:block/bronze_turbine_steam_lever_south"
+    },
+    "facing=north,running=true,steam=true,lever=south": {
+      "model": "triad:block/bronze_turbine_steam_lever_south_running"
+    },
+    "facing=south,running=false,steam=true,lever=south": {
+      "model": "triad:block/bronze_turbine_steam_lever_south",
+      "y": 180
+    },
+    "facing=south,running=true,steam=true,lever=south": {
+      "model": "triad:block/bronze_turbine_steam_lever_south_running",
+      "y": 180
+    },
+    "facing=west,running=false,steam=true,lever=south": {
+      "model": "triad:block/bronze_turbine_steam_lever_south",
+      "y": 270
+    },
+    "facing=west,running=true,steam=true,lever=south": {
+      "model": "triad:block/bronze_turbine_steam_lever_south_running",
       "y": 270
     }
   }

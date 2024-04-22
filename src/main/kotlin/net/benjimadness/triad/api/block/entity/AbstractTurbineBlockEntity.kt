@@ -1,8 +1,11 @@
 package net.benjimadness.triad.api.block.entity
 
+import net.benjimadness.triad.api.block.TriadBlockStateProperties
 import net.benjimadness.triad.registry.TriadFluids
 import net.minecraft.core.BlockPos
 import net.minecraft.nbt.CompoundTag
+import net.minecraft.world.level.Level
+import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.entity.BlockEntityType
 import net.minecraft.world.level.block.state.BlockState
 import net.neoforged.neoforge.energy.EnergyStorage
@@ -18,6 +21,12 @@ abstract class AbstractTurbineBlockEntity(capacity: Int, transfer: Int, private 
         stack.fluid == TriadFluids.STEAM
     }
     val steamTank: IFluidHandler by lazy { steam }
+
+    override fun serverTick(level: Level, pos: BlockPos, blockEntity: AbstractMachineBlockEntity) {
+        if (isFueled()) level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.STEAM, true), Block.UPDATE_CLIENTS)
+        else level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.STEAM, false), Block.UPDATE_CLIENTS)
+        super.serverTick(level, pos, blockEntity)
+    }
 
     override fun saveAdditional(tag: CompoundTag) {
         super.saveAdditional(tag)

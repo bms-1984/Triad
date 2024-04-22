@@ -10,6 +10,8 @@ object TriadBlockStateProperties {
     val BLADE: EnumProperty<Blades> = EnumProperty.create("blade", Blades::class.java)
     val RUNNING: BooleanProperty = BooleanProperty.create("running")
     val LEVER: EnumProperty<LeverPositions> = EnumProperty.create("lever", LeverPositions::class.java)
+    val WATER: BooleanProperty = BooleanProperty.create("water")
+    val STEAM: BooleanProperty = BooleanProperty.create("steam")
 }
 
 enum class LeverPositions : StringRepresentable {

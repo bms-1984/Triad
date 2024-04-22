@@ -43,7 +43,6 @@ object TriadItems {
     val STONE_MORTAR: Item by registerItem("stone_mortar") {
         ReusableItem(Item.Properties().durability(100).setNoRepair())
     }
-    // TODO: Properly registerize blades (mostly in the grinder blade checks) to allow externally added blade types
     val STEEL_BLADE: Item by registerItem("steel_blade") {
         ReusableItem(Item.Properties().durability(100).setNoRepair(), "steel")
     }

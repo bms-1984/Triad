@@ -3,7 +3,7 @@
   "textures": {
     "front": "triad:block/bronze_boiler_front_running",
     "side": "triad:block/bronze_block",
-    "top": "triad:block/bronze_boiler_lever_rot",
+    "top": "triad:block/bronze_block_lever_rot",
     "bottom": "triad:block/bronze_block"
   }
 }

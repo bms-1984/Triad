@@ -56,7 +56,7 @@ abstract class AbstractGrinderBlockEntity(type: BlockEntityType<*>, pos: BlockPo
                 outputMatch = true
                 if (shouldRun()) {
                     if ((level!!.gameTime % 20).toInt() == 0) {
-                        if (progress >= getTime()) {
+                        if (progress >= getTime() * getTimeMultiplier()) {
                             if (result.isEmpty)
                                 items.setStackInSlot(OUTPUT_SLOT, recipe.output.copyWithCount(recipe.output.count))
                             else result.grow(recipe.output.count)
@@ -118,6 +118,12 @@ abstract class AbstractGrinderBlockEntity(type: BlockEntityType<*>, pos: BlockPo
     }
     override fun shouldRun() = super.shouldRun() && hasBlade() && !items.getStackInSlot(INPUT_SLOT).isEmpty && outputMatch
     abstract override fun getTime(): Int
+    private fun getTimeMultiplier(): Int {
+        val stack = items.getStackInSlot(INPUT_SLOT)
+        return if (stack.`is`(ItemTags.create(ResourceLocation("forge", "storage_blocks"))) ||
+            stack.`is`(ItemTags.create(ResourceLocation("forge", "storage_blocks")))) 9
+        else 1
+    }
     override fun isFueled(): Boolean {
         if (isPowered()) {
             isOn = true

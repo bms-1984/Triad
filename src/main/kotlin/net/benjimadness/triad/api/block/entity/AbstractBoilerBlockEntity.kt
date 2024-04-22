@@ -1,9 +1,12 @@
 package net.benjimadness.triad.api.block.entity
 
+import net.benjimadness.triad.api.block.TriadBlockStateProperties
 import net.benjimadness.triad.registry.TriadFluids
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.nbt.CompoundTag
+import net.minecraft.world.level.Level
+import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.entity.BlockEntityType
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.material.Fluids
@@ -24,6 +27,12 @@ abstract class AbstractBoilerBlockEntity(capacity: Int, private val transfer: In
 
     val waterTank: IFluidHandler by lazy { water }
     val steamTank: IFluidHandler by lazy { steam }
+
+    override fun serverTick(level: Level, pos: BlockPos, blockEntity: AbstractMachineBlockEntity) {
+        if (hasWater()) level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.WATER, true), Block.UPDATE_CLIENTS)
+        else level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.WATER, false), Block.UPDATE_CLIENTS)
+        super.serverTick(level, pos, blockEntity)
+    }
 
     override fun distribute() {
         if (steam.fluidAmount > 0) {

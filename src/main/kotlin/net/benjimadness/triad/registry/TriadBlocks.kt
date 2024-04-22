@@ -25,6 +25,7 @@ import net.benjimadness.triad.api.block.TriadBlockStateProperties
 import net.benjimadness.triad.block.entity.BronzeItemBoilerBlockEntity
 import net.benjimadness.triad.block.entity.RedstoneGrinderBlockEntity
 import net.benjimadness.triad.block.TurbineBlock
+import net.benjimadness.triad.block.entity.BronzeGrinderBlockEntity
 import net.benjimadness.triad.block.entity.BronzeTurbineBlockEntity
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
@@ -60,6 +61,10 @@ object TriadBlocks {
     val REDSTONE_GRINDER by registerBlock("redstone_grinder") {
         GrinderBlock(Properties.ofFullCopy(Blocks.STONE).lightLevel(calculateLightLevel(13, TriadBlockStateProperties.POWERED)),
             RedstoneGrinderBlockEntity::class)
+    }
+    val BRONZE_GRINDER by registerBlock("bronze_grinder") {
+        GrinderBlock(Properties.ofFullCopy(BRONZE_BLOCK).lightLevel(calculateLightLevel(13, TriadBlockStateProperties.POWERED)),
+            BronzeGrinderBlockEntity::class)
     }
     val BRONZE_ITEM_BOILER by registerBlock("bronze_item_boiler") {
         BoilerBlock(Properties.ofFullCopy(BRONZE_BLOCK).lightLevel(calculateLightLevel(13, TriadBlockStateProperties.RUNNING)),

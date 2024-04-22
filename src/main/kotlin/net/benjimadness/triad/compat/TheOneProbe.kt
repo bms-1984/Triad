@@ -22,7 +22,12 @@ import mcjty.theoneprobe.api.*
 import net.benjimadness.triad.TriadMod
 import net.benjimadness.triad.block.GrinderBlock
 import net.benjimadness.triad.api.block.TriadBlockStateProperties
+import net.benjimadness.triad.api.block.entity.AbstractBoilerBlockEntity
+import net.benjimadness.triad.api.block.entity.AbstractTurbineBlockEntity
 import net.benjimadness.triad.api.util.ComponentUtil
+import net.benjimadness.triad.api.util.ComponentUtil.add
+import net.benjimadness.triad.block.BoilerBlock
+import net.benjimadness.triad.block.TurbineBlock
 import net.minecraft.network.chat.Component
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.entity.player.Player
@@ -44,15 +49,57 @@ object TheOneProbe {
         override fun apply(probe: ITheOneProbe) {
             TriadMod.LOGGER.info("Singing my support for The One Probe")
             probe.registerProvider(object : IProbeInfoProvider {
-                override fun getID(): ResourceLocation = ResourceLocation(TriadMod.MODID,"the_one_probe_provider")
-                override fun addProbeInfo(mode: ProbeMode?, info: IProbeInfo?, player: Player?, level: Level?,
+                override fun getID(): ResourceLocation = ResourceLocation(TriadMod.MODID, "the_one_probe_provider")
+                override fun addProbeInfo(
+                    mode: ProbeMode?, info: IProbeInfo?, player: Player?, level: Level?,
                     state: BlockState?, hitData: IProbeHitData?
                 ) {
                     if (state != null && state.block is GrinderBlock && info != null) {
-                        info.horizontal().text(ComponentUtil.combine(
-                            Component.translatable("${TriadMod.MODID}.message.blade"),
-                            Component.literal(": "),
-                            state.getValue(TriadBlockStateProperties.BLADE).getComponent()))
+                        info.horizontal().text(
+                            Component.translatable("${TriadMod.MODID}.message.blade").add(
+                                Component.literal(": "),
+                                state.getValue(TriadBlockStateProperties.BLADE).getComponent()
+                            )
+                        )
+                    }
+                    if (level != null && hitData != null && state != null && state.block is BoilerBlock && info != null) {
+                        info.horizontal().text(
+                            Component.translatable("${TriadMod.MODID}.message.steam").add(
+                                Component.literal(": "),
+                                Component.literal(
+                                    "${
+                                        (level.getBlockEntity(hitData.pos) as AbstractBoilerBlockEntity).steamTank.getFluidInTank(
+                                            0
+                                        ).amount
+                                    } L"
+                                )
+                            )
+                        )
+                        info.horizontal().text(
+                            Component.translatable("${TriadMod.MODID}.message.water").add(
+                                Component.literal(": "),
+                                Component.literal(
+                                    "${
+                                        (level.getBlockEntity(hitData.pos) as AbstractBoilerBlockEntity).waterTank.getFluidInTank(
+                                            0
+                                        ).amount
+                                    } L"
+                                )
+                            )
+                        )
+                    }
+                    if (level != null && hitData != null && state != null && state.block is TurbineBlock && info != null) {
+                        info.horizontal().text(
+                            Component.translatable("${TriadMod.MODID}.message.steam").add(
+                                Component.literal(": "),
+                                Component.literal(
+                                    "${
+                                        (level.getBlockEntity(hitData.pos) as
+                                                AbstractTurbineBlockEntity).steamTank.getFluidInTank(0).amount
+                                    } L"
+                                )
+                            )
+                        )
                     }
                 }
             })

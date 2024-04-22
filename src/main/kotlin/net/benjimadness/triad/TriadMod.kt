@@ -110,6 +110,14 @@ object TriadMod {
             Capabilities.EnergyStorage.BLOCK,
             TriadBlockEntities.BRONZE_TURBINE_BLOCK_ENTITY_TYPE
         ) { o, _ -> o.energyStorage}
+        event.registerBlockEntity(
+            Capabilities.EnergyStorage.BLOCK,
+            TriadBlockEntities.BRONZE_GRINDER_BLOCK_ENTITY_TYPE
+        ) { o, _ -> o.energyStorage}
+        event.registerBlockEntity(
+            Capabilities.ItemHandler.BLOCK,
+            TriadBlockEntities.BRONZE_GRINDER_BLOCK_ENTITY_TYPE
+        ) { o, _ -> o.itemHandler}
     }
 
     private fun onClientSetup(event: FMLClientSetupEvent) {

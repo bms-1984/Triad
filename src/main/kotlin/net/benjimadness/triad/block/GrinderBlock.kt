@@ -38,12 +38,11 @@ import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.StateDefinition
 import kotlin.reflect.KClass
 
-class GrinderBlock(properties: Properties, private val blockEntity: KClass<out AbstractMachineBlockEntity>) : AbstractMachineBlock(properties, blockEntity), EntityBlock {
+class GrinderBlock(properties: Properties, blockEntity: KClass<out AbstractMachineBlockEntity>) : AbstractMachineBlock(properties, blockEntity), EntityBlock {
     companion object {
         private val POWERED = TriadBlockStateProperties.POWERED
         private val BLADE = TriadBlockStateProperties.BLADE
     }
-    private val randomSource = RandomSource.create()
 
     init {
         registerDefaultState(stateDefinition.any()

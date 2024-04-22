@@ -4,6 +4,6 @@
     "front": "triad:block/bronze_turbine_front_running",
     "side": "triad:block/bronze_block",
     "top": "triad:block/bronze_block",
-    "bottom": "triad:block/bronze_turbine_lever_rot"
+    "bottom": "triad:block/bronze_block_lever_rot"
   }
 }

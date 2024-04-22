@@ -6,6 +6,7 @@
   "block.triad.bronze_block": "Block of Bronze",
   "block.triad.steel_block": "Block of Steel",
   "block.triad.redstone_grinder": "Redstone Grinder",
+  "block.triad.bronze_grinder": "Bronze Grinder",
   "block.triad.bronze_item_boiler": "Bronze Fuel Boiler",
   "block.triad.bronze_turbine": "Bronze Turbine",
   "item.triad.tin_dust": "Tin Dust",
@@ -51,5 +52,7 @@
   "triad.message.blade": "Blade",
   "triad.message.blade.none": "None",
   "triad.message.blade.steel": "Steel",
-  "triad.message.blade.bronze": "Bronze"
+  "triad.message.blade.bronze": "Bronze",
+  "triad.message.steam": "Steam",
+  "triad.message.water": "Water"
 }

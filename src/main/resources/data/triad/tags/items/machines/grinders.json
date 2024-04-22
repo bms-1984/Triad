@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "triad:redstone_grinder"
+    "triad:redstone_grinder",
+    "triad:bronze_grinder"
   ]
 }

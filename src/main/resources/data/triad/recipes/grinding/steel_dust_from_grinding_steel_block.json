@@ -1,0 +1,11 @@
+{
+  "type": "triad:grinding",
+  "ingredient":
+  {
+    "tag": "forge:storage_blocks/steel"
+  },
+  "result": {
+    "count": 9,
+    "item": "triad:steel_dust"
+  }
+}

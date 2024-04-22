@@ -5,6 +5,6 @@
     "side": "triad:block/bronze_block",
     "top": "triad:block/bronze_block",
     "bottom": "triad:block/bronze_block",
-    "east": "triad:block/bronze_boiler_lever"
+    "east": "triad:block/bronze_block_lever"
   }
 }
