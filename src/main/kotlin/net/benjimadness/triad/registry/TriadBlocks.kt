@@ -22,11 +22,9 @@ import net.benjimadness.triad.TriadMod
 import net.benjimadness.triad.block.BoilerBlock
 import net.benjimadness.triad.block.GrinderBlock
 import net.benjimadness.triad.api.block.TriadBlockStateProperties
-import net.benjimadness.triad.block.entity.BronzeItemBoilerBlockEntity
-import net.benjimadness.triad.block.entity.RedstoneGrinderBlockEntity
+import net.benjimadness.triad.block.ElectricFurnaceBlock
 import net.benjimadness.triad.block.TurbineBlock
-import net.benjimadness.triad.block.entity.BronzeGrinderBlockEntity
-import net.benjimadness.triad.block.entity.BronzeTurbineBlockEntity
+import net.benjimadness.triad.block.entity.*
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties
@@ -73,6 +71,10 @@ object TriadBlocks {
     val BRONZE_TURBINE by registerBlock("bronze_turbine") {
         TurbineBlock(Properties.ofFullCopy(BRONZE_BLOCK).lightLevel(calculateLightLevel(13, TriadBlockStateProperties.RUNNING)),
             BronzeTurbineBlockEntity::class)
+    }
+    val BRONZE_FURNACE by registerBlock("bronze_furnace") {
+        ElectricFurnaceBlock(Properties.ofFullCopy(BRONZE_BLOCK).lightLevel(calculateLightLevel(13, TriadBlockStateProperties.RUNNING)),
+            BronzeFurnaceBlockEntity::class)
     }
 
     private fun <T : Block> registerBlock(name: String, block: Supplier<T>): DeferredBlock<T> {

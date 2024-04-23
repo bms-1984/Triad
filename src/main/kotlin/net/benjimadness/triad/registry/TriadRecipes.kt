@@ -34,7 +34,7 @@ object TriadRecipes {
     val SERIALIZER_REGISTRY: DeferredRegister<RecipeSerializer<*>> =
         DeferredRegister.create(Registries.RECIPE_SERIALIZER, TriadMod.MODID)
 
-    val GRINDER_RECIPE_TYPE: RecipeType<Recipe<Container>> by registerRecipeType("grinder_recipe_type") { TriadRecipeTypes.GRINDING }
+    val GRINDER_RECIPE_TYPE: RecipeType<GrinderRecipe> by registerRecipeType("grinder_recipe_type") { object : RecipeType<GrinderRecipe>{} }
     val GRINDER_RECIPE_SERIALIZER: RecipeSerializer<*> by registerRecipeSerializer("grinding") { GrinderRecipe.Serializer() }
 
     private fun <T : RecipeType<*>> registerRecipeType(name: String, recipeType: Supplier<T>) =
@@ -42,9 +42,5 @@ object TriadRecipes {
 
     private fun <T : RecipeSerializer<*>> registerRecipeSerializer(name: String, recipeSerializer: Supplier<T>) =
         SERIALIZER_REGISTRY.register(name, recipeSerializer)
-
-    enum class TriadRecipeTypes : RecipeType<Recipe<Container>> {
-        GRINDING;
-    }
 }
 

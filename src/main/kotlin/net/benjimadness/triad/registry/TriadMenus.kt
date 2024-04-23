@@ -20,6 +20,7 @@ package net.benjimadness.triad.registry
 
 import net.benjimadness.triad.TriadMod
 import net.benjimadness.triad.gui.BoilerMenu
+import net.benjimadness.triad.gui.ElectricFurnaceMenu
 import net.benjimadness.triad.gui.GrinderMenu
 import net.benjimadness.triad.gui.TurbineMenu
 import net.minecraft.core.registries.Registries
@@ -48,6 +49,12 @@ object TriadMenus {
     val TURBINE_MENU_TYPE: DeferredHolder<MenuType<*>, MenuType<TurbineMenu>> = register("turbine_menu") {
         MenuType(
             IContainerFactory { id, inv, data -> TurbineMenu(id, inv, data.readBlockPos()) },
+            FeatureFlags.DEFAULT_FLAGS
+        )
+    }
+    val FURNACE_MENU_TYPE: DeferredHolder<MenuType<*>, MenuType<ElectricFurnaceMenu>> = register("furnace_menu") {
+        MenuType(
+            IContainerFactory { id, inv, data -> ElectricFurnaceMenu(id, inv, data.readBlockPos()) },
             FeatureFlags.DEFAULT_FLAGS
         )
     }

@@ -22,6 +22,7 @@ import com.mojang.logging.LogUtils
 import net.benjimadness.triad.compat.TheOneProbe
 import net.benjimadness.triad.config.TriadConfig
 import net.benjimadness.triad.gui.BoilerScreen
+import net.benjimadness.triad.gui.ElectricFurnaceScreen
 import net.benjimadness.triad.gui.TurbineScreen
 import net.benjimadness.triad.gui.GrinderScreen
 import net.benjimadness.triad.item.tool.TriadToolTiers
@@ -118,12 +119,21 @@ object TriadMod {
             Capabilities.ItemHandler.BLOCK,
             TriadBlockEntities.BRONZE_GRINDER_BLOCK_ENTITY_TYPE
         ) { o, _ -> o.itemHandler}
+        event.registerBlockEntity(
+            Capabilities.EnergyStorage.BLOCK,
+            TriadBlockEntities.BRONZE_FURNACE_BLOCK_ENTITY_TYPE
+        ) { o, _ -> o.energyStorage}
+        event.registerBlockEntity(
+            Capabilities.ItemHandler.BLOCK,
+            TriadBlockEntities.BRONZE_FURNACE_BLOCK_ENTITY_TYPE
+        ) { o, _ -> o.itemHandler}
     }
 
     private fun onClientSetup(event: FMLClientSetupEvent) {
         event.enqueueWork { MenuScreens.register(TriadMenus.GRINDER_MENU_TYPE.get(), ::GrinderScreen) }
         event.enqueueWork { MenuScreens.register(TriadMenus.ITEM_BOILER_MENU_TYPE.get(), ::BoilerScreen) }
         event.enqueueWork { MenuScreens.register(TriadMenus.TURBINE_MENU_TYPE.get(), ::TurbineScreen) }
+        event.enqueueWork { MenuScreens.register(TriadMenus.FURNACE_MENU_TYPE.get(), ::ElectricFurnaceScreen)}
     }
 
     private fun onServerSetup(event: FMLDedicatedServerSetupEvent) {}

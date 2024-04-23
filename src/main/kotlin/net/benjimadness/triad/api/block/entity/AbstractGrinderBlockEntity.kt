@@ -11,8 +11,11 @@ import net.minecraft.nbt.CompoundTag
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.tags.ItemTags
 import net.minecraft.util.RandomSource
+import net.minecraft.world.Container
 import net.minecraft.world.item.ItemStack
+import net.minecraft.world.item.crafting.Recipe
 import net.minecraft.world.item.crafting.RecipeManager
+import net.minecraft.world.item.crafting.SmeltingRecipe
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.entity.BlockEntityType
 import net.minecraft.world.level.block.state.BlockState
@@ -38,38 +41,33 @@ abstract class AbstractGrinderBlockEntity(type: BlockEntityType<*>, pos: BlockPo
     }
     val itemHandler: IItemHandler by lazy { items }
     private var isOn = false
-    private var outputMatch = false
     private var blade = GrinderBlock.Blades.NONE
-
-    private val check = RecipeManager.createCheck(TriadRecipes.GRINDER_RECIPE_TYPE)
     private val random = RandomSource.create()
+    override val check: RecipeManager.CachedCheck<Container, GrinderRecipe> = RecipeManager.createCheck(TriadRecipes.GRINDER_RECIPE_TYPE)
 
     override fun execute() {
         if (!hasLevel()) return
         val input = items.getStackInSlot(INPUT_SLOT)
         val bladeStack = items.getStackInSlot(BLADE_SLOT)
         val result = items.getStackInSlot(OUTPUT_SLOT)
-        val holder = check.getRecipeFor(RecipeWrapper(items), level!!)
-        if (holder.isPresent) {
-            val recipe = holder.get().value as GrinderRecipe
-            if ((result.item == recipe.output.item && result.count <= (result.maxStackSize - recipe.output.count)) || result.isEmpty) {
-                outputMatch = true
-                if (shouldRun()) {
-                    if ((level!!.gameTime % 20).toInt() == 0) {
-                        if (progress >= getTime() * getTimeMultiplier()) {
-                            if (result.isEmpty)
-                                items.setStackInSlot(OUTPUT_SLOT, recipe.output.copyWithCount(recipe.output.count))
-                            else result.grow(recipe.output.count)
-                            input.shrink(1)
-                            if (bladeStack.hurt(BLADE_SLOT, random, null))
-                                bladeStack.shrink(1)
-                            progress = 0
-                        } else progress++
-                    }
+        val recipe = getRecipe() ?: return
+        if ((result.item == recipe.output.item && result.count <= (result.maxStackSize - recipe.output.count)) || result.isEmpty) {
+            outputMatch = true
+            if (shouldRun()) {
+                if ((level!!.gameTime % 20).toInt() == 0) {
+                    if (progress >= getTime() * getTimeMultiplier()) {
+                        if (result.isEmpty)
+                            items.setStackInSlot(OUTPUT_SLOT, recipe.output.copyWithCount(recipe.output.count))
+                        else result.grow(recipe.output.count)
+                        input.shrink(1)
+                        if (bladeStack.hurt(BLADE_SLOT, random, null))
+                            bladeStack.shrink(1)
+                        progress = 0
+                    } else progress++
                 }
             }
-            else outputMatch = false
         }
+        else outputMatch = false
     }
 
     override fun saveAdditional(tag: CompoundTag) {
@@ -116,8 +114,13 @@ abstract class AbstractGrinderBlockEntity(type: BlockEntityType<*>, pos: BlockPo
             return false
         }
     }
-    override fun shouldRun() = super.shouldRun() && hasBlade() && !items.getStackInSlot(INPUT_SLOT).isEmpty && outputMatch
-    abstract override fun getTime(): Int
+    override fun shouldRun() = super.shouldRun() && hasBlade() && !items.getStackInSlot(INPUT_SLOT).isEmpty
+    override fun getRecipe(): GrinderRecipe? {
+        if (!hasLevel()) return null
+        val recipe = check.getRecipeFor(RecipeWrapper(items), level!!)
+        if (recipe.isPresent) return recipe.get().value
+        return null
+    }
     private fun getTimeMultiplier(): Int {
         val stack = items.getStackInSlot(INPUT_SLOT)
         return if (stack.`is`(ItemTags.create(ResourceLocation("forge", "storage_blocks"))) ||

@@ -19,10 +19,7 @@
 package net.benjimadness.triad.registry
 
 import net.benjimadness.triad.TriadMod
-import net.benjimadness.triad.block.entity.BronzeGrinderBlockEntity
-import net.benjimadness.triad.block.entity.BronzeItemBoilerBlockEntity
-import net.benjimadness.triad.block.entity.BronzeTurbineBlockEntity
-import net.benjimadness.triad.block.entity.RedstoneGrinderBlockEntity
+import net.benjimadness.triad.block.entity.*
 import net.minecraft.core.registries.Registries
 import net.minecraft.world.level.block.entity.BlockEntityType
 import net.neoforged.neoforge.registries.DeferredRegister
@@ -44,6 +41,9 @@ object TriadBlockEntities {
     }
     val BRONZE_TURBINE_BLOCK_ENTITY_TYPE: BlockEntityType<BronzeTurbineBlockEntity> by registerBlockEntity("bronze_turbine_block_entity") {
         BlockEntityType.Builder.of(::BronzeTurbineBlockEntity, TriadBlocks.BRONZE_TURBINE).build(null)
+    }
+    val BRONZE_FURNACE_BLOCK_ENTITY_TYPE: BlockEntityType<BronzeFurnaceBlockEntity> by registerBlockEntity("bronze_furnace_block_entity") {
+        BlockEntityType.Builder.of(::BronzeFurnaceBlockEntity, TriadBlocks.BRONZE_FURNACE).build(null)
     }
 
     private fun <T : BlockEntityType<*>> registerBlockEntity(name: String, blockEntity: Supplier<T>) =

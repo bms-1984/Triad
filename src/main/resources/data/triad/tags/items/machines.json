@@ -3,6 +3,7 @@
   "values": [
     "#triad:machines/grinders",
     "#triad:machines/generators",
-    "#triad:machines/boilers"
+    "#triad:machines/boilers",
+    "#triad:machines/furnaces"
   ]
 }

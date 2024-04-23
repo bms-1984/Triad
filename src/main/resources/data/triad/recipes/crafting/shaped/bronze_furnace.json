@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "forge:storage_blocks/bronze"
+    },
+    "@": {
+      "item": "minecraft:lightning_rod"
+    }
+  },
+  "pattern": [
+    "###",
+    "#@#",
+    "###"
+  ],
+  "result": {
+    "item": "triad:bronze_furnace"
+  }
+}

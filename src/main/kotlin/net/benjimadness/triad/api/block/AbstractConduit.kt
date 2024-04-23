@@ -12,6 +12,7 @@ import net.minecraft.world.level.block.state.StateDefinition
 import net.minecraft.world.level.block.state.properties.BlockStateProperties
 import net.neoforged.neoforge.capabilities.BlockCapability
 
+// TODO: implement steam pipe and copper wire, simple capacitor
 abstract class AbstractConduit(properties: Properties) : Block(properties.randomTicks()) {
     companion object {
         private val FACING = BlockStateProperties.FACING
