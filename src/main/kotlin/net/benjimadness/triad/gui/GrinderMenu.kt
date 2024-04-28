@@ -87,10 +87,10 @@ class GrinderMenu(
                     if (!moveItemStackTo(slotStack, 1, 2, false))
                         return ItemStack.EMPTY
                 } else if (
-                    slot.item.`is`(ItemTags.create(ResourceLocation("forge", "ingots"))) ||
-                    slot.item.`is`(ItemTags.create(ResourceLocation("forge", "ores"))) ||
-                    slot.item.`is`(ItemTags.create(ResourceLocation("forge", "raw_materials"))) ||
-                    slot.item.`is`(ItemTags.create(ResourceLocation("forge", "storage_blocks")))
+                    slot.item.`is`(ItemTags.create(ResourceLocation("c", "ingots"))) ||
+                    slot.item.`is`(ItemTags.create(ResourceLocation("c", "ores"))) ||
+                    slot.item.`is`(ItemTags.create(ResourceLocation("c", "raw_materials"))) ||
+                    slot.item.`is`(ItemTags.create(ResourceLocation("c", "storage_blocks")))
                 ) {
                     if (!moveItemStackTo(slotStack, 0, 1, false))
                         return ItemStack.EMPTY

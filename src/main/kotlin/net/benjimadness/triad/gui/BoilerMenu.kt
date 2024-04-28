@@ -18,7 +18,6 @@
 
 package net.benjimadness.triad.gui
 
-import net.benjimadness.triad.api.block.entity.AbstractGeneratorBlockEntity
 import net.benjimadness.triad.api.block.entity.AbstractItemBoilerBlockEntity
 import net.benjimadness.triad.registry.TriadMenus
 import net.minecraft.core.BlockPos

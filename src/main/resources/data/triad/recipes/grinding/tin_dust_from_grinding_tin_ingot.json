@@ -2,7 +2,7 @@
   "type": "triad:grinding",
   "ingredient":
   {
-    "tag": "forge:ingots/tin"
+    "tag": "c:ingots/tin"
   },
   "result": {
     "item": "triad:tin_dust"

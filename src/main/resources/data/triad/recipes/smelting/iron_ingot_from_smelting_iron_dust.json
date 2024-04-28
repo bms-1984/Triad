@@ -5,7 +5,7 @@
   "experience": 0.7,
   "group": "iron_ingot",
   "ingredient": {
-    "tag": "forge:dusts/iron"
+    "tag": "c:dusts/iron"
   },
   "result": "minecraft:iron_ingot"
 }

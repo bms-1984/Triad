@@ -20,11 +20,8 @@ package net.benjimadness.triad.block
 
 import net.benjimadness.triad.TriadMod
 import net.benjimadness.triad.api.block.AbstractMachineBlock
-import net.benjimadness.triad.api.block.LeverPositions
-import net.benjimadness.triad.api.block.TriadBlockStateProperties
 import net.benjimadness.triad.api.block.entity.AbstractMachineBlockEntity
 import net.benjimadness.triad.gui.ElectricFurnaceMenu
-import net.benjimadness.triad.gui.GrinderMenu
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.core.particles.ParticleTypes
@@ -32,14 +29,11 @@ import net.minecraft.network.chat.Component
 import net.minecraft.sounds.SoundEvents
 import net.minecraft.sounds.SoundSource
 import net.minecraft.util.RandomSource
-import net.minecraft.util.StringRepresentable
 import net.minecraft.world.MenuProvider
 import net.minecraft.world.SimpleMenuProvider
 import net.minecraft.world.level.Level
-import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.EntityBlock
 import net.minecraft.world.level.block.state.BlockState
-import net.minecraft.world.level.block.state.StateDefinition
 import kotlin.reflect.KClass
 
 class ElectricFurnaceBlock(properties: Properties, blockEntity: KClass<out AbstractMachineBlockEntity>) : AbstractMachineBlock(properties, blockEntity), EntityBlock {

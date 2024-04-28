@@ -25,6 +25,11 @@ import net.minecraft.world.item.ItemStack
 class ReusableItem(properties: Properties, val materialName: String = "none") : Item(properties) {
     private val rand: RandomSource = RandomSource.create()
     override fun hasCraftingRemainingItem(stack: ItemStack): Boolean = true
-    override fun getCraftingRemainingItem(stack: ItemStack): ItemStack =
-        stack.copy().let { if (it.hurt(1, rand, null)) ItemStack.EMPTY else it }
+    override fun getCraftingRemainingItem(stack: ItemStack): ItemStack {
+        var ret = stack.copy()
+        ret.hurtAndBreak(1, rand, null) {
+            ret = ItemStack.EMPTY
+        }
+        return stack
+    }
 }

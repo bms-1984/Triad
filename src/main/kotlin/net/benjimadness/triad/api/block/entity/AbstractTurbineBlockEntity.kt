@@ -3,6 +3,7 @@ package net.benjimadness.triad.api.block.entity
 import net.benjimadness.triad.api.block.TriadBlockStateProperties
 import net.benjimadness.triad.registry.TriadFluids
 import net.minecraft.core.BlockPos
+import net.minecraft.core.HolderLookup
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.Block
@@ -26,14 +27,14 @@ abstract class AbstractTurbineBlockEntity(capacity: Int, transfer: Int, private 
         super.serverTick(level, pos, blockEntity)
     }
 
-    override fun saveAdditional(tag: CompoundTag) {
-        super.saveAdditional(tag)
-        tag.put("Steam", steam.writeToNBT(CompoundTag()))
+    override fun saveAdditional(tag: CompoundTag, registry: HolderLookup.Provider) {
+        super.saveAdditional(tag, registry)
+        tag.put("Steam", steam.writeToNBT(registry, CompoundTag()))
     }
 
-    override fun load(tag: CompoundTag) {
-        super.load(tag)
-        if (tag.contains("Steam")) steam.readFromNBT(tag.getCompound("Steam"))
+    override fun loadAdditional(tag: CompoundTag, registry: HolderLookup.Provider) {
+        super.loadAdditional(tag, registry)
+        if (tag.contains("Steam")) steam.readFromNBT(registry, tag.getCompound("Steam"))
     }
 
     override fun useFuel() {

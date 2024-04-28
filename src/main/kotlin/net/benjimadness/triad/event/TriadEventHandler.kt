@@ -25,11 +25,11 @@ import net.minecraft.world.entity.animal.Bee
 import net.minecraft.world.level.block.Blocks
 import net.neoforged.bus.api.EventPriority
 import net.neoforged.bus.api.SubscribeEvent
-import net.neoforged.fml.common.Mod
+import net.neoforged.fml.common.EventBusSubscriber
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent
 import net.neoforged.neoforge.event.level.ChunkEvent
 
-@Mod.EventBusSubscriber(modid = TriadMod.MODID)
+@EventBusSubscriber(modid = TriadMod.MODID)
 object TriadEventHandler {
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     fun onEntityJoinLevel(event: EntityJoinLevelEvent) {

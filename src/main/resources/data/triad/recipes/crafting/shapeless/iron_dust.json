@@ -3,7 +3,7 @@
   "category": "misc",
   "ingredients": [
     {
-      "tag": "forge:raw_materials/iron"
+      "tag": "c:raw_materials/iron"
     },
     {
       "item": "triad:stone_mortar"

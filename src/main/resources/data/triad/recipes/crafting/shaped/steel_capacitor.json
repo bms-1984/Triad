@@ -9,7 +9,7 @@
       "item": "minecraft:redstone_torch"
     },
     "$": {
-      "tag": "forge:storage_blocks/steel"
+      "tag": "c:storage_blocks/steel"
     }
   },
   "pattern": [

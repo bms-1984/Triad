@@ -2,7 +2,7 @@
   "type": "triad:grinding",
   "ingredient":
   {
-    "tag": "forge:raw_materials/copper"
+    "tag": "c:raw_materials/copper"
   },
   "result": {
     "count": 2,

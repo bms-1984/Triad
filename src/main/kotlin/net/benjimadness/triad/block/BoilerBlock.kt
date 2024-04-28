@@ -11,13 +11,11 @@ import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.core.particles.ParticleTypes
 import net.minecraft.network.chat.Component
+import net.minecraft.server.level.ServerPlayer
 import net.minecraft.sounds.SoundEvents
 import net.minecraft.sounds.SoundSource
 import net.minecraft.util.RandomSource
-import net.minecraft.world.InteractionHand
-import net.minecraft.world.InteractionResult
-import net.minecraft.world.MenuProvider
-import net.minecraft.world.SimpleMenuProvider
+import net.minecraft.world.*
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.Items
@@ -59,26 +57,22 @@ class BoilerBlock(properties: Properties, blockEntity: KClass<out AbstractGenera
             Component.translatableWithFallback("menu.title.${TriadMod.MODID}.boiler_menu", "Boiler")
         )
 
-    @Deprecated(
-        "Deprecated in Java",
-        replaceWith = ReplaceWith(
-            "super.use(pState, pLevel, pPos, pPlayer, pHand, pHit)",
-            "net.minecraft.world.level.block.Block"))
-    override fun use(
+    override fun useItemOn(
+        stack: ItemStack,
         state: BlockState,
         level: Level,
         pos: BlockPos,
         player: Player,
         hand: InteractionHand,
-        hit: BlockHitResult
-    ): InteractionResult {
-        if (player.getItemInHand(hand).item == Items.WATER_BUCKET) {
+        result: BlockHitResult
+    ): ItemInteractionResult {
+        if (stack.item == Items.WATER_BUCKET) {
             val entity = level.getBlockEntity(pos) as AbstractBoilerBlockEntity
             entity.waterTank.fill(FluidStack(Fluids.WATER, 1000), IFluidHandler.FluidAction.EXECUTE)
             player.setItemInHand(hand, ItemStack(Items.BUCKET))
-            return InteractionResult.sidedSuccess(level.isClientSide())
+            return ItemInteractionResult.CONSUME
         }
-        return super.use(state, level, pos, player, hand, hit)
+        return super.useItemOn(stack, state, level, pos, player, hand, result)
     }
 
     override fun animateTick(state: BlockState, level: Level, pos: BlockPos, random: RandomSource) {

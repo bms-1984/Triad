@@ -4,7 +4,7 @@
   "group": "bronze_ingot",
   "ingredients": [
     {
-      "tag": "forge:storage_blocks/bronze"
+      "tag": "c:storage_blocks/bronze"
     }
   ],
   "result": {

@@ -70,13 +70,13 @@ minecraft {
 
 subsystems {
     parchment {
-        minecraftVersion(minecraft_version)
+        minecraftVersion("1.20.4")
         mappingsVersion(mappings_version)
     }
 }
 
 java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+    toolchain.languageVersion.set(JavaLanguageVersion.of(21))
     withSourcesJar()
 }
 
@@ -111,11 +111,11 @@ dependencies {
 
     implementation("thedarkcolour:kotlinforforge-neoforge:${kotlinforforge_version}")
 
-    compileOnly("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
-    compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
-    runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
+    compileOnly("mezz.jei:jei-1.20.4-common-api:${jei_version}")
+    compileOnly("mezz.jei:jei-1.20.4-neoforge-api:${jei_version}")
+    runtimeOnly("mezz.jei:jei-1.20.4-neoforge:${jei_version}")
 
-    implementation ("mcjty.theoneprobe:theoneprobe:${minecraft_version}_neo-${top_version}")
+    implementation ("mcjty.theoneprobe:theoneprobe:1.20.4_neo-${top_version}")
 }
 
 tasks {
@@ -137,13 +137,13 @@ tasks {
         )
         inputs.properties(replaceProperties)
 
-        filesMatching(mutableListOf("META-INF/mods.toml", "pack.mcmeta")) {
+        filesMatching(mutableListOf("META-INF/neoforge.mods.toml", "pack.mcmeta")) {
             expand(replaceProperties)
         }
     }
 
     withType<KotlinCompile>().configureEach {
-        kotlinOptions.jvmTarget = "17"
+        kotlinOptions.jvmTarget = "21"
         kotlinOptions.verbose = true
     }
 

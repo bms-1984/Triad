@@ -2,7 +2,7 @@
   "type": "triad:grinding",
   "ingredient":
   {
-    "tag": "forge:storage_blocks/tin"
+    "tag": "c:storage_blocks/tin"
   },
   "result": {
     "count": 18,

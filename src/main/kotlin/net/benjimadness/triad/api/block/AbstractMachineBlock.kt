@@ -6,8 +6,10 @@ import net.minecraft.core.Direction
 import net.minecraft.server.level.ServerPlayer
 import net.minecraft.world.InteractionHand
 import net.minecraft.world.InteractionResult
+import net.minecraft.world.ItemInteractionResult
 import net.minecraft.world.entity.item.ItemEntity
 import net.minecraft.world.entity.player.Player
+import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.context.BlockPlaceContext
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.Block
@@ -45,20 +47,30 @@ abstract class AbstractMachineBlock(properties: Properties, blockEntity: KClass<
         builder.add(FACING, LEVER, RUNNING)
     }
 
-    @Deprecated("Deprecated in Java", ReplaceWith(
-        "super.use(pState, pLevel, pPos, pPlayer, pHand, pHit)",
-        "net.minecraft.world.level.block.Block"))
-    override fun use(
+    override fun useWithoutItem(
         state: BlockState,
         level: Level,
         pos: BlockPos,
         player: Player,
-        hand: InteractionHand,
         hit: BlockHitResult
     ): InteractionResult {
         if (!level.isClientSide && player is ServerPlayer)
             state.getMenuProvider(level, pos)?.let { player.openMenu(it) { buf -> buf.writeBlockPos(pos) } }
         return InteractionResult.sidedSuccess(level.isClientSide())
+    }
+
+    override fun useItemOn(
+        stack: ItemStack,
+        state: BlockState,
+        level: Level,
+        pos: BlockPos,
+        player: Player,
+        hand: InteractionHand,
+        result: BlockHitResult
+    ): ItemInteractionResult {
+        if (!level.isClientSide && player is ServerPlayer)
+            state.getMenuProvider(level, pos)?.let { player.openMenu(it) { buf -> buf.writeBlockPos(pos) } }
+        return ItemInteractionResult.sidedSuccess(level.isClientSide())
     }
 
     @Deprecated("Deprecated in Java", ReplaceWith(

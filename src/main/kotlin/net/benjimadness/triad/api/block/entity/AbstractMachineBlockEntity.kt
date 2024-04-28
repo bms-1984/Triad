@@ -3,6 +3,7 @@ package net.benjimadness.triad.api.block.entity
 import net.benjimadness.triad.api.util.MiscUtil.getLeverOrientation
 import net.benjimadness.triad.api.block.TriadBlockStateProperties
 import net.minecraft.core.BlockPos
+import net.minecraft.core.HolderLookup.Provider
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.network.Connection
 import net.minecraft.network.protocol.Packet
@@ -33,8 +34,8 @@ abstract class AbstractMachineBlockEntity (type: BlockEntityType<*>, pos: BlockP
 
     abstract fun execute()
 
-    override fun saveAdditional(tag: CompoundTag) {
-        super.saveAdditional(tag)
+    override fun saveAdditional(tag: CompoundTag, registry: Provider) {
+        super.saveAdditional(tag, registry)
         saveClientData(tag)
     }
 
@@ -42,8 +43,8 @@ abstract class AbstractMachineBlockEntity (type: BlockEntityType<*>, pos: BlockP
         tag.putBoolean("IsRunning", isRunning)
     }
 
-    override fun load(tag: CompoundTag) {
-        super.load(tag)
+    override fun loadAdditional(tag: CompoundTag, registry: Provider) {
+        super.loadAdditional(tag, registry)
         loadClientData(tag)
     }
 
@@ -51,22 +52,21 @@ abstract class AbstractMachineBlockEntity (type: BlockEntityType<*>, pos: BlockP
         if (tag.contains("IsRunning")) isRunning = tag.getBoolean("IsRunning")
     }
 
-    override fun getUpdateTag(): CompoundTag {
-        val tag = super.getUpdateTag()
+    override fun getUpdateTag(registry: Provider): CompoundTag {
+        val tag = super.getUpdateTag(registry)
         saveClientData(tag)
         return tag
     }
 
-    override fun handleUpdateTag(tag: CompoundTag) {
+    override fun handleUpdateTag(tag: CompoundTag, registry: Provider) {
         loadClientData(tag)
     }
 
     override fun getUpdatePacket(): Packet<ClientGamePacketListener>? =
         ClientboundBlockEntityDataPacket.create(this)
 
-    override fun onDataPacket(network: Connection, packet: ClientboundBlockEntityDataPacket) {
-        if (packet.tag != null)
-            handleUpdateTag(packet.tag!!)
+    override fun onDataPacket(network: Connection, packet: ClientboundBlockEntityDataPacket, registry: Provider) {
+        handleUpdateTag(packet.tag, registry)
     }
 
     open fun shouldRun(): Boolean = isFueled()

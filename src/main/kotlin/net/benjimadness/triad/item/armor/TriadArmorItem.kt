@@ -19,15 +19,27 @@
 package net.benjimadness.triad.item.armor
 
 import net.benjimadness.triad.TriadMod
+import net.minecraft.core.Holder
+import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.entity.Entity
 import net.minecraft.world.entity.EquipmentSlot
 import net.minecraft.world.item.ArmorItem
 import net.minecraft.world.item.ArmorMaterial
 import net.minecraft.world.item.ItemStack
 
-class TriadArmorItem(material: ArmorMaterial, type: Type) : ArmorItem(material, type, Properties()) {
-    override fun getArmorTexture(stack: ItemStack, entity: Entity, slot: EquipmentSlot, type: String): String? =
+class TriadArmorItem(private val materialName: String, material: Holder<ArmorMaterial>, type: Type) :
+    ArmorItem(material, type, Properties()) {
+    override fun getArmorTexture(
+        stack: ItemStack,
+        entity: Entity,
+        slot: EquipmentSlot,
+        layer: ArmorMaterial.Layer,
+        innerModel: Boolean
+    ): ResourceLocation? =
         if (stack.item !is ArmorItem) null
-        else if ((stack.item as ArmorItem).type == Type.LEGGINGS) TriadMod.MODID + ":" + "textures/models/armor/" + material.name + "_layer_2.png"
-        else TriadMod.MODID + ":" + "textures/models/armor/" + material.name + "_layer_1.png"
+        else ResourceLocation(TriadMod.MODID,
+            "textures/models/armors/${materialName}_layer_${
+                if ((stack.item as ArmorItem).type == Type.LEGGINGS) "2"
+                else "1"
+            }.png")
 }

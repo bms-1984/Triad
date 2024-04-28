@@ -7,6 +7,7 @@ import net.benjimadness.triad.api.item.ReusableItem
 import net.benjimadness.triad.recipe.GrinderRecipe
 import net.benjimadness.triad.registry.TriadRecipes
 import net.minecraft.core.BlockPos
+import net.minecraft.core.HolderLookup
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.tags.ItemTags
@@ -60,8 +61,9 @@ abstract class AbstractGrinderBlockEntity(type: BlockEntityType<*>, pos: BlockPo
                             items.setStackInSlot(OUTPUT_SLOT, recipe.output.copyWithCount(recipe.output.count))
                         else result.grow(recipe.output.count)
                         input.shrink(1)
-                        if (bladeStack.hurt(BLADE_SLOT, random, null))
+                        bladeStack.hurtAndBreak(1, random, null) {
                             bladeStack.shrink(1)
+                        }
                         progress = 0
                     } else progress++
                 }
@@ -70,10 +72,10 @@ abstract class AbstractGrinderBlockEntity(type: BlockEntityType<*>, pos: BlockPo
         else outputMatch = false
     }
 
-    override fun saveAdditional(tag: CompoundTag) {
-        super.saveAdditional(tag)
+    override fun saveAdditional(tag: CompoundTag, registry: HolderLookup.Provider) {
+        super.saveAdditional(tag, registry)
         tag.putInt("Progress", progress)
-        tag.put("Items", items.serializeNBT())
+        tag.put("Items", items.serializeNBT(registry))
         saveClientData(tag)
     }
 
@@ -83,10 +85,10 @@ abstract class AbstractGrinderBlockEntity(type: BlockEntityType<*>, pos: BlockPo
         tag.putString("Blade", blade.serializedName)
     }
 
-    override fun load(tag: CompoundTag) {
-        super.load(tag)
+    override fun loadAdditional(tag: CompoundTag, registry: HolderLookup.Provider) {
+        super.loadAdditional(tag, registry)
         if (tag.contains("Progress")) progress = tag.getInt("Progress")
-        if (tag.contains("Items")) items.deserializeNBT(tag.getCompound("Items"))
+        if (tag.contains("Items")) items.deserializeNBT(registry, tag.getCompound("Items"))
         loadClientData(tag)
     }
 
@@ -123,8 +125,8 @@ abstract class AbstractGrinderBlockEntity(type: BlockEntityType<*>, pos: BlockPo
     }
     private fun getTimeMultiplier(): Int {
         val stack = items.getStackInSlot(INPUT_SLOT)
-        return if (stack.`is`(ItemTags.create(ResourceLocation("forge", "storage_blocks"))) ||
-            stack.`is`(ItemTags.create(ResourceLocation("forge", "storage_blocks")))) 9
+        return if (stack.`is`(ItemTags.create(ResourceLocation("c", "storage_blocks"))) ||
+            stack.`is`(ItemTags.create(ResourceLocation("c", "storage_blocks")))) 9
         else 1
     }
     override fun isFueled(): Boolean {

@@ -2,7 +2,7 @@
   "type": "triad:grinding",
   "ingredient":
   {
-    "tag": "forge:raw_materials/gold"
+    "tag": "c:raw_materials/gold"
   },
   "result": {
     "count": 2,

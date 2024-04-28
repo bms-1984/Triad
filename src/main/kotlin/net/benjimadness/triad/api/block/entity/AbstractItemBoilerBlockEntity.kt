@@ -1,6 +1,7 @@
 package net.benjimadness.triad.api.block.entity
 
 import net.minecraft.core.BlockPos
+import net.minecraft.core.HolderLookup
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.crafting.RecipeType
@@ -31,14 +32,14 @@ abstract class AbstractItemBoilerBlockEntity(capacity: Int, transfer: Int, gen: 
     }
     val itemHandler: IItemHandler by lazy { items }
 
-    override fun saveAdditional(tag: CompoundTag) {
-        super.saveAdditional(tag)
-        tag.put("Items", items.serializeNBT())
+    override fun saveAdditional(tag: CompoundTag, registry: HolderLookup.Provider) {
+        super.saveAdditional(tag, registry)
+        tag.put("Items", items.serializeNBT(registry))
     }
 
-    override fun load(tag: CompoundTag) {
-        super.load(tag)
-        if (tag.contains("Items")) items.deserializeNBT(tag.getCompound("Items"))
+    override fun loadAdditional(tag: CompoundTag, registry: HolderLookup.Provider) {
+        super.loadAdditional(tag, registry)
+        if (tag.contains("Items")) items.deserializeNBT(registry, tag.getCompound("Items"))
     }
 
     override fun useFuel() {

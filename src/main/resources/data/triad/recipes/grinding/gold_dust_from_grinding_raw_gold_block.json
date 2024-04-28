@@ -2,7 +2,7 @@
   "type": "triad:grinding",
   "ingredient":
   {
-    "tag": "forge:storage_blocks/raw_gold"
+    "tag": "c:storage_blocks/raw_gold"
   },
   "result": {
     "count": 18,

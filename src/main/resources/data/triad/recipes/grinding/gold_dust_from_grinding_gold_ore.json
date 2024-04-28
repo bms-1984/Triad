@@ -2,7 +2,7 @@
   "type": "triad:grinding",
   "ingredient":
   {
-    "tag": "forge:ores/gold"
+    "tag": "c:ores/gold"
   },
   "result": {
     "count": 2,

@@ -18,13 +18,14 @@
 
 package net.benjimadness.triad.recipe
 
-import com.mojang.serialization.Codec
+import com.mojang.serialization.MapCodec
 import com.mojang.serialization.codecs.RecordCodecBuilder
 import net.benjimadness.triad.TriadMod
 import net.benjimadness.triad.registry.TriadRecipes
+import net.minecraft.core.HolderLookup
 import net.minecraft.core.NonNullList
-import net.minecraft.core.RegistryAccess
-import net.minecraft.network.FriendlyByteBuf
+import net.minecraft.network.RegistryFriendlyByteBuf
+import net.minecraft.network.codec.StreamCodec
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.tags.ItemTags
 import net.minecraft.world.Container
@@ -49,34 +50,30 @@ class GrinderRecipe(
         return list
     }
 
-    override fun assemble(container: Container, regAccess: RegistryAccess): ItemStack = getResultItem(regAccess).copy()
+    override fun assemble(container: Container, registry: HolderLookup.Provider): ItemStack = getResultItem(registry).copy()
 
     override fun canCraftInDimensions(x: Int, y: Int): Boolean = false
 
-    override fun getResultItem(regAccess: RegistryAccess): ItemStack = output
+    override fun getResultItem(registry: HolderLookup.Provider): ItemStack = output
 
     override fun getSerializer(): RecipeSerializer<*> = TriadRecipes.GRINDER_RECIPE_SERIALIZER
 
     override fun getType(): RecipeType<*> = TriadRecipes.GRINDER_RECIPE_TYPE
 
     class Serializer : RecipeSerializer<GrinderRecipe> {
-        override fun codec(): Codec<GrinderRecipe> = RecordCodecBuilder.create {
+        override fun codec(): MapCodec<GrinderRecipe> = RecordCodecBuilder.mapCodec {
             it.group(
                 Ingredient.CODEC_NONEMPTY.fieldOf("ingredient").forGetter(GrinderRecipe::input),
-                ItemStack.ITEM_WITH_COUNT_CODEC.fieldOf("result").forGetter(GrinderRecipe::output)
+                ItemStack.SIMPLE_ITEM_CODEC.fieldOf("result").forGetter(GrinderRecipe::output)
             ).apply(it, ::GrinderRecipe)
         }
 
-        override fun fromNetwork(buffer: FriendlyByteBuf): GrinderRecipe {
-            val out = buffer.readItem()
-            val input = Ingredient.fromNetwork(buffer)
-            return GrinderRecipe(input, out)
-        }
-
-        override fun toNetwork(buffer: FriendlyByteBuf, recipe: GrinderRecipe) {
-            buffer.writeItem(recipe.output)
-            recipe.input.toNetwork(buffer)
-        }
+        override fun streamCodec(): StreamCodec<RegistryFriendlyByteBuf, GrinderRecipe> =
+            StreamCodec.composite(
+                Ingredient.CONTENTS_STREAM_CODEC, GrinderRecipe::input,
+                ItemStack.STREAM_CODEC, GrinderRecipe::output,
+                ::GrinderRecipe
+            )
     }
 }
 

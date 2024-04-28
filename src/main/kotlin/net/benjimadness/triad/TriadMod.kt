@@ -25,12 +25,9 @@ import net.benjimadness.triad.gui.BoilerScreen
 import net.benjimadness.triad.gui.ElectricFurnaceScreen
 import net.benjimadness.triad.gui.TurbineScreen
 import net.benjimadness.triad.gui.GrinderScreen
-import net.benjimadness.triad.item.tool.TriadToolTiers
 import net.benjimadness.triad.registry.*
-import net.minecraft.resources.ResourceLocation
-import net.minecraft.world.item.Tiers
 import net.neoforged.bus.api.SubscribeEvent
-import net.neoforged.fml.ModLoadingContext
+import net.neoforged.fml.common.EventBusSubscriber
 import net.neoforged.fml.common.Mod
 import net.neoforged.fml.config.ModConfig
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent
@@ -39,35 +36,25 @@ import net.neoforged.fml.event.lifecycle.FMLDedicatedServerSetupEvent
 import net.neoforged.neoforge.capabilities.Capabilities
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent
-import net.neoforged.neoforge.common.TierSortingRegistry
 import org.slf4j.Logger
 import thedarkcolour.kotlinforforge.neoforge.forge.MOD_BUS
+import thedarkcolour.kotlinforforge.neoforge.forge.registerConfig
 import thedarkcolour.kotlinforforge.neoforge.forge.runForDist
 
 @Mod(TriadMod.MODID)
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 object  TriadMod {
     const val MODID = "triad"
     val LOGGER: Logger = LogUtils.getLogger()
     init {
-        TierSortingRegistry.registerTier(
-            TriadToolTiers.BRONZE,
-            ResourceLocation(MODID, "bronze"),
-            listOf(Tiers.IRON),
-            listOf(Tiers.DIAMOND)
-        )
-        TierSortingRegistry.registerTier(
-            TriadToolTiers.STEEL,
-            ResourceLocation(MODID, "steel"),
-            listOf(Tiers.DIAMOND),
-            listOf(Tiers.NETHERITE)
-        )
+
         runForDist(
             clientTarget = { MOD_BUS.addListener(::onClientSetup) },
             serverTarget = { MOD_BUS.addListener(::onServerSetup) })
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, TriadConfig.SPEC)
+        registerConfig(ModConfig.Type.COMMON, TriadConfig.SPEC)
         TriadBlocks.REGISTRY.register(MOD_BUS)
         TriadItems.REGISTRY.register(MOD_BUS)
+        TriadItems.ARMOR_MATERIAL_REGISTRY.register(MOD_BUS)
         TriadFluids.REGISTRY.register(MOD_BUS)
         TriadBlockEntities.REGISTRY.register(MOD_BUS)
         MOD_BUS.addListener(::registerCapabilities)

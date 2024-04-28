@@ -2,7 +2,7 @@
   "type": "triad:grinding",
   "ingredient":
   {
-    "tag": "forge:ores/tin"
+    "tag": "c:ores/tin"
   },
   "result": {
     "count": 2,

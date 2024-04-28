@@ -4,6 +4,8 @@ import net.benjimadness.triad.api.block.TriadBlockStateProperties
 import net.benjimadness.triad.api.util.MiscUtil.getLeverOrientation
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
+import net.minecraft.core.HolderLookup
+import net.minecraft.core.HolderLookup.Provider
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.Block
@@ -45,13 +47,13 @@ AbstractTriadBlockEntity(type, pos, state) {
         setChanged()
     }
 
-    override fun saveAdditional(tag: CompoundTag) {
-        super.saveAdditional(tag)
-        tag.put("Energy", energy.serializeNBT())
+    override fun saveAdditional(tag: CompoundTag, registry: Provider) {
+        super.saveAdditional(tag, registry)
+        tag.put("Energy", energy.serializeNBT(registry))
     }
 
-    override fun load(tag: CompoundTag) {
-        super.load(tag)
-        if (tag.contains("Energy")) tag.get("Energy")?.let { energy.deserializeNBT(it) }
+    override fun loadAdditional(tag: CompoundTag, registry: Provider) {
+        super.loadAdditional(tag, registry)
+        if (tag.contains("Energy")) tag.get("Energy")?.let { energy.deserializeNBT(registry, it) }
     }
 }

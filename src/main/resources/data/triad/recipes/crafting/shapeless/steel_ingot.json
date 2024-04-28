@@ -4,7 +4,7 @@
   "group": "steel_ingot",
   "ingredients": [
     {
-      "tag": "forge:storage_blocks/steel"
+      "tag": "c:storage_blocks/steel"
     }
   ],
   "result": {
