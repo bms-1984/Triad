@@ -15,6 +15,7 @@ import net.minecraft.world.level.block.EntityBlock
 import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.world.level.block.entity.BlockEntityTicker
 import net.minecraft.world.level.block.entity.BlockEntityType
+import net.minecraft.world.level.block.state.BlockBehaviour
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.StateDefinition
 import net.minecraft.world.level.block.state.properties.BlockStateProperties
@@ -24,7 +25,8 @@ import net.neoforged.neoforge.capabilities.Capabilities
 import kotlin.reflect.KClass
 import kotlin.reflect.full.primaryConstructor
 
-open class AbstractMachineBlock(properties: Properties, private val blockEntity: KClass<out BlockEntity>) : Block(properties), EntityBlock {
+abstract class AbstractMachineBlock(properties: Properties, blockEntity: KClass<out BlockEntity>) :
+    AbstractTriadEntityBlock(properties, blockEntity) {
     companion object {
         @JvmStatic
         protected val FACING: DirectionProperty = BlockStateProperties.HORIZONTAL_FACING
@@ -47,17 +49,6 @@ open class AbstractMachineBlock(properties: Properties, private val blockEntity:
     override fun createBlockStateDefinition(builder: StateDefinition.Builder<Block, BlockState>) {
         builder.add(FACING, LEVER, RUNNING)
     }
-
-    override fun newBlockEntity(pos: BlockPos, state: BlockState): BlockEntity = blockEntity.primaryConstructor!!.call(pos, state)
-    override fun <T : BlockEntity> getTicker(
-        level: Level,
-        state: BlockState,
-        blockEntityType: BlockEntityType<T>
-    ): BlockEntityTicker<T> =
-        BlockEntityTicker { lLevel, pos, _, lBlockEntity ->
-            if (lLevel.isClientSide) return@BlockEntityTicker
-            else if (lBlockEntity is AbstractMachineBlockEntity) lBlockEntity.serverTick(lLevel, pos, lBlockEntity)
-        }
 
     @Deprecated("Deprecated in Java", ReplaceWith(
         "super.use(pState, pLevel, pPos, pPlayer, pHand, pHit)",

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "@": {
+      "item": "minecraft:lightning_rod"
+    },
+    "!": {
+      "item": "minecraft:redstone_torch"
+    },
+    "$": {
+      "tag": "forge:storage_blocks/steel"
+    }
+  },
+  "pattern": [
+    "$@$",
+    "$!$",
+    "$$$"
+  ],
+  "result": {
+    "item": "triad:steel_capacitor"
+  }
+}

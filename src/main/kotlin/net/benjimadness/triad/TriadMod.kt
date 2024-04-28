@@ -46,7 +46,7 @@ import thedarkcolour.kotlinforforge.neoforge.forge.runForDist
 
 @Mod(TriadMod.MODID)
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-object TriadMod {
+object  TriadMod {
     const val MODID = "triad"
     val LOGGER: Logger = LogUtils.getLogger()
     init {
@@ -127,6 +127,10 @@ object TriadMod {
             Capabilities.ItemHandler.BLOCK,
             TriadBlockEntities.BRONZE_FURNACE_BLOCK_ENTITY_TYPE
         ) { o, _ -> o.itemHandler}
+        event.registerBlockEntity(
+            Capabilities.EnergyStorage.BLOCK,
+            TriadBlockEntities.STEEL_CAPACITOR_BLOCK_ENTITY_TYPE
+        ) { o, _ -> o.energyStorage }
     }
 
     private fun onClientSetup(event: FMLClientSetupEvent) {

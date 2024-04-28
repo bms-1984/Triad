@@ -45,6 +45,9 @@ object TriadBlockEntities {
     val BRONZE_FURNACE_BLOCK_ENTITY_TYPE: BlockEntityType<BronzeFurnaceBlockEntity> by registerBlockEntity("bronze_furnace_block_entity") {
         BlockEntityType.Builder.of(::BronzeFurnaceBlockEntity, TriadBlocks.BRONZE_FURNACE).build(null)
     }
+    val STEEL_CAPACITOR_BLOCK_ENTITY_TYPE: BlockEntityType<SteelCapacitorBlockEntity> by registerBlockEntity("steel_capacitor_block_entity") {
+        BlockEntityType.Builder.of(::SteelCapacitorBlockEntity, TriadBlocks.STEEL_CAPACITOR).build(null)
+    }
 
     private fun <T : BlockEntityType<*>> registerBlockEntity(name: String, blockEntity: Supplier<T>) =
         REGISTRY.register(name, blockEntity)

@@ -7,6 +7,11 @@
     "triad:raw_tin_block",
     "triad:bronze_block",
     "triad:steel_block",
-    "triad:redstone_grinder"
+    "triad:redstone_grinder",
+    "triad:bronze_item_boiler",
+    "triad:bronze_turbine",
+    "triad:bronze_grinder",
+    "triad:bronze_furnace",
+    "triad:steel_capacitor"
   ]
 }

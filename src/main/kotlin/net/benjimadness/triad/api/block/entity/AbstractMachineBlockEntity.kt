@@ -15,10 +15,10 @@ import net.minecraft.world.level.block.entity.BlockEntityType
 import net.minecraft.world.level.block.state.BlockState
 
 abstract class AbstractMachineBlockEntity (type: BlockEntityType<*>, pos: BlockPos, state: BlockState) :
-    BlockEntity(type, pos, state) {
+    AbstractTriadBlockEntity(type, pos, state) {
         private var isRunning = false
 
-    open fun serverTick(level: Level, pos: BlockPos, blockEntity: AbstractMachineBlockEntity) {
+    override fun serverTick(level: Level, pos: BlockPos, blockEntity: AbstractTriadBlockEntity) {
         level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.LEVER, level.getBlockState(pos).getLeverOrientation(level, pos)), Block.UPDATE_CLIENTS)
         if (shouldRun()) {
             isRunning = true

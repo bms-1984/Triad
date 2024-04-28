@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "triad:block/steel_capacitor_powered",
+    "side": "triad:block/steel_block",
+    "top": "triad:block/steel_block",
+    "bottom": "triad:block/steel_block",
+    "west": "triad:block/steel_block_lever"
+  }
+}

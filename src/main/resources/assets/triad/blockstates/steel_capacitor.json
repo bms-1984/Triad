@@ -1,0 +1,244 @@
+{
+  "variants": {
+    "facing=east,powered=false,lever=none": {
+      "model": "triad:block/steel_capacitor",
+      "y": 90
+    },
+    "facing=north,powered=false,lever=none": {
+      "model": "triad:block/steel_capacitor"
+    },
+    "facing=south,powered=false,lever=none": {
+      "model": "triad:block/steel_capacitor",
+      "y": 180
+    },
+    "facing=west,powered=false,lever=none": {
+      "model": "triad:block/steel_capacitor",
+      "y": 270
+    },
+    "facing=east,powered=false,lever=top": {
+      "model": "triad:block/steel_capacitor_lever_top",
+      "y": 90
+    },
+    "facing=north,powered=false,lever=top": {
+      "model": "triad:block/steel_capacitor_lever_top"
+    },
+    "facing=south,powered=false,lever=top": {
+      "model": "triad:block/steel_capacitor_lever_top",
+      "y": 180
+    },
+    "facing=west,powered=false,lever=top": {
+      "model": "triad:block/steel_capacitor_lever_top",
+      "y": 270
+    },
+    "facing=east,powered=false,lever=bottom": {
+      "model": "triad:block/steel_capacitor_lever_bottom",
+      "y": 90
+    },
+    "facing=north,powered=false,lever=bottom": {
+      "model": "triad:block/steel_capacitor_lever_bottom"
+    },
+    "facing=south,powered=false,lever=bottom": {
+      "model": "triad:block/steel_capacitor_lever_bottom",
+      "y": 180
+    },
+    "facing=west,powered=false,lever=bottom": {
+      "model": "triad:block/steel_capacitor_lever_bottom",
+      "y": 270
+    },
+    "facing=east,powered=false,lever=top_rot": {
+      "model": "triad:block/steel_capacitor_lever_top_rot",
+      "y": 90
+    },
+    "facing=north,powered=false,lever=top_rot": {
+      "model": "triad:block/steel_capacitor_lever_top_rot"
+    },
+    "facing=south,powered=false,lever=top_rot": {
+      "model": "triad:block/steel_capacitor_lever_top_rot",
+      "y": 180
+    },
+    "facing=west,powered=false,lever=top_rot": {
+      "model": "triad:block/steel_capacitor_lever_top_rot",
+      "y": 270
+    },
+    "facing=east,powered=false,lever=bottom_rot": {
+      "model": "triad:block/steel_capacitor_lever_bottom_rot",
+      "y": 90
+    },
+    "facing=north,powered=false,lever=bottom_rot": {
+      "model": "triad:block/steel_capacitor_lever_bottom_rot"
+    },
+    "facing=south,powered=false,lever=bottom_rot": {
+      "model": "triad:block/steel_capacitor_lever_bottom_rot",
+      "y": 180
+    },
+    "facing=west,powered=false,lever=bottom_rot": {
+      "model": "triad:block/steel_capacitor_lever_bottom_rot",
+      "y": 270
+    },
+    "facing=east,powered=false,lever=east": {
+      "model": "triad:block/steel_capacitor_lever_east",
+      "y": 90
+    },
+    "facing=north,powered=false,lever=east": {
+      "model": "triad:block/steel_capacitor_lever_east"
+    },
+    "facing=south,powered=false,lever=east": {
+      "model": "triad:block/steel_capacitor_lever_east",
+      "y": 180
+    },
+    "facing=west,powered=false,lever=east": {
+      "model": "triad:block/steel_capacitor_lever_east",
+      "y": 270
+    },
+    "facing=east,powered=false,lever=west": {
+      "model": "triad:block/steel_capacitor_lever_west",
+      "y": 90
+    },
+    "facing=north,powered=false,lever=west": {
+      "model": "triad:block/steel_capacitor_lever_west"
+    },
+    "facing=south,powered=false,lever=west": {
+      "model": "triad:block/steel_capacitor_lever_west",
+      "y": 180
+    },
+    "facing=west,powered=false,lever=west": {
+      "model": "triad:block/steel_capacitor_lever_west",
+      "y": 270
+    },
+    "facing=east,powered=false,lever=south": {
+      "model": "triad:block/steel_capacitor_lever_south",
+      "y": 90
+    },
+    "facing=north,powered=false,lever=south": {
+      "model": "triad:block/steel_capacitor_lever_south"
+    },
+    "facing=south,powered=false,lever=south": {
+      "model": "triad:block/steel_capacitor_lever_south",
+      "y": 180
+    },
+    "facing=west,powered=false,lever=south": {
+      "model": "triad:block/steel_capacitor_lever_south",
+      "y": 270
+    },
+    "facing=east,powered=true,lever=none": {
+      "model": "triad:block/steel_capacitor_powered",
+      "y": 90
+    },
+    "facing=north,powered=true,lever=none": {
+      "model": "triad:block/steel_capacitor_powered"
+    },
+    "facing=south,powered=true,lever=none": {
+      "model": "triad:block/steel_capacitor_powered",
+      "y": 180
+    },
+    "facing=west,powered=true,lever=none": {
+      "model": "triad:block/steel_capacitor_powered",
+      "y": 270
+    },
+    "facing=east,powered=true,lever=top": {
+      "model": "triad:block/steel_capacitor_powered_lever_top",
+      "y": 90
+    },
+    "facing=north,powered=true,lever=top": {
+      "model": "triad:block/steel_capacitor_powered_lever_top"
+    },
+    "facing=south,powered=true,lever=top": {
+      "model": "triad:block/steel_capacitor_powered_lever_top",
+      "y": 180
+    },
+    "facing=west,powered=true,lever=top": {
+      "model": "triad:block/steel_capacitor_powered_lever_top",
+      "y": 270
+    },
+    "facing=east,powered=true,lever=bottom": {
+      "model": "triad:block/steel_capacitor_powered_lever_bottom",
+      "y": 90
+    },
+    "facing=north,powered=true,lever=bottom": {
+      "model": "triad:block/steel_capacitor_powered_lever_bottom"
+    },
+    "facing=south,powered=true,lever=bottom": {
+      "model": "triad:block/steel_capacitor_powered_lever_bottom",
+      "y": 180
+    },
+    "facing=west,powered=true,lever=bottom": {
+      "model": "triad:block/steel_capacitor_powered_lever_bottom",
+      "y": 270
+    },
+    "facing=east,powered=true,lever=top_rot": {
+      "model": "triad:block/steel_capacitor_powered_lever_top_rot",
+      "y": 90
+    },
+    "facing=north,powered=true,lever=top_rot": {
+      "model": "triad:block/steel_capacitor_powered_lever_top_rot"
+    },
+    "facing=south,powered=true,lever=top_rot": {
+      "model": "triad:block/steel_capacitor_powered_lever_top_rot",
+      "y": 180
+    },
+    "facing=west,powered=true,lever=top_rot": {
+      "model": "triad:block/steel_capacitor_powered_lever_top_rot",
+      "y": 270
+    },
+    "facing=east,powered=true,lever=bottom_rot": {
+      "model": "triad:block/steel_capacitor_powered_lever_bottom_rot",
+      "y": 90
+    },
+    "facing=north,powered=true,lever=bottom_rot": {
+      "model": "triad:block/steel_capacitor_powered_lever_bottom_rot"
+    },
+    "facing=south,powered=true,lever=bottom_rot": {
+      "model": "triad:block/steel_capacitor_powered_lever_bottom_rot",
+      "y": 180
+    },
+    "facing=west,powered=true,lever=bottom_rot": {
+      "model": "triad:block/steel_capacitor_powered_lever_bottom_rot",
+      "y": 270
+    },
+    "facing=east,powered=true,lever=east": {
+      "model": "triad:block/steel_capacitor_powered_lever_east",
+      "y": 90
+    },
+    "facing=north,powered=true,lever=east": {
+      "model": "triad:block/steel_capacitor_powered_lever_east"
+    },
+    "facing=south,powered=true,lever=east": {
+      "model": "triad:block/steel_capacitor_powered_lever_east",
+      "y": 180
+    },
+    "facing=west,powered=true,lever=east": {
+      "model": "triad:block/steel_capacitor_powered_lever_east",
+      "y": 270
+    },
+    "facing=east,powered=true,lever=west": {
+      "model": "triad:block/steel_capacitor_powered_lever_west",
+      "y": 90
+    },
+    "facing=north,powered=true,lever=west": {
+      "model": "triad:block/steel_capacitor_powered_lever_west"
+    },
+    "facing=south,powered=true,lever=west": {
+      "model": "triad:block/steel_capacitor_powered_lever_west",
+      "y": 180
+    },
+    "facing=west,powered=true,lever=west": {
+      "model": "triad:block/steel_capacitor_powered_lever_west",
+      "y": 270
+    },
+    "facing=east,powered=true,lever=south": {
+      "model": "triad:block/steel_capacitor_powered_lever_south",
+      "y": 90
+    },
+    "facing=north,powered=true,lever=south": {
+      "model": "triad:block/steel_capacitor_powered_lever_south"
+    },
+    "facing=south,powered=true,lever=south": {
+      "model": "triad:block/steel_capacitor_powered_lever_south",
+      "y": 180
+    },
+    "facing=west,powered=true,lever=south": {
+      "model": "triad:block/steel_capacitor_powered_lever_south",
+      "y": 270
+    }
+  }
+}

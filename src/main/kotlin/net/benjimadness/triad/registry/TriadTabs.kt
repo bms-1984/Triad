@@ -116,6 +116,7 @@ object TriadTabs {
                         output.accept(TriadBlocks.BRONZE_ITEM_BOILER)
                         output.accept(TriadBlocks.BRONZE_TURBINE)
                         output.accept(TriadBlocks.BRONZE_FURNACE)
+                        output.accept(TriadBlocks.STEEL_CAPACITOR)
                     }
                 }
                 .build()

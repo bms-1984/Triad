@@ -22,7 +22,7 @@ abstract class AbstractTurbineBlockEntity(capacity: Int, transfer: Int, private 
     }
     val steamTank: IFluidHandler by lazy { steam }
 
-    override fun serverTick(level: Level, pos: BlockPos, blockEntity: AbstractMachineBlockEntity) {
+    override fun serverTick(level: Level, pos: BlockPos, blockEntity: AbstractTriadBlockEntity) {
         if (isFueled()) level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.STEAM, true), Block.UPDATE_CLIENTS)
         else level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.STEAM, false), Block.UPDATE_CLIENTS)
         super.serverTick(level, pos, blockEntity)
