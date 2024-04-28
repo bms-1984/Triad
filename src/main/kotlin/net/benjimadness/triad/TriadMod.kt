@@ -27,7 +27,6 @@ import net.benjimadness.triad.gui.TurbineScreen
 import net.benjimadness.triad.gui.GrinderScreen
 import net.benjimadness.triad.item.tool.TriadToolTiers
 import net.benjimadness.triad.registry.*
-import net.minecraft.client.gui.screens.MenuScreens
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.item.Tiers
 import net.neoforged.bus.api.SubscribeEvent
