@@ -39,6 +39,7 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent
 import net.neoforged.fml.event.lifecycle.FMLDedicatedServerSetupEvent
 import net.neoforged.neoforge.capabilities.Capabilities
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent
 import net.neoforged.neoforge.common.TierSortingRegistry
 import org.slf4j.Logger
 import thedarkcolour.kotlinforforge.neoforge.forge.MOD_BUS
@@ -133,11 +134,14 @@ object  TriadMod {
         ) { o, _ -> o.energyStorage }
     }
 
-    private fun onClientSetup(event: FMLClientSetupEvent) {
-        event.enqueueWork { MenuScreens.register(TriadMenus.GRINDER_MENU_TYPE.get(), ::GrinderScreen) }
-        event.enqueueWork { MenuScreens.register(TriadMenus.ITEM_BOILER_MENU_TYPE.get(), ::BoilerScreen) }
-        event.enqueueWork { MenuScreens.register(TriadMenus.TURBINE_MENU_TYPE.get(), ::TurbineScreen) }
-        event.enqueueWork { MenuScreens.register(TriadMenus.FURNACE_MENU_TYPE.get(), ::ElectricFurnaceScreen)}
+    private fun onClientSetup(event: FMLClientSetupEvent) {}
+
+    @SubscribeEvent
+    private fun onRegisterMenuScreens(event: RegisterMenuScreensEvent) {
+        event.register(TriadMenus.GRINDER_MENU_TYPE.get(), ::GrinderScreen)
+        event.register(TriadMenus.FURNACE_MENU_TYPE.get(), ::ElectricFurnaceScreen)
+        event.register(TriadMenus.TURBINE_MENU_TYPE.get(), ::TurbineScreen)
+        event.register(TriadMenus.ITEM_BOILER_MENU_TYPE.get(), ::BoilerScreen)
     }
 
     private fun onServerSetup(event: FMLDedicatedServerSetupEvent) {}
