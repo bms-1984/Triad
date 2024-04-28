@@ -24,8 +24,7 @@ import net.benjimadness.triad.block.GrinderBlock
 import net.benjimadness.triad.api.block.TriadBlockStateProperties
 import net.benjimadness.triad.api.block.entity.AbstractBoilerBlockEntity
 import net.benjimadness.triad.api.block.entity.AbstractTurbineBlockEntity
-import net.benjimadness.triad.api.util.ComponentUtil
-import net.benjimadness.triad.api.util.ComponentUtil.add
+import net.benjimadness.triad.api.util.ComponentUtil.combine
 import net.benjimadness.triad.block.BoilerBlock
 import net.benjimadness.triad.block.TurbineBlock
 import net.minecraft.network.chat.Component
@@ -42,7 +41,6 @@ object TheOneProbe {
         if (!ModList.get().isLoaded("theoneprobe"))
             return
         InterModComms.sendTo("theoneprobe", "getTheOneProbe", ::GetTheOneProbe)
-
     }
 
     class GetTheOneProbe : Function<ITheOneProbe, Unit> {
@@ -56,7 +54,9 @@ object TheOneProbe {
                 ) {
                     if (state != null && state.block is GrinderBlock && info != null) {
                         info.horizontal().text(
-                            Component.translatable("${TriadMod.MODID}.message.blade").add(
+                            combine(
+                                Component.translatableWithFallback(
+                                    "${TriadMod.MODID}.message.blade", "Blade"),
                                 Component.literal(": "),
                                 state.getValue(TriadBlockStateProperties.BLADE).getComponent()
                             )
@@ -64,39 +64,37 @@ object TheOneProbe {
                     }
                     if (level != null && hitData != null && state != null && state.block is BoilerBlock && info != null) {
                         info.horizontal().text(
-                            Component.translatable("${TriadMod.MODID}.message.steam").add(
+                            combine(
+                                Component.translatableWithFallback(
+                                    "${TriadMod.MODID}.message.steam", "Steam"),
                                 Component.literal(": "),
                                 Component.literal(
-                                    "${
-                                        (level.getBlockEntity(hitData.pos) as AbstractBoilerBlockEntity).steamTank.getFluidInTank(
-                                            0
-                                        ).amount
-                                    } L"
+                                    "${(level.getBlockEntity(hitData.pos) as AbstractBoilerBlockEntity)
+                                        .steamTank.getFluidInTank(0).amount} L"
                                 )
                             )
                         )
                         info.horizontal().text(
-                            Component.translatable("${TriadMod.MODID}.message.water").add(
+                            combine(
+                                Component.translatableWithFallback(
+                                    "${TriadMod.MODID}.message.water", "Water"),
                                 Component.literal(": "),
                                 Component.literal(
-                                    "${
-                                        (level.getBlockEntity(hitData.pos) as AbstractBoilerBlockEntity).waterTank.getFluidInTank(
-                                            0
-                                        ).amount
-                                    } L"
+                                    "${(level.getBlockEntity(hitData.pos) as AbstractBoilerBlockEntity)
+                                        .waterTank.getFluidInTank(0).amount} L"
                                 )
                             )
                         )
                     }
                     if (level != null && hitData != null && state != null && state.block is TurbineBlock && info != null) {
                         info.horizontal().text(
-                            Component.translatable("${TriadMod.MODID}.message.steam").add(
+                            combine(
+                                Component.translatableWithFallback(
+                                    "${TriadMod.MODID}.message.steam", "Steam"),
                                 Component.literal(": "),
                                 Component.literal(
-                                    "${
-                                        (level.getBlockEntity(hitData.pos) as
-                                                AbstractTurbineBlockEntity).steamTank.getFluidInTank(0).amount
-                                    } L"
+                                    "${(level.getBlockEntity(hitData.pos) as AbstractTurbineBlockEntity)
+                                        .steamTank.getFluidInTank(0).amount} L"
                                 )
                             )
                         )

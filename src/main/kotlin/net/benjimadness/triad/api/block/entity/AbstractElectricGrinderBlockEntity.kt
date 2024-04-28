@@ -1,27 +1,12 @@
 package net.benjimadness.triad.api.block.entity
 
-import net.benjimadness.triad.TriadMod
-import net.benjimadness.triad.block.GrinderBlock
-import net.benjimadness.triad.api.block.TriadBlockStateProperties
-import net.benjimadness.triad.api.item.ReusableItem
-import net.benjimadness.triad.recipe.GrinderRecipe
-import net.benjimadness.triad.registry.TriadRecipes
 import net.minecraft.core.BlockPos
 import net.minecraft.core.HolderLookup
 import net.minecraft.nbt.CompoundTag
-import net.minecraft.resources.ResourceLocation
-import net.minecraft.tags.ItemTags
-import net.minecraft.util.RandomSource
-import net.minecraft.world.item.ItemStack
-import net.minecraft.world.item.crafting.RecipeManager
-import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.entity.BlockEntityType
 import net.minecraft.world.level.block.state.BlockState
 import net.neoforged.neoforge.energy.EnergyStorage
 import net.neoforged.neoforge.energy.IEnergyStorage
-import net.neoforged.neoforge.items.IItemHandler
-import net.neoforged.neoforge.items.ItemStackHandler
-import net.neoforged.neoforge.items.wrapper.RecipeWrapper
 
 abstract class AbstractElectricGrinderBlockEntity(capacity: Int, type: BlockEntityType<*>, pos: BlockPos, state: BlockState) :
     AbstractGrinderBlockEntity(type, pos, state) {

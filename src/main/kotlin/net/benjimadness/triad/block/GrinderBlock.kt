@@ -20,6 +20,7 @@ package net.benjimadness.triad.block
 
 import net.benjimadness.triad.TriadMod
 import net.benjimadness.triad.api.block.AbstractMachineBlock
+import net.benjimadness.triad.api.block.Blades
 import net.benjimadness.triad.api.block.LeverPositions
 import net.benjimadness.triad.api.block.TriadBlockStateProperties
 import net.benjimadness.triad.api.block.entity.AbstractMachineBlockEntity
@@ -27,7 +28,6 @@ import net.benjimadness.triad.gui.GrinderMenu
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.network.chat.Component
-import net.minecraft.util.StringRepresentable
 import net.minecraft.world.MenuProvider
 import net.minecraft.world.SimpleMenuProvider
 import net.minecraft.world.level.Level
@@ -63,13 +63,4 @@ class GrinderBlock(properties: Properties, blockEntity: KClass<out AbstractMachi
             { id, inv, _ -> GrinderMenu(id, inv, pos) },
             Component.translatableWithFallback("menu.title.${TriadMod.MODID}.grinder_menu", "Grinder")
         )
-
-    enum class Blades : StringRepresentable {
-        NONE, BRONZE, STEEL;
-        override fun getSerializedName(): String = name.lowercase()
-        override fun toString(): String = serializedName
-        fun getComponent(): Component = Component.translatableWithFallback(
-            "${TriadMod.MODID}.message.blade.${serializedName}",
-            serializedName.replaceFirstChar { it.uppercase() })
-    }
 }

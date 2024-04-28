@@ -1,7 +1,7 @@
 package net.benjimadness.triad.api.block.entity
 
 import net.benjimadness.triad.TriadMod
-import net.benjimadness.triad.block.GrinderBlock
+import net.benjimadness.triad.api.block.Blades
 import net.benjimadness.triad.api.block.TriadBlockStateProperties
 import net.benjimadness.triad.api.item.ReusableItem
 import net.benjimadness.triad.recipe.GrinderRecipe
@@ -14,9 +14,7 @@ import net.minecraft.tags.ItemTags
 import net.minecraft.util.RandomSource
 import net.minecraft.world.Container
 import net.minecraft.world.item.ItemStack
-import net.minecraft.world.item.crafting.Recipe
 import net.minecraft.world.item.crafting.RecipeManager
-import net.minecraft.world.item.crafting.SmeltingRecipe
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.entity.BlockEntityType
 import net.minecraft.world.level.block.state.BlockState
@@ -42,7 +40,7 @@ abstract class AbstractGrinderBlockEntity(type: BlockEntityType<*>, pos: BlockPo
     }
     val itemHandler: IItemHandler by lazy { items }
     private var isOn = false
-    private var blade = GrinderBlock.Blades.NONE
+    private var blade = Blades.NONE
     private val random = RandomSource.create()
     override val check: RecipeManager.CachedCheck<Container, GrinderRecipe> = RecipeManager.createCheck(TriadRecipes.GRINDER_RECIPE_TYPE)
 
@@ -95,7 +93,7 @@ abstract class AbstractGrinderBlockEntity(type: BlockEntityType<*>, pos: BlockPo
     override fun loadClientData(tag: CompoundTag) {
         super.loadClientData(tag)
         if (tag.contains("IsOn")) isOn = tag.getBoolean("IsOn")
-        if (tag.contains("Blade")) blade = GrinderBlock.Blades.valueOf(tag.getString("Blade").uppercase())
+        if (tag.contains("Blade")) blade = Blades.valueOf(tag.getString("Blade").uppercase())
     }
     private fun hasBlade(): Boolean {
         if (!hasLevel()) return false
@@ -109,7 +107,7 @@ abstract class AbstractGrinderBlockEntity(type: BlockEntityType<*>, pos: BlockPo
             return true
         }
         else {
-            blade = GrinderBlock.Blades.NONE
+            blade = Blades.NONE
             level!!.setBlock(blockPos, level!!.getBlockState(blockPos).setValue(TriadBlockStateProperties.BLADE, blade),
                 Block.UPDATE_CLIENTS
             )
