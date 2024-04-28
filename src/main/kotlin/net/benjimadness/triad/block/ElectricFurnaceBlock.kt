@@ -21,7 +21,7 @@ package net.benjimadness.triad.block
 import net.benjimadness.triad.TriadMod
 import net.benjimadness.triad.api.block.AbstractMachineBlock
 import net.benjimadness.triad.api.block.entity.AbstractMachineBlockEntity
-import net.benjimadness.triad.gui.ElectricFurnaceMenu
+import net.benjimadness.triad.gui.menu.ElectricFurnaceMenu
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.core.particles.ParticleTypes

@@ -16,14 +16,11 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.benjimadness.triad.gui
+package net.benjimadness.triad.gui.menu
 
-import net.benjimadness.triad.TriadMod
-import net.benjimadness.triad.api.block.entity.AbstractGrinderBlockEntity
+import net.benjimadness.triad.api.block.entity.AbstractElectricFurnaceBlockEntity
 import net.benjimadness.triad.registry.TriadMenus
 import net.minecraft.core.BlockPos
-import net.minecraft.resources.ResourceLocation
-import net.minecraft.tags.ItemTags
 import net.minecraft.util.Mth.clamp
 import net.minecraft.world.entity.player.Inventory
 import net.minecraft.world.entity.player.Player
@@ -34,19 +31,18 @@ import net.minecraft.world.inventory.Slot
 import net.minecraft.world.item.ItemStack
 import net.neoforged.neoforge.items.SlotItemHandler
 
-class GrinderMenu(
+class ElectricFurnaceMenu(
     id: Int, playerInventory: Inventory,
     private val pos: BlockPos
-) : AbstractContainerMenu(TriadMenus.GRINDER_MENU_TYPE.get(), id) {
+) : AbstractContainerMenu(TriadMenus.FURNACE_MENU_TYPE.get(), id) {
     private var progress = 0
     private var totalTime = 0
 
     init {
         val entity = playerInventory.player.level().getBlockEntity(pos)
-        if (entity is AbstractGrinderBlockEntity) {
-            addSlot(SlotItemHandler(entity.itemHandler, 0, 56, 17)) // input
-            addSlot(SlotItemHandler(entity.itemHandler, 1, 56, 53)) // blade
-            addSlot(SlotItemHandler(entity.itemHandler, 2, 116, 35)) // result
+        if (entity is AbstractElectricFurnaceBlockEntity) {
+            addSlot(SlotItemHandler(entity.itemHandler, 0, 56, 35)) // input
+            addSlot(SlotItemHandler(entity.itemHandler, 1, 110, 35)) // result
             // player inventory
             for (y in 0 until 3) {
                 for (x in 0 until 9) {
@@ -78,29 +74,19 @@ class GrinderMenu(
         if (slot.hasItem()) {
             val slotStack = slot.item
             stack = slotStack.copy()
-            if ((0 until 3).contains(slotIndex)) {
-                if (!moveItemStackTo(slotStack, 3, 39, true))
+            if ((0 until 2).contains(slotIndex)) {
+                if (!moveItemStackTo(slotStack, 2, 37, true))
                     return ItemStack.EMPTY
                 slot.onQuickCraft(slotStack, stack)
-            } else if ((3 until 40).contains(slotIndex)) {
-                if (slot.item.`is`(ItemTags.create(ResourceLocation(TriadMod.MODID, "blades")))) {
-                    if (!moveItemStackTo(slotStack, 1, 2, false))
+            } else if ((2 until 39).contains(slotIndex)) {
+                if ((2 until 30).contains(slotIndex)) {
+                    if (!moveItemStackTo(slotStack, 29, 37, true))
                         return ItemStack.EMPTY
-                } else if (
-                    slot.item.`is`(ItemTags.create(ResourceLocation("c", "ingots"))) ||
-                    slot.item.`is`(ItemTags.create(ResourceLocation("c", "ores"))) ||
-                    slot.item.`is`(ItemTags.create(ResourceLocation("c", "raw_materials"))) ||
-                    slot.item.`is`(ItemTags.create(ResourceLocation("c", "storage_blocks")))
-                ) {
-                    if (!moveItemStackTo(slotStack, 0, 1, false))
+                } else if ((29 until 38).contains(slotIndex)) {
+                    if (!moveItemStackTo(slotStack, 2, 29, true))
                         return ItemStack.EMPTY
-                } else if ((3 until 30).contains(slotIndex)) {
-                    if (!moveItemStackTo(slotStack, 30, 39, true))
-                        return ItemStack.EMPTY
-                } else if ((30 until 40).contains(slotIndex)) {
-                    if (!moveItemStackTo(slotStack, 3, 30, true))
-                        return ItemStack.EMPTY
-                } else return ItemStack.EMPTY
+                }
+                else return ItemStack.EMPTY
             }
             if (slotStack.isEmpty)
                 slot.set(ItemStack.EMPTY)

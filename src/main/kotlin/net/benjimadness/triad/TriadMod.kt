@@ -21,10 +21,10 @@ package net.benjimadness.triad
 import com.mojang.logging.LogUtils
 import net.benjimadness.triad.compat.TheOneProbe
 import net.benjimadness.triad.config.TriadConfig
-import net.benjimadness.triad.gui.BoilerScreen
-import net.benjimadness.triad.gui.ElectricFurnaceScreen
-import net.benjimadness.triad.gui.TurbineScreen
-import net.benjimadness.triad.gui.GrinderScreen
+import net.benjimadness.triad.gui.screen.BoilerScreen
+import net.benjimadness.triad.gui.screen.ElectricFurnaceScreen
+import net.benjimadness.triad.gui.screen.TurbineScreen
+import net.benjimadness.triad.gui.screen.GrinderScreen
 import net.benjimadness.triad.registry.*
 import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.fml.common.EventBusSubscriber

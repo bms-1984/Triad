@@ -16,9 +16,8 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.benjimadness.triad.gui
+package net.benjimadness.triad.gui.menu
 
-import net.benjimadness.triad.api.block.entity.AbstractGeneratorBlockEntity
 import net.benjimadness.triad.api.block.entity.AbstractTurbineBlockEntity
 import net.benjimadness.triad.registry.TriadMenus
 import net.minecraft.core.BlockPos
@@ -30,7 +29,6 @@ import net.minecraft.world.inventory.ContainerLevelAccess
 import net.minecraft.world.inventory.DataSlot
 import net.minecraft.world.inventory.Slot
 import net.minecraft.world.item.ItemStack
-import net.neoforged.neoforge.items.SlotItemHandler
 
 class TurbineMenu(
     id: Int, playerInventory: Inventory,
@@ -124,10 +122,6 @@ class TurbineMenu(
     override fun stillValid(player: Player): Boolean =
         stillValid(ContainerLevelAccess.create(player.level(), pos), player, player.level().getBlockState(pos).block)
 
-    fun getProgress(): Float =
-        if (progress == 0 || totalTime == 0) 0F
-        else clamp(progress.toFloat() / totalTime.toFloat(), 0F, 1F)
-
     fun getPower(): Float =
         if (power == 0 || totalPower == 0) 0F
         else clamp(power.toFloat() / totalPower.toFloat(), 0F, 1F)
@@ -138,5 +132,4 @@ class TurbineMenu(
 
     fun getAbsolutePower() = power
     fun getAbsoluteSteam() = steam
-    fun isPowered(): Boolean = progress > 0
 }

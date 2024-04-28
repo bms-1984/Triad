@@ -3,7 +3,7 @@ package net.benjimadness.triad.api.block.entity
 import net.benjimadness.triad.TriadMod
 import net.benjimadness.triad.api.block.Blades
 import net.benjimadness.triad.api.block.TriadBlockStateProperties
-import net.benjimadness.triad.api.item.ReusableItem
+import net.benjimadness.triad.item.BladeItem
 import net.benjimadness.triad.recipe.GrinderRecipe
 import net.benjimadness.triad.registry.TriadRecipes
 import net.minecraft.core.BlockPos
@@ -100,7 +100,7 @@ abstract class AbstractGrinderBlockEntity(type: BlockEntityType<*>, pos: BlockPo
         val bladeStack = items.getStackInSlot(BLADE_SLOT)
         if (bladeStack.isEmpty) return false
         if (bladeStack.`is`(ItemTags.create(ResourceLocation(TriadMod.MODID, "blades")))) {
-            blade = TriadBlockStateProperties.BLADE.getValue((bladeStack.item as ReusableItem).materialName).get()
+            blade = TriadBlockStateProperties.BLADE.getValue((bladeStack.item as BladeItem).bladeType.toString()).get()
             level!!.setBlock(blockPos, level!!.getBlockState(blockPos).setValue(TriadBlockStateProperties.BLADE, blade),
                 Block.UPDATE_CLIENTS
             )

@@ -5,7 +5,7 @@ import net.benjimadness.triad.api.block.AbstractMachineBlock
 import net.benjimadness.triad.api.block.LeverPositions
 import net.benjimadness.triad.api.block.TriadBlockStateProperties
 import net.benjimadness.triad.api.block.entity.AbstractGeneratorBlockEntity
-import net.benjimadness.triad.gui.TurbineMenu
+import net.benjimadness.triad.gui.menu.TurbineMenu
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.core.particles.ParticleTypes

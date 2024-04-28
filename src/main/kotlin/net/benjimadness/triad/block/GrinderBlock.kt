@@ -24,7 +24,7 @@ import net.benjimadness.triad.api.block.Blades
 import net.benjimadness.triad.api.block.LeverPositions
 import net.benjimadness.triad.api.block.TriadBlockStateProperties
 import net.benjimadness.triad.api.block.entity.AbstractMachineBlockEntity
-import net.benjimadness.triad.gui.GrinderMenu
+import net.benjimadness.triad.gui.menu.GrinderMenu
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.network.chat.Component

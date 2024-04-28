@@ -16,11 +16,14 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.benjimadness.triad.gui
+package net.benjimadness.triad.gui.menu
 
-import net.benjimadness.triad.api.block.entity.AbstractItemBoilerBlockEntity
+import net.benjimadness.triad.TriadMod
+import net.benjimadness.triad.api.block.entity.AbstractGrinderBlockEntity
 import net.benjimadness.triad.registry.TriadMenus
 import net.minecraft.core.BlockPos
+import net.minecraft.resources.ResourceLocation
+import net.minecraft.tags.ItemTags
 import net.minecraft.util.Mth.clamp
 import net.minecraft.world.entity.player.Inventory
 import net.minecraft.world.entity.player.Player
@@ -31,21 +34,19 @@ import net.minecraft.world.inventory.Slot
 import net.minecraft.world.item.ItemStack
 import net.neoforged.neoforge.items.SlotItemHandler
 
-class BoilerMenu(
+class GrinderMenu(
     id: Int, playerInventory: Inventory,
     private val pos: BlockPos
-) : AbstractContainerMenu(TriadMenus.ITEM_BOILER_MENU_TYPE.get(), id) {
+) : AbstractContainerMenu(TriadMenus.GRINDER_MENU_TYPE.get(), id) {
     private var progress = 0
     private var totalTime = 0
-    private var steam = 0
-    private var totalSteam = 0
-    private var water = 0
-    private var totalWater = 0
 
     init {
         val entity = playerInventory.player.level().getBlockEntity(pos)
-        if (entity is AbstractItemBoilerBlockEntity) {
-            addSlot(SlotItemHandler(entity.itemHandler, 0, 80, 48)) // input
+        if (entity is AbstractGrinderBlockEntity) {
+            addSlot(SlotItemHandler(entity.itemHandler, 0, 56, 17)) // input
+            addSlot(SlotItemHandler(entity.itemHandler, 1, 56, 53)) // blade
+            addSlot(SlotItemHandler(entity.itemHandler, 2, 116, 35)) // result
             // player inventory
             for (y in 0 until 3) {
                 for (x in 0 until 9) {
@@ -63,33 +64,9 @@ class BoilerMenu(
                 }
             })
             addDataSlot(object : DataSlot() { // totalTime
-                override fun get(): Int = entity.getBurnTime()
+                override fun get(): Int = entity.getTime()
                 override fun set(t: Int) {
                     totalTime = t
-                }
-            })
-            addDataSlot(object : DataSlot() { // steam
-                override fun get(): Int = entity.steamTank.getFluidInTank(0).amount
-                override fun set(s: Int) {
-                    steam = s
-                }
-            })
-            addDataSlot(object : DataSlot() { // totalSteam
-                override fun get(): Int = entity.steamTank.getTankCapacity(0)
-                override fun set(t: Int) {
-                    totalSteam = t
-                }
-            })
-            addDataSlot(object : DataSlot() { // water
-                override fun get(): Int = entity.waterTank.getFluidInTank(0).amount
-                override fun set(w: Int) {
-                    water = w
-                }
-            })
-            addDataSlot(object : DataSlot() { // totalWater
-                override fun get(): Int = entity.waterTank.getTankCapacity(0)
-                override fun set(t: Int) {
-                    totalWater = t
                 }
             })
         }
@@ -98,23 +75,30 @@ class BoilerMenu(
     override fun quickMoveStack(player: Player, slotIndex: Int): ItemStack {
         var stack = ItemStack.EMPTY
         val slot = slots[slotIndex]
-        val entity = player.level().getBlockEntity(pos) as AbstractItemBoilerBlockEntity
         if (slot.hasItem()) {
             val slotStack = slot.item
             stack = slotStack.copy()
-            if (slotIndex == 0) {
-                if (!moveItemStackTo(slotStack, 1, 37, true))
+            if ((0 until 3).contains(slotIndex)) {
+                if (!moveItemStackTo(slotStack, 3, 39, true))
                     return ItemStack.EMPTY
                 slot.onQuickCraft(slotStack, stack)
-            } else if ((1 until 38).contains(slotIndex)) {
-                if (entity.isFuel(slot.item)) {
+            } else if ((3 until 40).contains(slotIndex)) {
+                if (slot.item.`is`(ItemTags.create(ResourceLocation(TriadMod.MODID, "blades")))) {
+                    if (!moveItemStackTo(slotStack, 1, 2, false))
+                        return ItemStack.EMPTY
+                } else if (
+                    slot.item.`is`(ItemTags.create(ResourceLocation("c", "ingots"))) ||
+                    slot.item.`is`(ItemTags.create(ResourceLocation("c", "ores"))) ||
+                    slot.item.`is`(ItemTags.create(ResourceLocation("c", "raw_materials"))) ||
+                    slot.item.`is`(ItemTags.create(ResourceLocation("c", "storage_blocks")))
+                ) {
                     if (!moveItemStackTo(slotStack, 0, 1, false))
                         return ItemStack.EMPTY
-                } else if ((1 until 28).contains(slotIndex)) {
-                    if (!moveItemStackTo(slotStack, 28, 37, true))
+                } else if ((3 until 30).contains(slotIndex)) {
+                    if (!moveItemStackTo(slotStack, 30, 39, true))
                         return ItemStack.EMPTY
-                } else if ((28 until 38).contains(slotIndex)) {
-                    if (!moveItemStackTo(slotStack, 1, 28, true))
+                } else if ((30 until 40).contains(slotIndex)) {
+                    if (!moveItemStackTo(slotStack, 3, 30, true))
                         return ItemStack.EMPTY
                 } else return ItemStack.EMPTY
             }
@@ -135,16 +119,4 @@ class BoilerMenu(
     fun getProgress(): Float =
         if (progress == 0 || totalTime == 0) 0F
         else clamp(progress.toFloat() / totalTime.toFloat(), 0F, 1F)
-
-    fun getSteam(): Float =
-        if (steam == 0 || totalSteam == 0) 0F
-        else clamp(steam.toFloat() / totalSteam.toFloat(), 0F, 1F)
-
-    fun getWater(): Float =
-        if (water == 0 || totalWater == 0) 0F
-        else clamp(water.toFloat() / totalWater.toFloat(), 0F, 1F)
-
-    fun getAbsoluteSteam() = steam
-    fun getAbsoluteWater() = water
-    fun isPowered(): Boolean = progress > 0
 }

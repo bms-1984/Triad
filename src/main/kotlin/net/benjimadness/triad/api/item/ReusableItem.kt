@@ -22,7 +22,7 @@ import net.minecraft.util.RandomSource
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemStack
 
-class ReusableItem(properties: Properties, val materialName: String = "none") : Item(properties) {
+open class ReusableItem(properties: Properties) : Item(properties) {
     private val rand: RandomSource = RandomSource.create()
     override fun hasCraftingRemainingItem(stack: ItemStack): Boolean {
         var ret = true

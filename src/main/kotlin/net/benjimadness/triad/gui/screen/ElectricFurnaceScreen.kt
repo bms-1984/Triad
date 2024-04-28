@@ -16,23 +16,23 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.benjimadness.triad.gui
+package net.benjimadness.triad.gui.screen
 
 import net.benjimadness.triad.TriadMod
+import net.benjimadness.triad.gui.menu.ElectricFurnaceMenu
 import net.minecraft.client.gui.GuiGraphics
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen
 import net.minecraft.network.chat.Component
 import net.minecraft.resources.ResourceLocation
-import net.minecraft.util.Mth
 import net.minecraft.world.entity.player.Inventory
 import kotlin.math.ceil
 
-class GrinderScreen(
-    menu: GrinderMenu,
+class ElectricFurnaceScreen(
+    menu: ElectricFurnaceMenu,
     playerInventory: Inventory,
     title: Component
-) : AbstractContainerScreen<GrinderMenu>(menu, playerInventory, title) {
-    private val bg = ResourceLocation(TriadMod.MODID, "textures/gui/container/grinder.png")
+) : AbstractContainerScreen<ElectricFurnaceMenu>(menu, playerInventory, title) {
+    private val bg = ResourceLocation(TriadMod.MODID, "textures/gui/container/furnace.png")
     private val progressSprite = ResourceLocation("container/furnace/burn_progress")
 
     override fun init() {
