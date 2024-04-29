@@ -1,6 +1,7 @@
 package net.benjimadness.triad.api.util
 
 import net.benjimadness.triad.api.block.LeverPositions
+import net.benjimadness.triad.registry.TriadFluids
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.world.level.Level
@@ -8,6 +9,8 @@ import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.properties.AttachFace
 import net.minecraft.world.level.block.state.properties.BlockStateProperties
+import net.minecraft.world.level.material.Fluid
+import net.minecraft.world.level.material.Fluids
 
 object MiscUtil {
     fun BlockState.getLeverOrientation(level: Level, pos: BlockPos): LeverPositions {
@@ -100,4 +103,7 @@ object MiscUtil {
         }
         else LeverPositions.NONE
     }
+
+    fun Fluid.isHot(): Boolean =
+        isSame(TriadFluids.STEAM) || isSame(Fluids.LAVA) || isSame(Fluids.FLOWING_LAVA)
 }

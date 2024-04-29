@@ -1,0 +1,6 @@
+{
+	"parent": "triad:block/conduit_top",
+	"textures": {
+		"texture": "minecraft:block/oak_planks"
+	}
+}

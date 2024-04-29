@@ -1,0 +1,6 @@
+{
+	"parent": "triad:block/conduit_side",
+	"textures": {
+		"texture": "triad:block/bronze_block"
+	}
+}

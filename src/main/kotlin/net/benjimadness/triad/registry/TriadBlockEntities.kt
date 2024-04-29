@@ -48,6 +48,15 @@ object TriadBlockEntities {
     val STEEL_CAPACITOR_BLOCK_ENTITY_TYPE: BlockEntityType<SteelCapacitorBlockEntity> by registerBlockEntity("steel_capacitor_block_entity") {
         BlockEntityType.Builder.of(::SteelCapacitorBlockEntity, TriadBlocks.STEEL_CAPACITOR).build(null)
     }
+    val COPPER_WIRE_BLOCK_ENTITY_TYPE: BlockEntityType<CopperWireBlockEntity> by registerBlockEntity("copper_wire_block_entity") {
+        BlockEntityType.Builder.of(::CopperWireBlockEntity, TriadBlocks.COPPER_WIRE).build(null)
+    }
+    val PIPE_BLOCK_ENTITY_TYPE: BlockEntityType<PipeBlockEntity> by registerBlockEntity("pipe_block_entity") {
+        BlockEntityType.Builder.of(::PipeBlockEntity, TriadBlocks.PIPE).build(null)
+    }
+    val THERMAL_PIPE_BLOCK_ENTITY_TYPE: BlockEntityType<ThermalPipeBlockEntity> by registerBlockEntity("thermal_pipe_block_entity") {
+        BlockEntityType.Builder.of(::ThermalPipeBlockEntity, TriadBlocks.THERMAL_PIPE).build(null)
+    }
 
     private fun <T : BlockEntityType<*>> registerBlockEntity(name: String, blockEntity: Supplier<T>) =
         REGISTRY.register(name, blockEntity)

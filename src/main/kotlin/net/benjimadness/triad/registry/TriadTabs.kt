@@ -131,6 +131,9 @@ object TriadTabs {
                 run {
                     output.accept(TriadItems.BRONZE_BLADE)
                     output.accept(TriadItems.STEEL_BLADE)
+                    output.accept(TriadBlocks.COPPER_WIRE)
+                    output.accept(TriadBlocks.PIPE)
+                    output.accept(TriadBlocks.THERMAL_PIPE)
                 }
             }
             .build()

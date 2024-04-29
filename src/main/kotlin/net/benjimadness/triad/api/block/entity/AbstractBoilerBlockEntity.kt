@@ -18,7 +18,7 @@ import net.neoforged.neoforge.fluids.capability.templates.FluidTank
 import kotlin.math.min
 
 abstract class AbstractBoilerBlockEntity(capacity: Int, private val transfer: Int, private val gen: Int, type: BlockEntityType<*>, pos: BlockPos, state: BlockState) :
-    AbstractGeneratorBlockEntity(capacity, transfer, gen, type, pos, state) {
+    AbstractGeneratorBlockEntity(transfer, gen, type, pos, state) {
         private val water = FluidTank(capacity) { stack ->
             stack.fluid == Fluids.WATER
         }
