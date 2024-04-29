@@ -1,0 +1,6 @@
+{
+	"parent": "triad:block/conduit_top",
+	"textures": {
+		"texture": "minecraft:block/white_wool"
+	}
+}

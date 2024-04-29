@@ -26,7 +26,7 @@ AbstractTriadBlockEntity(type, pos, state) {
     open fun distribute() {
         for (dir in Direction.entries) {
             if (hasLevel()) {
-                val dirEnergy = level!!.getCapability(Capabilities.EnergyStorage.BLOCK, blockPos.relative(dir), null)
+                val dirEnergy = level!!.getCapability(Capabilities.EnergyStorage.BLOCK, blockPos.relative(dir), dir.opposite)
                 if (dirEnergy != null && dirEnergy.canReceive()) {
                     val dirBlock = level!!.getBlockEntity(blockPos.relative(dir))
                     if (dirBlock !is AbstractGeneratorBlockEntity) {
