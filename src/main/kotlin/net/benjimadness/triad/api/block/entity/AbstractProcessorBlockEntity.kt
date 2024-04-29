@@ -3,10 +3,8 @@ package net.benjimadness.triad.api.block.entity
 import net.minecraft.core.BlockPos
 import net.minecraft.world.item.crafting.Recipe
 import net.minecraft.world.item.crafting.RecipeManager
-import net.minecraft.world.item.crafting.RecipeType
 import net.minecraft.world.level.block.entity.BlockEntityType
 import net.minecraft.world.level.block.state.BlockState
-import net.neoforged.neoforge.items.wrapper.RecipeWrapper
 
 abstract class AbstractProcessorBlockEntity(type: BlockEntityType<*>, pos: BlockPos, state: BlockState) :
     AbstractMachineBlockEntity(type, pos, state) {

@@ -121,6 +121,7 @@ object TriadTabs {
                 }
                 .build()
         }
+    @Suppress("unused")
     private val TRIAD_PARTS_TAB = REGISTRY.register("${TriadMod.MODID}_parts") { ->
         CreativeModeTab.builder()
             .title(Component.translatableWithFallback("itemGroup.${TriadMod.MODID}_parts", "Triad Parts"))

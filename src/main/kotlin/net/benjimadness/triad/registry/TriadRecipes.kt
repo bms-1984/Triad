@@ -21,8 +21,6 @@ package net.benjimadness.triad.registry
 import net.benjimadness.triad.TriadMod
 import net.benjimadness.triad.recipe.GrinderRecipe
 import net.minecraft.core.registries.Registries
-import net.minecraft.world.Container
-import net.minecraft.world.item.crafting.Recipe
 import net.minecraft.world.item.crafting.RecipeSerializer
 import net.minecraft.world.item.crafting.RecipeType
 import net.neoforged.neoforge.registries.DeferredRegister

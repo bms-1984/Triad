@@ -6,7 +6,7 @@ import net.minecraft.nbt.CompoundTag
 import net.minecraft.world.level.block.entity.BlockEntityType
 import net.minecraft.world.level.block.state.BlockState
 
-abstract class AbstractGeneratorBlockEntity(capacity: Int, private val transfer: Int, private val gen: Int, type: BlockEntityType<*>, pos: BlockPos, state: BlockState) :
+abstract class AbstractGeneratorBlockEntity(private val transfer: Int, private val gen: Int, type: BlockEntityType<*>, pos: BlockPos, state: BlockState) :
     AbstractMachineBlockEntity(type, pos, state) {
     var progress = 0
 

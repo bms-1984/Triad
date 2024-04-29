@@ -10,7 +10,7 @@ import net.minecraft.world.level.block.state.BlockState
 import net.neoforged.neoforge.items.IItemHandler
 import net.neoforged.neoforge.items.ItemStackHandler
 
-abstract class AbstractItemBoilerBlockEntity(capacity: Int, transfer: Int, gen: Int, type: BlockEntityType<*>, private val pos: BlockPos, state: BlockState) :
+abstract class AbstractItemBoilerBlockEntity(capacity: Int, transfer: Int, gen: Int, type: BlockEntityType<*>, pos: BlockPos, state: BlockState) :
     AbstractBoilerBlockEntity(capacity, transfer, gen, type, pos, state) {
 
     companion object {

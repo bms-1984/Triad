@@ -86,7 +86,7 @@ abstract class AbstractMachineBlock(properties: Properties, blockEntity: KClass<
         if (state.block != newState.block && !movedByPiston) {
             val blockEntity = level.getBlockEntity(pos)
             if (blockEntity is AbstractMachineBlockEntity) {
-                val itemHandler = level.getCapability(Capabilities.ItemHandler.BLOCK, pos, null)
+                val itemHandler = level.getCapability(Capabilities.ItemHandler.BLOCK, pos, state, blockEntity, null)
                 if (itemHandler != null) {
                     for (slot in 0 until itemHandler.slots) {
                         val stack = itemHandler.getStackInSlot(slot)

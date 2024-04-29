@@ -9,12 +9,11 @@ import net.minecraft.world.level.block.state.BlockState
 import net.neoforged.neoforge.capabilities.Capabilities
 import net.neoforged.neoforge.energy.EnergyStorage
 import net.neoforged.neoforge.energy.IEnergyStorage
-import net.neoforged.neoforge.fluids.capability.IFluidHandler
 import kotlin.math.min
 
 abstract class AbstractEnergyGeneratorBlockEntity(capacity: Int, private val transfer: Int, private val gen: Int, type: BlockEntityType<*>,
                                                   pos: BlockPos, state: BlockState) :
-    AbstractGeneratorBlockEntity(capacity, transfer, gen, type, pos, state) {
+    AbstractGeneratorBlockEntity(transfer, gen, type, pos, state) {
 
     private val energy = EnergyStorage(capacity, transfer)
     val energyStorage: IEnergyStorage by lazy { energy }
