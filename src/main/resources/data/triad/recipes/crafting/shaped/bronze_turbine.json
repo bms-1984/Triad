@@ -3,13 +3,13 @@
   "category": "misc",
   "key": {
     "#": {
-      "tag": "forge:storage_blocks/bronze"
+      "tag": "c:storage_blocks/bronze"
     },
     "$": {
       "item": "minecraft:redstone_block"
     },
     "@": {
-      "tag": "forge:storage_blocks/steel"
+      "tag": "c:storage_blocks/steel"
     },
     "&": {
       "tag": "triad:blades"
@@ -21,6 +21,6 @@
     "#@#"
   ],
   "result": {
-    "item": "triad:bronze_turbine"
+    "id": "triad:bronze_turbine"
   }
 }

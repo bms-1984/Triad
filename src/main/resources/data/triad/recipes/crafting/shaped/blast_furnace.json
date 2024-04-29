@@ -12,7 +12,7 @@
       "item": "minecraft:furnace"
     },
     "$": {
-      "tag": "forge:storage_blocks/bronze"
+      "tag": "c:storage_blocks/bronze"
     }
   },
   "pattern": [
@@ -21,6 +21,6 @@
     "#$#"
   ],
   "result": {
-    "item": "minecraft:blast_furnace"
+    "id": "minecraft:blast_furnace"
   }
 }

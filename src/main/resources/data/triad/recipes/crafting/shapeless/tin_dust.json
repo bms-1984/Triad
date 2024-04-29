@@ -3,13 +3,13 @@
   "category": "misc",
   "ingredients": [
     {
-      "tag": "forge:raw_materials/tin"
+      "tag": "c:raw_materials/tin"
     },
     {
       "item": "triad:stone_mortar"
     }
   ],
   "result": {
-    "item": "triad:tin_dust"
+    "id": "triad:tin_dust"
   }
 }

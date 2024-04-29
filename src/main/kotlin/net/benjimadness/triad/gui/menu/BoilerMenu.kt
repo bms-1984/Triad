@@ -16,9 +16,8 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.benjimadness.triad.gui
+package net.benjimadness.triad.gui.menu
 
-import net.benjimadness.triad.api.block.entity.AbstractGeneratorBlockEntity
 import net.benjimadness.triad.api.block.entity.AbstractItemBoilerBlockEntity
 import net.benjimadness.triad.registry.TriadMenus
 import net.minecraft.core.BlockPos

@@ -3,7 +3,7 @@
   "category": "equipment",
   "key": {
     "#": {
-      "tag": "forge:ingots/steel"
+      "tag": "c:ingots/steel"
     }
   },
   "pattern": [
@@ -12,6 +12,6 @@
     "# #"
   ],
   "result": {
-    "item": "triad:steel_boots"
+    "id": "triad:steel_boots"
   }
 }

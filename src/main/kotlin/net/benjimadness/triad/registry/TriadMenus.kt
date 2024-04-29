@@ -19,10 +19,10 @@
 package net.benjimadness.triad.registry
 
 import net.benjimadness.triad.TriadMod
-import net.benjimadness.triad.gui.BoilerMenu
-import net.benjimadness.triad.gui.ElectricFurnaceMenu
-import net.benjimadness.triad.gui.GrinderMenu
-import net.benjimadness.triad.gui.TurbineMenu
+import net.benjimadness.triad.gui.menu.BoilerMenu
+import net.benjimadness.triad.gui.menu.ElectricFurnaceMenu
+import net.benjimadness.triad.gui.menu.GrinderMenu
+import net.benjimadness.triad.gui.menu.TurbineMenu
 import net.minecraft.core.registries.Registries
 import net.minecraft.world.flag.FeatureFlags
 import net.minecraft.world.inventory.MenuType

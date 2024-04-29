@@ -4,11 +4,11 @@
   "group": "bronze_ingot",
   "ingredients": [
     {
-      "tag": "forge:storage_blocks/bronze"
+      "tag": "c:storage_blocks/bronze"
     }
   ],
   "result": {
     "count": 9,
-    "item": "triad:bronze_ingot"
+    "id": "triad:bronze_ingot"
   }
 }

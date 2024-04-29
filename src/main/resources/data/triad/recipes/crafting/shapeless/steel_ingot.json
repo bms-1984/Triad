@@ -4,11 +4,11 @@
   "group": "steel_ingot",
   "ingredients": [
     {
-      "tag": "forge:storage_blocks/steel"
+      "tag": "c:storage_blocks/steel"
     }
   ],
   "result": {
     "count": 9,
-    "item": "triad:steel_ingot"
+    "id": "triad:steel_ingot"
   }
 }

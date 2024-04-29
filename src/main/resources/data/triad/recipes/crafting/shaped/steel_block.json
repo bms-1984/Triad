@@ -3,7 +3,7 @@
   "category": "building",
   "key": {
     "#": {
-      "tag": "forge:ingots/steel"
+      "tag": "c:ingots/steel"
     }
   },
   "pattern": [
@@ -12,6 +12,6 @@
     "###"
   ],
   "result": {
-    "item": "triad:steel_block"
+    "id": "triad:steel_block"
   }
 }

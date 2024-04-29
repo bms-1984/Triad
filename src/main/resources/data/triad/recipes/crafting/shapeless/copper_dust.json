@@ -3,13 +3,13 @@
   "category": "misc",
   "ingredients": [
     {
-      "tag": "forge:raw_materials/copper"
+      "tag": "c:raw_materials/copper"
     },
     {
       "item": "triad:stone_mortar"
     }
   ],
   "result": {
-    "item": "triad:copper_dust"
+    "id": "triad:copper_dust"
   }
 }

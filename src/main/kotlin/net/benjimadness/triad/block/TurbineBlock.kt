@@ -5,13 +5,11 @@ import net.benjimadness.triad.api.block.AbstractMachineBlock
 import net.benjimadness.triad.api.block.LeverPositions
 import net.benjimadness.triad.api.block.TriadBlockStateProperties
 import net.benjimadness.triad.api.block.entity.AbstractGeneratorBlockEntity
-import net.benjimadness.triad.gui.TurbineMenu
+import net.benjimadness.triad.gui.menu.TurbineMenu
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.core.particles.ParticleTypes
 import net.minecraft.network.chat.Component
-import net.minecraft.sounds.SoundEvents
-import net.minecraft.sounds.SoundSource
 import net.minecraft.util.RandomSource
 import net.minecraft.world.MenuProvider
 import net.minecraft.world.SimpleMenuProvider

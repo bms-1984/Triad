@@ -3,7 +3,7 @@
   "category": "building",
   "key": {
     "#": {
-      "tag": "forge:ingots/bronze"
+      "tag": "c:ingots/bronze"
     }
   },
   "pattern": [
@@ -12,6 +12,6 @@
     "###"
   ],
   "result": {
-    "item": "triad:bronze_block"
+    "id": "triad:bronze_block"
   }
 }

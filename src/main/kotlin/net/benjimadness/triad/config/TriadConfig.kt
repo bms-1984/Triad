@@ -20,11 +20,11 @@ package net.benjimadness.triad.config
 
 import net.benjimadness.triad.TriadMod
 import net.neoforged.bus.api.SubscribeEvent
-import net.neoforged.fml.common.Mod
+import net.neoforged.fml.common.EventBusSubscriber
 import net.neoforged.fml.event.config.ModConfigEvent
 import net.neoforged.neoforge.common.ModConfigSpec
 
-@Mod.EventBusSubscriber(modid = TriadMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = TriadMod.MODID, bus = EventBusSubscriber.Bus.MOD)
 object TriadConfig {
     private val BUILDER = ModConfigSpec.Builder()
     private val DISABLE_VANIlLA_BEES: ModConfigSpec.BooleanValue = BUILDER

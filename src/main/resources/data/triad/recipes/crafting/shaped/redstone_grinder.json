@@ -12,7 +12,7 @@
       "item": "minecraft:piston"
     },
     "$": {
-      "tag": "forge:storage_blocks/steel"
+      "tag": "c:storage_blocks/steel"
     }
   },
   "pattern": [
@@ -21,6 +21,6 @@
     "#$#"
   ],
   "result": {
-    "item": "triad:redstone_grinder"
+    "id": "triad:redstone_grinder"
   }
 }

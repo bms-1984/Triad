@@ -3,7 +3,7 @@
   "category": "misc",
   "key": {
     "#": {
-      "tag": "forge:storage_blocks/bronze"
+      "tag": "c:storage_blocks/bronze"
     },
     "@": {
       "item": "minecraft:cauldron"
@@ -12,7 +12,7 @@
       "item": "minecraft:furnace"
     },
     "$": {
-      "tag": "forge:storage_blocks/steel"
+      "tag": "c:storage_blocks/steel"
     }
   },
   "pattern": [
@@ -21,6 +21,6 @@
     "#$#"
   ],
   "result": {
-    "item": "triad:bronze_item_boiler"
+    "id": "triad:bronze_item_boiler"
   }
 }

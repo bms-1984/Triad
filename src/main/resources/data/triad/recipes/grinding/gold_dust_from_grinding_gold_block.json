@@ -2,10 +2,10 @@
   "type": "triad:grinding",
   "ingredient":
   {
-    "tag": "forge:storage_blocks/gold"
+    "tag": "c:storage_blocks/gold"
   },
   "result": {
     "count": 9,
-    "item": "triad:gold_dust"
+    "id": "triad:gold_dust"
   }
 }

@@ -3,7 +3,7 @@
   "category": "equipment",
   "key": {
     "#": {
-      "tag": "forge:ingots/bronze"
+      "tag": "c:ingots/bronze"
     },
     "@": {
       "item": "minecraft:stick"
@@ -15,6 +15,6 @@
     " @ "
   ],
   "result": {
-    "item": "triad:bronze_shovel"
+    "id": "triad:bronze_shovel"
   }
 }

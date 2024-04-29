@@ -2,9 +2,9 @@
   "type": "triad:grinding",
   "ingredient":
   {
-    "tag": "forge:ingots/bronze"
+    "tag": "c:ingots/bronze"
   },
   "result": {
-    "item": "triad:bronze_dust"
+    "id": "triad:bronze_dust"
   }
 }

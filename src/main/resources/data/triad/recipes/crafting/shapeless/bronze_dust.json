@@ -3,20 +3,20 @@
   "category": "misc",
   "ingredients": [
     {
-      "tag": "forge:dusts/copper"
+      "tag": "c:dusts/copper"
     },
     {
-      "tag": "forge:dusts/copper"
+      "tag": "c:dusts/copper"
     },
     {
-      "tag": "forge:dusts/copper"
+      "tag": "c:dusts/copper"
     },
     {
-      "tag": "forge:dusts/tin"
+      "tag": "c:dusts/tin"
     }
   ],
   "result": {
     "count": 2,
-    "item": "triad:bronze_dust"
+    "id": "triad:bronze_dust"
   }
 }

@@ -4,6 +4,7 @@ import net.benjimadness.triad.api.block.TriadBlockStateProperties
 import net.benjimadness.triad.registry.TriadFluids
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
+import net.minecraft.core.HolderLookup
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.Block
@@ -53,16 +54,16 @@ abstract class AbstractBoilerBlockEntity(capacity: Int, private val transfer: In
         water.drain(gen, IFluidHandler.FluidAction.EXECUTE)
     }
 
-    override fun saveAdditional(tag: CompoundTag) {
-        super.saveAdditional(tag)
-        tag.put("Steam", steam.writeToNBT(CompoundTag()))
-        tag.put("Water", water.writeToNBT(CompoundTag()))
+    override fun saveAdditional(tag: CompoundTag, registry: HolderLookup.Provider) {
+        super.saveAdditional(tag, registry)
+        tag.put("Steam", steam.writeToNBT(registry, CompoundTag()))
+        tag.put("Water", water.writeToNBT(registry, CompoundTag()))
     }
 
-    override fun load(tag: CompoundTag) {
-        super.load(tag)
-        if (tag.contains("Steam")) steam.readFromNBT(tag.getCompound("Steam"))
-        if (tag.contains("Water")) water.readFromNBT(tag.getCompound("Water"))
+    override fun loadAdditional(tag: CompoundTag, registry: HolderLookup.Provider) {
+        super.loadAdditional(tag, registry)
+        if (tag.contains("Steam")) steam.readFromNBT(registry, tag.getCompound("Steam"))
+        if (tag.contains("Water")) water.readFromNBT(registry, tag.getCompound("Water"))
     }
 
     private fun hasWater() = !water.isEmpty

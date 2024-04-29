@@ -3,7 +3,7 @@
   "category": "equipment",
   "key": {
     "#": {
-      "tag": "forge:ingots/bronze"
+      "tag": "c:ingots/bronze"
     }
   },
   "pattern": [
@@ -12,6 +12,6 @@
     "###"
   ],
   "result": {
-    "item": "triad:bronze_chestplate"
+    "id": "triad:bronze_chestplate"
   }
 }

@@ -3,13 +3,13 @@
   "category": "misc",
   "ingredients": [
     {
-      "tag": "forge:raw_materials/gold"
+      "tag": "c:raw_materials/gold"
     },
     {
       "item": "triad:stone_mortar"
     }
   ],
   "result": {
-    "item": "triad:gold_dust"
+    "id": "triad:gold_dust"
   }
 }

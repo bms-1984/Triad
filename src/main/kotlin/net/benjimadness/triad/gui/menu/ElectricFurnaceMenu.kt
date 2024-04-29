@@ -16,20 +16,15 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package net.benjimadness.triad.gui
+package net.benjimadness.triad.gui.menu
 
-import net.benjimadness.triad.TriadMod
 import net.benjimadness.triad.api.block.entity.AbstractElectricFurnaceBlockEntity
-import net.benjimadness.triad.api.block.entity.AbstractGrinderBlockEntity
 import net.benjimadness.triad.registry.TriadMenus
 import net.minecraft.core.BlockPos
-import net.minecraft.resources.ResourceLocation
-import net.minecraft.tags.ItemTags
 import net.minecraft.util.Mth.clamp
 import net.minecraft.world.entity.player.Inventory
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.inventory.AbstractContainerMenu
-import net.minecraft.world.inventory.AbstractFurnaceMenu
 import net.minecraft.world.inventory.ContainerLevelAccess
 import net.minecraft.world.inventory.DataSlot
 import net.minecraft.world.inventory.Slot

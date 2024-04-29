@@ -2,9 +2,9 @@
   "type": "triad:grinding",
   "ingredient":
   {
-    "tag": "forge:ingots/steel"
+    "tag": "c:ingots/steel"
   },
   "result": {
-    "item": "triad:steel_dust"
+    "id": "triad:steel_dust"
   }
 }

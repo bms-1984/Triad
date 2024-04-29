@@ -1,21 +1,20 @@
 package net.benjimadness.triad.api.block.entity
 
 import net.benjimadness.triad.TriadMod
-import net.benjimadness.triad.block.GrinderBlock
+import net.benjimadness.triad.api.block.Blades
 import net.benjimadness.triad.api.block.TriadBlockStateProperties
-import net.benjimadness.triad.api.item.ReusableItem
+import net.benjimadness.triad.item.BladeItem
 import net.benjimadness.triad.recipe.GrinderRecipe
 import net.benjimadness.triad.registry.TriadRecipes
 import net.minecraft.core.BlockPos
+import net.minecraft.core.HolderLookup
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.tags.ItemTags
 import net.minecraft.util.RandomSource
 import net.minecraft.world.Container
 import net.minecraft.world.item.ItemStack
-import net.minecraft.world.item.crafting.Recipe
 import net.minecraft.world.item.crafting.RecipeManager
-import net.minecraft.world.item.crafting.SmeltingRecipe
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.entity.BlockEntityType
 import net.minecraft.world.level.block.state.BlockState
@@ -41,7 +40,7 @@ abstract class AbstractGrinderBlockEntity(type: BlockEntityType<*>, pos: BlockPo
     }
     val itemHandler: IItemHandler by lazy { items }
     private var isOn = false
-    private var blade = GrinderBlock.Blades.NONE
+    private var blade = Blades.NONE
     private val random = RandomSource.create()
     override val check: RecipeManager.CachedCheck<Container, GrinderRecipe> = RecipeManager.createCheck(TriadRecipes.GRINDER_RECIPE_TYPE)
 
@@ -60,8 +59,9 @@ abstract class AbstractGrinderBlockEntity(type: BlockEntityType<*>, pos: BlockPo
                             items.setStackInSlot(OUTPUT_SLOT, recipe.output.copyWithCount(recipe.output.count))
                         else result.grow(recipe.output.count)
                         input.shrink(1)
-                        if (bladeStack.hurt(BLADE_SLOT, random, null))
+                        bladeStack.hurtAndBreak(1, random, null) {
                             bladeStack.shrink(1)
+                        }
                         progress = 0
                     } else progress++
                 }
@@ -70,10 +70,10 @@ abstract class AbstractGrinderBlockEntity(type: BlockEntityType<*>, pos: BlockPo
         else outputMatch = false
     }
 
-    override fun saveAdditional(tag: CompoundTag) {
-        super.saveAdditional(tag)
+    override fun saveAdditional(tag: CompoundTag, registry: HolderLookup.Provider) {
+        super.saveAdditional(tag, registry)
         tag.putInt("Progress", progress)
-        tag.put("Items", items.serializeNBT())
+        tag.put("Items", items.serializeNBT(registry))
         saveClientData(tag)
     }
 
@@ -83,31 +83,31 @@ abstract class AbstractGrinderBlockEntity(type: BlockEntityType<*>, pos: BlockPo
         tag.putString("Blade", blade.serializedName)
     }
 
-    override fun load(tag: CompoundTag) {
-        super.load(tag)
+    override fun loadAdditional(tag: CompoundTag, registry: HolderLookup.Provider) {
+        super.loadAdditional(tag, registry)
         if (tag.contains("Progress")) progress = tag.getInt("Progress")
-        if (tag.contains("Items")) items.deserializeNBT(tag.getCompound("Items"))
+        if (tag.contains("Items")) items.deserializeNBT(registry, tag.getCompound("Items"))
         loadClientData(tag)
     }
 
     override fun loadClientData(tag: CompoundTag) {
         super.loadClientData(tag)
         if (tag.contains("IsOn")) isOn = tag.getBoolean("IsOn")
-        if (tag.contains("Blade")) blade = GrinderBlock.Blades.valueOf(tag.getString("Blade").uppercase())
+        if (tag.contains("Blade")) blade = Blades.valueOf(tag.getString("Blade").uppercase())
     }
     private fun hasBlade(): Boolean {
         if (!hasLevel()) return false
         val bladeStack = items.getStackInSlot(BLADE_SLOT)
         if (bladeStack.isEmpty) return false
         if (bladeStack.`is`(ItemTags.create(ResourceLocation(TriadMod.MODID, "blades")))) {
-            blade = TriadBlockStateProperties.BLADE.getValue((bladeStack.item as ReusableItem).materialName).get()
+            blade = TriadBlockStateProperties.BLADE.getValue((bladeStack.item as BladeItem).bladeType.toString()).get()
             level!!.setBlock(blockPos, level!!.getBlockState(blockPos).setValue(TriadBlockStateProperties.BLADE, blade),
                 Block.UPDATE_CLIENTS
             )
             return true
         }
         else {
-            blade = GrinderBlock.Blades.NONE
+            blade = Blades.NONE
             level!!.setBlock(blockPos, level!!.getBlockState(blockPos).setValue(TriadBlockStateProperties.BLADE, blade),
                 Block.UPDATE_CLIENTS
             )
@@ -123,8 +123,8 @@ abstract class AbstractGrinderBlockEntity(type: BlockEntityType<*>, pos: BlockPo
     }
     private fun getTimeMultiplier(): Int {
         val stack = items.getStackInSlot(INPUT_SLOT)
-        return if (stack.`is`(ItemTags.create(ResourceLocation("forge", "storage_blocks"))) ||
-            stack.`is`(ItemTags.create(ResourceLocation("forge", "storage_blocks")))) 9
+        return if (stack.`is`(ItemTags.create(ResourceLocation("c", "storage_blocks"))) ||
+            stack.`is`(ItemTags.create(ResourceLocation("c", "storage_blocks")))) 9
         else 1
     }
     override fun isFueled(): Boolean {

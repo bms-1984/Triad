@@ -3,7 +3,7 @@
   "category": "misc",
   "key": {
     "#": {
-      "tag": "forge:storage_blocks/bronze"
+      "tag": "c:storage_blocks/bronze"
     },
     "@": {
       "item": "minecraft:lightning_rod"
@@ -15,6 +15,6 @@
     "###"
   ],
   "result": {
-    "item": "triad:bronze_furnace"
+    "id": "triad:bronze_furnace"
   }
 }

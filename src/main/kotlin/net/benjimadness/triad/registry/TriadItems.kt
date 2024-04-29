@@ -19,16 +19,57 @@
 package net.benjimadness.triad.registry
 
 import net.benjimadness.triad.TriadMod
+import net.benjimadness.triad.api.block.Blades
 import net.benjimadness.triad.api.item.ReusableItem
-import net.benjimadness.triad.item.armor.TriadArmorItem
-import net.benjimadness.triad.item.armor.TriadArmorMaterials
+import net.benjimadness.triad.item.BladeItem
+import net.minecraft.core.registries.Registries
+import net.minecraft.resources.ResourceLocation
+import net.minecraft.sounds.SoundEvents
 import net.minecraft.world.item.*
+import net.minecraft.world.item.crafting.Ingredient
+import net.neoforged.neoforge.registries.DeferredHolder
 import net.neoforged.neoforge.registries.DeferredRegister
 import thedarkcolour.kotlinforforge.neoforge.forge.getValue
 import java.util.function.Supplier
 
 object TriadItems {
     val REGISTRY: DeferredRegister.Items = DeferredRegister.createItems(TriadMod.MODID)
+    val ARMOR_MATERIAL_REGISTRY: DeferredRegister<ArmorMaterial> = DeferredRegister.create(Registries.ARMOR_MATERIAL, TriadMod.MODID)
+
+    private val BRONZE_ARMOR_MATERIAL: DeferredHolder<ArmorMaterial, ArmorMaterial> = registerArmorMaterial("bronze") {
+        ArmorMaterial(
+            hashMapOf
+                (
+                ArmorItem.Type.HELMET to 2,
+                ArmorItem.Type.LEGGINGS to 5,
+                ArmorItem.Type.CHESTPLATE to 6,
+                ArmorItem.Type.BOOTS to 2
+            ),
+            15,
+            SoundEvents.ARMOR_EQUIP_IRON,
+            { Ingredient.of(BRONZE_INGOT) },
+            listOf(ArmorMaterial.Layer(ResourceLocation(TriadMod.MODID, "bronze"))),
+            0F,
+            0.25F
+        )
+    }
+    private val STEEL_ARMOR_MATERIAL: DeferredHolder<ArmorMaterial, ArmorMaterial> = registerArmorMaterial("steel") {
+        ArmorMaterial(
+            hashMapOf
+                (
+                ArmorItem.Type.HELMET to 3,
+                ArmorItem.Type.LEGGINGS to 6,
+                ArmorItem.Type.CHESTPLATE to 8,
+                ArmorItem.Type.BOOTS to 3
+            ),
+            12,
+            SoundEvents.ARMOR_EQUIP_IRON,
+            { Ingredient.of(STEEL_INGOT) },
+            listOf(ArmorMaterial.Layer(ResourceLocation(TriadMod.MODID, "steel"))),
+            1F,
+            0.4F
+        )
+    }
 
     val TIN_DUST: Item by registerItem("tin_dust")
     val TIN_INGOT: Item by registerItem("tin_ingot")
@@ -44,66 +85,67 @@ object TriadItems {
         ReusableItem(Item.Properties().durability(100).setNoRepair())
     }
     val STEEL_BLADE: Item by registerItem("steel_blade") {
-        ReusableItem(Item.Properties().durability(100).setNoRepair(), "steel")
+        BladeItem(Item.Properties().durability(100).setNoRepair(), Blades.STEEL)
     }
     val BRONZE_BLADE: Item by registerItem("bronze_blade") {
-        ReusableItem(Item.Properties().durability(10).setNoRepair(), "bronze")
+        BladeItem(Item.Properties().durability(10).setNoRepair(), Blades.BRONZE)
     }
     val BRONZE_PICKAXE: Item by registerItem("bronze_pickaxe") {
-        PickaxeItem(Tiers.IRON, 2, -3F, Item.Properties())
+        PickaxeItem(Tiers.IRON, Item.Properties())
     }
     val BRONZE_AXE: Item by registerItem("bronze_axe") {
-        AxeItem(Tiers.IRON, 6F, -3.5F, Item.Properties())
+        AxeItem(Tiers.IRON, Item.Properties())
     }
     val BRONZE_SHOVEL: Item by registerItem("bronze_shovel") {
-        ShovelItem(Tiers.IRON, 2F, -3.2F, Item.Properties())
+        ShovelItem(Tiers.IRON, Item.Properties())
     }
     val BRONZE_SWORD: Item by registerItem("bronze_sword") {
-        SwordItem(Tiers.IRON, 4, -2.8F, Item.Properties())
+        SwordItem(Tiers.IRON, Item.Properties())
     }
     val BRONZE_HOE: Item by registerItem("bronze_hoe") {
-        HoeItem(Tiers.IRON, -1, -1.2F, Item.Properties())
+        HoeItem(Tiers.IRON, Item.Properties())
     }
     val BRONZE_CHESTPLATE: Item by registerItem("bronze_chestplate") {
-        TriadArmorItem(TriadArmorMaterials.BRONZE, ArmorItem.Type.CHESTPLATE)
+        ArmorItem(BRONZE_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, Item.Properties())
     }
     val BRONZE_HELMET: Item by registerItem("bronze_helmet") {
-        TriadArmorItem(TriadArmorMaterials.BRONZE, ArmorItem.Type.HELMET)
+        ArmorItem(BRONZE_ARMOR_MATERIAL, ArmorItem.Type.HELMET, Item.Properties())
     }
     val BRONZE_LEGGINGS: Item by registerItem("bronze_leggings") {
-        TriadArmorItem(TriadArmorMaterials.BRONZE, ArmorItem.Type.LEGGINGS)
+        ArmorItem(BRONZE_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, Item.Properties())
     }
     val BRONZE_BOOTS: Item by registerItem("bronze_boots") {
-        TriadArmorItem(TriadArmorMaterials.BRONZE, ArmorItem.Type.BOOTS)
+        ArmorItem(BRONZE_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, Item.Properties())
     }
     val STEEL_PICKAXE: Item by registerItem("steel_pickaxe") {
-        PickaxeItem(Tiers.DIAMOND, 1, -2.8F, Item.Properties())
+        PickaxeItem(Tiers.DIAMOND, Item.Properties())
     }
     val STEEL_AXE: Item by registerItem("steel_axe") {
-        AxeItem(Tiers.DIAMOND, 5F, -3F, Item.Properties())
+        AxeItem(Tiers.DIAMOND, Item.Properties())
     }
     val STEEL_SHOVEL: Item by registerItem("steel_shovel") {
-        ShovelItem(Tiers.DIAMOND, 1.5F, -3F, Item.Properties())
+        ShovelItem(Tiers.DIAMOND, Item.Properties())
     }
     val STEEL_SWORD: Item by registerItem("steel_sword") {
-        SwordItem(Tiers.DIAMOND, 3, -2.4F, Item.Properties())
+        SwordItem(Tiers.DIAMOND, Item.Properties())
     }
     val STEEL_HOE: Item by registerItem("steel_hoe") {
-        HoeItem(Tiers.DIAMOND, -3, 0F, Item.Properties())
+        HoeItem(Tiers.DIAMOND, Item.Properties())
     }
     val STEEL_CHESTPLATE: Item by registerItem("steel_chestplate") {
-        TriadArmorItem(TriadArmorMaterials.STEEL, ArmorItem.Type.CHESTPLATE)
+        ArmorItem(STEEL_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, Item.Properties())
     }
     val STEEL_HELMET: Item by registerItem("steel_helmet") {
-        TriadArmorItem(TriadArmorMaterials.STEEL, ArmorItem.Type.HELMET)
+        ArmorItem(STEEL_ARMOR_MATERIAL, ArmorItem.Type.HELMET, Item.Properties())
     }
     val STEEL_LEGGINGS: Item by registerItem("steel_leggings") {
-        TriadArmorItem(TriadArmorMaterials.STEEL, ArmorItem.Type.LEGGINGS)
+        ArmorItem(STEEL_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, Item.Properties())
     }
     val STEEL_BOOTS: Item by registerItem("steel_boots") {
-        TriadArmorItem(TriadArmorMaterials.STEEL, ArmorItem.Type.BOOTS)
+        ArmorItem(STEEL_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, Item.Properties())
     }
 
+    private fun registerArmorMaterial(name: String, material: Supplier<ArmorMaterial>) = ARMOR_MATERIAL_REGISTRY.register(name, material)
     private fun <T : Item> registerItem(name: String, item: Supplier<T>) = REGISTRY.register(name, item)
     private fun registerItem(name: String) = registerItem(name) { Item(Item.Properties()) }
 }
