@@ -21,6 +21,6 @@
     "#$#"
   ],
   "result": {
-    "item": "triad:bronze_item_boiler"
+    "id": "triad:bronze_item_boiler"
   }
 }

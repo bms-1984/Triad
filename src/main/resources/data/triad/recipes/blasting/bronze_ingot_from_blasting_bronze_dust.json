@@ -7,5 +7,7 @@
   "ingredient": {
     "tag": "c:dusts/bronze"
   },
-  "result": "triad:bronze_ingot"
+  "result": {
+    "id": "triad:bronze_ingot"
+  }
 }

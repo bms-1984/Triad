@@ -64,7 +64,7 @@ class GrinderRecipe(
         override fun codec(): MapCodec<GrinderRecipe> = RecordCodecBuilder.mapCodec {
             it.group(
                 Ingredient.CODEC_NONEMPTY.fieldOf("ingredient").forGetter(GrinderRecipe::input),
-                ItemStack.SIMPLE_ITEM_CODEC.fieldOf("result").forGetter(GrinderRecipe::output)
+                ItemStack.CODEC.fieldOf("result").forGetter(GrinderRecipe::output)
             ).apply(it, ::GrinderRecipe)
         }
 

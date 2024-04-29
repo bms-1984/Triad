@@ -5,6 +5,6 @@
     "tag": "c:ingots/copper"
   },
   "result": {
-    "item": "triad:copper_dust"
+    "id": "triad:copper_dust"
   }
 }

@@ -7,5 +7,7 @@
   "ingredient": {
     "tag": "c:dusts/copper"
   },
-  "result": "minecraft:copper_ingot"
+  "result": {
+    "id": "minecraft:copper_ingot"
+  }
 }

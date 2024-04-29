@@ -5,6 +5,6 @@
     "tag": "c:ingots/bronze"
   },
   "result": {
-    "item": "triad:bronze_dust"
+    "id": "triad:bronze_dust"
   }
 }

@@ -5,6 +5,6 @@
     "tag": "c:ingots/tin"
   },
   "result": {
-    "item": "triad:tin_dust"
+    "id": "triad:tin_dust"
   }
 }

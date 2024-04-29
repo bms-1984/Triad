@@ -6,4 +6,4 @@ import net.minecraft.core.BlockPos
 import net.minecraft.world.level.block.state.BlockState
 
 class SteelCapacitorBlockEntity(pos: BlockPos, state: BlockState) :
-AbstractCapacitorBlockEntity(25000, 5, TriadBlockEntities.STEEL_CAPACITOR_BLOCK_ENTITY_TYPE, pos, state)
+AbstractCapacitorBlockEntity(50000, 5, TriadBlockEntities.STEEL_CAPACITOR_BLOCK_ENTITY_TYPE, pos, state)
