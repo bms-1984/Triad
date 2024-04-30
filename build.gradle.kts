@@ -115,7 +115,7 @@ dependencies {
     compileOnly("mezz.jei:jei-1.20.4-neoforge-api:${jei_version}")
     runtimeOnly("mezz.jei:jei-1.20.4-neoforge:${jei_version}")
 
-    implementation ("mcjty.theoneprobe:theoneprobe:1.20.4_neo-${top_version}")
+    implementation ("mcjty.theoneprobe:theoneprobe:1.20.5_neo-${top_version}")
 }
 
 tasks {
