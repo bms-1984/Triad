@@ -60,5 +60,6 @@
   "triad.message.blade.steel": "Steel",
   "triad.message.blade.bronze": "Bronze",
   "triad.message.steam": "Steam",
-  "triad.message.water": "Water"
+  "triad.message.type": "Type",
+  "triad.message.amount": "Amount"
 }

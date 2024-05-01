@@ -20,13 +20,13 @@ package net.benjimadness.triad.compat
 
 import mcjty.theoneprobe.api.*
 import net.benjimadness.triad.TriadMod
-import net.benjimadness.triad.block.GrinderBlock
 import net.benjimadness.triad.api.block.TriadBlockStateProperties
 import net.benjimadness.triad.api.block.entity.AbstractBoilerBlockEntity
+import net.benjimadness.triad.api.block.entity.AbstractPipeBlockEntity
 import net.benjimadness.triad.api.block.entity.AbstractTurbineBlockEntity
 import net.benjimadness.triad.api.util.ComponentUtil.combine
-import net.benjimadness.triad.block.BoilerBlock
-import net.benjimadness.triad.block.TurbineBlock
+import net.benjimadness.triad.block.*
+import net.benjimadness.triad.registry.TriadFluids
 import net.minecraft.network.chat.Component
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.entity.player.Player
@@ -34,6 +34,7 @@ import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.state.BlockState
 import net.neoforged.fml.InterModComms
 import net.neoforged.fml.ModList
+import net.neoforged.neoforge.fluids.FluidStack
 import java.util.function.Function
 
 object TheOneProbe {
@@ -42,6 +43,26 @@ object TheOneProbe {
             return
         InterModComms.sendTo("theoneprobe", "getTheOneProbe", ::GetTheOneProbe)
     }
+
+    private fun fluidType(stack: FluidStack): Component = combine(
+        Component.translatableWithFallback(
+            "${TriadMod.MODID}.message.type", "Type"),
+        Component.literal(": "),
+        if (stack.`is`(TriadFluids.STEAM))
+            Component.translatableWithFallback("${TriadMod.MODID}.message.steam", "Steam")
+        else
+            stack.hoverName
+    )
+
+    private fun fluidAmount(stack: FluidStack): Component = combine(
+        Component.translatableWithFallback(
+            "${TriadMod.MODID}.message.amount", "Amount"),
+        Component.literal(": "),
+        Component.literal(
+            "${stack.amount} L"
+        )
+    )
+
 
     class GetTheOneProbe : Function<ITheOneProbe, Unit> {
         override fun apply(probe: ITheOneProbe) {
@@ -52,52 +73,48 @@ object TheOneProbe {
                     mode: ProbeMode?, info: IProbeInfo?, player: Player?, level: Level?,
                     state: BlockState?, hitData: IProbeHitData?
                 ) {
-                    if (state != null && state.block is GrinderBlock && info != null) {
-                        info.horizontal().text(
-                            combine(
-                                Component.translatableWithFallback(
-                                    "${TriadMod.MODID}.message.blade", "Blade"),
-                                Component.literal(": "),
-                                state.getValue(TriadBlockStateProperties.BLADE).getComponent()
-                            )
-                        )
-                    }
-                    if (level != null && hitData != null && state != null && state.block is BoilerBlock && info != null) {
-                        info.horizontal().text(
-                            combine(
-                                Component.translatableWithFallback(
-                                    "${TriadMod.MODID}.message.steam", "Steam"),
-                                Component.literal(": "),
-                                Component.literal(
-                                    "${(level.getBlockEntity(hitData.pos) as AbstractBoilerBlockEntity)
-                                        .steamTank.getFluidInTank(0).amount} L"
+                    if (state != null && info != null && level != null && hitData != null) {
+                        when (state.block) {
+                            is GrinderBlock -> {
+                                info.horizontal().text(
+                                    combine(
+                                        Component.translatableWithFallback(
+                                            "${TriadMod.MODID}.message.blade", "Blade"),
+                                        Component.literal(": "),
+                                        state.getValue(TriadBlockStateProperties.BLADE).getComponent()
+                                    )
                                 )
-                            )
-                        )
-                        info.horizontal().text(
-                            combine(
-                                Component.translatableWithFallback(
-                                    "${TriadMod.MODID}.message.water", "Water"),
-                                Component.literal(": "),
-                                Component.literal(
-                                    "${(level.getBlockEntity(hitData.pos) as AbstractBoilerBlockEntity)
-                                        .waterTank.getFluidInTank(0).amount} L"
-                                )
-                            )
-                        )
-                    }
-                    if (level != null && hitData != null && state != null && state.block is TurbineBlock && info != null) {
-                        info.horizontal().text(
-                            combine(
-                                Component.translatableWithFallback(
-                                    "${TriadMod.MODID}.message.steam", "Steam"),
-                                Component.literal(": "),
-                                Component.literal(
-                                    "${(level.getBlockEntity(hitData.pos) as AbstractTurbineBlockEntity)
-                                        .steamTank.getFluidInTank(0).amount} L"
-                                )
-                            )
-                        )
+                            }
+                            is BoilerBlock -> {
+                                val blockEntity = level.getBlockEntity(hitData.pos) as AbstractBoilerBlockEntity
+                                val waterStack = blockEntity.waterTank.getFluidInTank(0)
+                                val steamStack = blockEntity.steamTank.getFluidInTank(0)
+                                if (waterStack.amount > 0) {
+                                    info.horizontal().text(fluidType(waterStack))
+                                    info.horizontal().text(fluidAmount(waterStack))
+                                }
+                                if (steamStack.amount > 0) {
+                                    info.horizontal().text(fluidType(steamStack))
+                                    info.horizontal().text(fluidAmount(steamStack))
+                                }
+                            }
+                            is TurbineBlock -> {
+                                val blockEntity = level.getBlockEntity(hitData.pos) as AbstractTurbineBlockEntity
+                                val steamStack = blockEntity.steamTank.getFluidInTank(0)
+                                if (steamStack.amount > 0) {
+                                    info.horizontal().text(fluidType(steamStack))
+                                    info.horizontal().text(fluidAmount(steamStack))
+                                }
+                            }
+                            is PipeBlock, is ThermalPipeBlock -> {
+                                val blockEntity = level.getBlockEntity(hitData.pos) as AbstractPipeBlockEntity
+                                val stack = blockEntity.fluidTank.getFluidInTank(0)
+                                if (stack.amount > 0) {
+                                    info.horizontal().text(fluidType(stack))
+                                    info.horizontal().text(fluidAmount(stack))
+                                }
+                            }
+                        }
                     }
                 }
             })
