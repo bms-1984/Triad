@@ -18,4 +18,7 @@ AbstractPipeBlockEntity(2, TriadBlockEntities.THERMAL_PIPE_BLOCK_ENTITY_TYPE, po
 
     override fun canBlockEntityReceive(blockEntity: BlockEntity): Boolean =
         blockEntity !is AbstractBoilerBlockEntity
+
+    override fun isSame(blockEntity: BlockEntity): Boolean =
+        blockEntity is ThermalPipeBlockEntity
 }

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "$": {
+      "tag": "c:storage_blocks/bronze"
+    }
+  },
+  "pattern": [
+    "$ $",
+    "$ $",
+    "$ $"
+  ],
+  "result": {
+    "id": "triad:thermal_pipe"
+  }
+}

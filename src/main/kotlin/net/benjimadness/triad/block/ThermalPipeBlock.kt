@@ -14,6 +14,6 @@ class ThermalPipeBlock(properties: Properties, blockEntity: KClass<out BlockEnti
         AbstractConduitBlock(properties, blockEntity) {
     override val capability: BlockCapability<IFluidHandler, Direction?> = Capabilities.FluidHandler.BLOCK
 
-    override fun checkType(block: Block): Boolean =
+    override fun isSame(block: Block): Boolean =
         block is ThermalPipeBlock
 }

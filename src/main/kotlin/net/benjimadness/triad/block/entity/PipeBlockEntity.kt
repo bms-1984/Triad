@@ -16,4 +16,6 @@ AbstractPipeBlockEntity(2, TriadBlockEntities.PIPE_BLOCK_ENTITY_TYPE, pos, state
     }
 
     override fun canBlockEntityReceive(blockEntity: BlockEntity): Boolean = true
+    override fun isSame(blockEntity: BlockEntity): Boolean =
+        blockEntity is PipeBlockEntity
 }

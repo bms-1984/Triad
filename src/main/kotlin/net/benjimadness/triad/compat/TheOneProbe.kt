@@ -22,7 +22,6 @@ import mcjty.theoneprobe.api.*
 import net.benjimadness.triad.TriadMod
 import net.benjimadness.triad.api.block.TriadBlockStateProperties
 import net.benjimadness.triad.api.block.entity.AbstractBoilerBlockEntity
-import net.benjimadness.triad.api.block.entity.AbstractPipeBlockEntity
 import net.benjimadness.triad.api.block.entity.AbstractTurbineBlockEntity
 import net.benjimadness.triad.api.util.ComponentUtil.combine
 import net.benjimadness.triad.block.*
@@ -104,14 +103,6 @@ object TheOneProbe {
                                 if (steamStack.amount > 0) {
                                     info.horizontal().text(fluidType(steamStack))
                                     info.horizontal().text(fluidAmount(steamStack))
-                                }
-                            }
-                            is PipeBlock, is ThermalPipeBlock -> {
-                                val blockEntity = level.getBlockEntity(hitData.pos) as AbstractPipeBlockEntity
-                                val stack = blockEntity.fluidTank.getFluidInTank(0)
-                                if (stack.amount > 0) {
-                                    info.horizontal().text(fluidType(stack))
-                                    info.horizontal().text(fluidAmount(stack))
                                 }
                             }
                         }

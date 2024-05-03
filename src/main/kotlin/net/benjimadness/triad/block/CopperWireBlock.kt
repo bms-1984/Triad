@@ -14,6 +14,6 @@ class CopperWireBlock(properties: Properties, blockEntity: KClass<out BlockEntit
         AbstractConduitBlock(properties, blockEntity) {
     override val capability: BlockCapability<IEnergyStorage, Direction?> = Capabilities.EnergyStorage.BLOCK
 
-    override fun checkType(block: Block): Boolean =
+    override fun isSame(block: Block): Boolean =
         block is CopperWireBlock
 }
