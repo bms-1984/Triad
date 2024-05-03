@@ -22,9 +22,11 @@ import mcjty.theoneprobe.api.*
 import net.benjimadness.triad.TriadMod
 import net.benjimadness.triad.api.block.TriadBlockStateProperties
 import net.benjimadness.triad.api.block.entity.AbstractBoilerBlockEntity
+import net.benjimadness.triad.api.block.entity.AbstractPumpBlockEntity
 import net.benjimadness.triad.api.block.entity.AbstractTurbineBlockEntity
 import net.benjimadness.triad.api.util.ComponentUtil.combine
 import net.benjimadness.triad.block.*
+import net.benjimadness.triad.block.entity.SteelPumpBlock
 import net.benjimadness.triad.registry.TriadFluids
 import net.minecraft.network.chat.Component
 import net.minecraft.resources.ResourceLocation
@@ -103,6 +105,14 @@ object TheOneProbe {
                                 if (steamStack.amount > 0) {
                                     info.horizontal().text(fluidType(steamStack))
                                     info.horizontal().text(fluidAmount(steamStack))
+                                }
+                            }
+                            is SteelPumpBlock -> {
+                                val blockEntity = level.getBlockEntity(hitData.pos) as AbstractPumpBlockEntity
+                                val waterStack = blockEntity.waterTank.getFluidInTank(0)
+                                if (waterStack.amount > 0) {
+                                    info.horizontal().text(fluidType(waterStack))
+                                    info.horizontal().text(fluidAmount(waterStack))
                                 }
                             }
                         }

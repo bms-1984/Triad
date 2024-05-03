@@ -86,6 +86,9 @@ object TriadBlocks {
     val THERMAL_PIPE by registerBlock("thermal_pipe") {
         ThermalPipeBlock(Properties.ofFullCopy(BRONZE_BLOCK), ThermalPipeBlockEntity::class)
     }
+    val STEEL_PUMP by registerBlock("steel_pump") {
+        SteelPumpBlock(Properties.ofFullCopy(STEEL_BLOCK), SteelPumpBlockEntity::class)
+    }
 
     private fun <T : Block> registerBlock(name: String, block: Supplier<T>): DeferredBlock<T> {
         val ret = REGISTRY.register(name, block)

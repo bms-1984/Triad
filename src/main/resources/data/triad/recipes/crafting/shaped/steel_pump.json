@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "c:storage_blocks/steel"
+    },
+    "$": {
+      "item": "minecraft:bucket"
+    },
+    "@": {
+      "tag": "minecraft:piston"
+    }
+  },
+  "pattern": [
+    "#$#",
+    "#@#",
+    "# #"
+  ],
+  "result": {
+    "id": "triad:steel_pump"
+  }
+}

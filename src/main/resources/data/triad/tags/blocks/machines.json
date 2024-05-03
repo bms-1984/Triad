@@ -4,6 +4,8 @@
     "#triad:machines/grinders",
     "#triad:machines/generators",
     "#triad:machines/boilers",
-    "#triad:machines/furnaces"
+    "#triad:machines/furnaces",
+    "#triad:machines/pumps",
+    "#triad:machines/capacitors"
   ]
 }

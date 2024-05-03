@@ -24,15 +24,23 @@ AbstractTriadBlockEntity(type, pos, state) {
         energyStorage.energyStored > 0 && level?.hasNeighborSignal(blockPos) == false
 
     open fun distribute() {
-        for (dir in Direction.entries) {
-            if (hasLevel()) {
-                val dirEnergy = level!!.getCapability(Capabilities.EnergyStorage.BLOCK, blockPos.relative(dir), dir.opposite)
-                if (dirEnergy != null && dirEnergy.canReceive()) {
-                    val dirBlock = level!!.getBlockEntity(blockPos.relative(dir))
-                    if (dirBlock !is AbstractGeneratorBlockEntity) {
-                        val received = dirEnergy.receiveEnergy(min(transfer, energy.energyStored), false)
-                        energy.extractEnergy(received, false)
-                    }
+        if (energy.energyStored > 0) {
+            val outputs = HashSet<BlockPos>()
+            for (dir in Direction.entries) {
+                val pos = blockPos.relative(dir)
+                val cap = level!!.getCapability(Capabilities.EnergyStorage.BLOCK, pos, dir.opposite)
+                if (cap != null && cap.canReceive()) {
+                    outputs.add(pos)
+                }
+            }
+            if (outputs.isEmpty()) return
+            val amount = min(transfer, energy.energyStored / outputs.size)
+            for (pos in outputs) {
+                val blockEntity = level!!.getBlockEntity(pos)
+                val cap = level!!.getCapability(Capabilities.EnergyStorage.BLOCK, pos, null)
+                if (cap != null && blockEntity !is AbstractGeneratorBlockEntity) {
+                    val filled = cap.receiveEnergy(amount, false)
+                    energy.extractEnergy(filled, false)
                 }
             }
         }
