@@ -11,7 +11,6 @@ import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.entity.BlockEntityType
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.material.Fluids
-import net.neoforged.neoforge.capabilities.Capabilities
 import net.neoforged.neoforge.capabilities.Capabilities.FluidHandler
 import net.neoforged.neoforge.fluids.FluidStack
 import net.neoforged.neoforge.fluids.capability.IFluidHandler

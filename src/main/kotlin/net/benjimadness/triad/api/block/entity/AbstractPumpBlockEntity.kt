@@ -1,8 +1,5 @@
 package net.benjimadness.triad.api.block.entity
 
-import net.benjimadness.triad.TriadMod
-import net.benjimadness.triad.api.block.TriadBlockStateProperties
-import net.benjimadness.triad.registry.TriadFluids
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.core.HolderLookup
