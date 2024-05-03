@@ -77,6 +77,15 @@ object TriadBlocks {
         SteelCapacitorBlock(Properties.ofFullCopy(STEEL_BLOCK).lightLevel(calculateLightLevel(13, TriadBlockStateProperties.POWERED)),
             SteelCapacitorBlockEntity::class)
     }
+    val COPPER_WIRE by registerBlock("copper_wire") {
+        CopperWireBlock(Properties.ofFullCopy(Blocks.WHITE_WOOL), CopperWireBlockEntity::class)
+    }
+    val PIPE by registerBlock("pipe") {
+        PipeBlock(Properties.ofFullCopy(Blocks.OAK_PLANKS), PipeBlockEntity::class)
+    }
+    val THERMAL_PIPE by registerBlock("thermal_pipe") {
+        ThermalPipeBlock(Properties.ofFullCopy(BRONZE_BLOCK), ThermalPipeBlockEntity::class)
+    }
 
     private fun <T : Block> registerBlock(name: String, block: Supplier<T>): DeferredBlock<T> {
         val ret = REGISTRY.register(name, block)

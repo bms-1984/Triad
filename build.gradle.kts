@@ -22,7 +22,7 @@ plugins {
     id("java-library")
     idea
     `maven-publish`
-    id("net.neoforged.gradle.userdev") version "7.0.105"
+    id("net.neoforged.gradle.userdev") version "7.0.109"
     kotlin("jvm") version "1.9.23"
     kotlin("plugin.serialization") version "1.9.23"
 }
@@ -47,6 +47,7 @@ val mod_description: String by project
 val pack_format_id: String by project
 val jei_version: String by project
 val top_version: String by project
+val localRuntime by configurations.creating
 
 repositories {
     mavenLocal()
@@ -70,7 +71,7 @@ minecraft {
 
 subsystems {
     parchment {
-        minecraftVersion("1.20.4")
+        minecraftVersion(minecraft_version)
         mappingsVersion(mappings_version)
     }
 }
@@ -106,6 +107,10 @@ runs {
     }
 }
 
+configurations {
+    localRuntime.extendsFrom(runtimeClasspath.get())
+}
+
 dependencies {
     implementation("net.neoforged:neoforge:${neo_version}")
 
@@ -113,9 +118,9 @@ dependencies {
 
     compileOnly("mezz.jei:jei-1.20.4-common-api:${jei_version}")
     compileOnly("mezz.jei:jei-1.20.4-neoforge-api:${jei_version}")
-    runtimeOnly("mezz.jei:jei-1.20.4-neoforge:${jei_version}")
+    localRuntime("mezz.jei:jei-1.20.4-neoforge:${jei_version}")
 
-    implementation ("mcjty.theoneprobe:theoneprobe:1.20.5_neo-${top_version}")
+    implementation("mcjty.theoneprobe:theoneprobe:1.20.5_neo-${top_version}")
 }
 
 tasks {

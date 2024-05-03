@@ -112,6 +112,18 @@ object  TriadMod {
             Capabilities.EnergyStorage.BLOCK,
             TriadBlockEntities.STEEL_CAPACITOR_BLOCK_ENTITY_TYPE
         ) { o, _ -> o.energyStorage }
+        event.registerBlockEntity(
+            Capabilities.EnergyStorage.BLOCK,
+            TriadBlockEntities.COPPER_WIRE_BLOCK_ENTITY_TYPE
+        ) { o, _ -> o.energyStorage}
+        event.registerBlockEntity(
+            Capabilities.FluidHandler.BLOCK,
+            TriadBlockEntities.PIPE_BLOCK_ENTITY_TYPE
+        ) { o, _ -> o.fluidTank}
+        event.registerBlockEntity(
+            Capabilities.FluidHandler.BLOCK,
+            TriadBlockEntities.THERMAL_PIPE_BLOCK_ENTITY_TYPE
+        ) { o, _ -> o.fluidTank}
     }
 
     @SubscribeEvent

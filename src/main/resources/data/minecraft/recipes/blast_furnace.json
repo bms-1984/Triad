@@ -5,19 +5,22 @@
     "#": {
       "tag": "minecraft:stone_crafting_materials"
     },
-    "I": {
-      "tag": "forge/storage_blocks/bronze"
+    "@": {
+      "item": "minecraft:iron_bars"
     },
-    "X": {
+    "!": {
       "item": "minecraft:furnace"
+    },
+    "$": {
+      "tag": "c:storage_blocks/bronze"
     }
   },
   "pattern": [
-    "III",
-    "IXI",
-    "###"
+    "#$#",
+    "@!@",
+    "#$#"
   ],
   "result": {
-    "item": "minecraft:blast_furnace"
+    "id": "minecraft:blast_furnace"
   }
 }

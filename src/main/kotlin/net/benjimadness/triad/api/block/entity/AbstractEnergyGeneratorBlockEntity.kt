@@ -22,7 +22,7 @@ abstract class AbstractEnergyGeneratorBlockEntity(capacity: Int, private val tra
         if (energy.energyStored > 0) {
             for (dir in Direction.entries) {
                 if (hasLevel()) {
-                    val dirEnergy = level!!.getCapability(Capabilities.EnergyStorage.BLOCK, blockPos.relative(dir), null)
+                    val dirEnergy = level!!.getCapability(Capabilities.EnergyStorage.BLOCK, blockPos.relative(dir), dir.opposite)
                     if (dirEnergy != null) {
                         val received = dirEnergy.receiveEnergy(min (transfer, energy.energyStored), false)
                         energy.extractEnergy(received, false)

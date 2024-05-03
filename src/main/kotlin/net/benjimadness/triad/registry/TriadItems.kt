@@ -91,58 +91,58 @@ object TriadItems {
         BladeItem(Item.Properties().durability(10).setNoRepair(), Blades.BRONZE)
     }
     val BRONZE_PICKAXE: Item by registerItem("bronze_pickaxe") {
-        PickaxeItem(Tiers.IRON, Item.Properties())
+        PickaxeItem(Tiers.IRON, Item.Properties().stacksTo(1))
     }
     val BRONZE_AXE: Item by registerItem("bronze_axe") {
-        AxeItem(Tiers.IRON, Item.Properties())
+        AxeItem(Tiers.IRON, Item.Properties().stacksTo(1))
     }
     val BRONZE_SHOVEL: Item by registerItem("bronze_shovel") {
-        ShovelItem(Tiers.IRON, Item.Properties())
+        ShovelItem(Tiers.IRON, Item.Properties().stacksTo(1))
     }
     val BRONZE_SWORD: Item by registerItem("bronze_sword") {
-        SwordItem(Tiers.IRON, Item.Properties())
+        SwordItem(Tiers.IRON, Item.Properties().stacksTo(1))
     }
     val BRONZE_HOE: Item by registerItem("bronze_hoe") {
-        HoeItem(Tiers.IRON, Item.Properties())
+        HoeItem(Tiers.IRON, Item.Properties().stacksTo(1))
     }
     val BRONZE_CHESTPLATE: Item by registerItem("bronze_chestplate") {
-        ArmorItem(BRONZE_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, Item.Properties())
+        ArmorItem(BRONZE_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, Item.Properties().stacksTo(1))
     }
     val BRONZE_HELMET: Item by registerItem("bronze_helmet") {
-        ArmorItem(BRONZE_ARMOR_MATERIAL, ArmorItem.Type.HELMET, Item.Properties())
+        ArmorItem(BRONZE_ARMOR_MATERIAL, ArmorItem.Type.HELMET, Item.Properties().stacksTo(1))
     }
     val BRONZE_LEGGINGS: Item by registerItem("bronze_leggings") {
-        ArmorItem(BRONZE_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, Item.Properties())
+        ArmorItem(BRONZE_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, Item.Properties().stacksTo(1))
     }
     val BRONZE_BOOTS: Item by registerItem("bronze_boots") {
-        ArmorItem(BRONZE_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, Item.Properties())
+        ArmorItem(BRONZE_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, Item.Properties().stacksTo(1))
     }
     val STEEL_PICKAXE: Item by registerItem("steel_pickaxe") {
-        PickaxeItem(Tiers.DIAMOND, Item.Properties())
+        PickaxeItem(Tiers.DIAMOND, Item.Properties().stacksTo(1))
     }
     val STEEL_AXE: Item by registerItem("steel_axe") {
-        AxeItem(Tiers.DIAMOND, Item.Properties())
+        AxeItem(Tiers.DIAMOND, Item.Properties().stacksTo(1))
     }
     val STEEL_SHOVEL: Item by registerItem("steel_shovel") {
-        ShovelItem(Tiers.DIAMOND, Item.Properties())
+        ShovelItem(Tiers.DIAMOND, Item.Properties().stacksTo(1))
     }
     val STEEL_SWORD: Item by registerItem("steel_sword") {
-        SwordItem(Tiers.DIAMOND, Item.Properties())
+        SwordItem(Tiers.DIAMOND, Item.Properties().stacksTo(1))
     }
     val STEEL_HOE: Item by registerItem("steel_hoe") {
-        HoeItem(Tiers.DIAMOND, Item.Properties())
+        HoeItem(Tiers.DIAMOND, Item.Properties().stacksTo(1))
     }
     val STEEL_CHESTPLATE: Item by registerItem("steel_chestplate") {
-        ArmorItem(STEEL_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, Item.Properties())
+        ArmorItem(STEEL_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, Item.Properties().stacksTo(1))
     }
     val STEEL_HELMET: Item by registerItem("steel_helmet") {
-        ArmorItem(STEEL_ARMOR_MATERIAL, ArmorItem.Type.HELMET, Item.Properties())
+        ArmorItem(STEEL_ARMOR_MATERIAL, ArmorItem.Type.HELMET, Item.Properties().stacksTo(1))
     }
     val STEEL_LEGGINGS: Item by registerItem("steel_leggings") {
-        ArmorItem(STEEL_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, Item.Properties())
+        ArmorItem(STEEL_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, Item.Properties().stacksTo(1))
     }
     val STEEL_BOOTS: Item by registerItem("steel_boots") {
-        ArmorItem(STEEL_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, Item.Properties())
+        ArmorItem(STEEL_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, Item.Properties().stacksTo(1))
     }
 
     private fun registerArmorMaterial(name: String, material: Supplier<ArmorMaterial>) = ARMOR_MATERIAL_REGISTRY.register(name, material)

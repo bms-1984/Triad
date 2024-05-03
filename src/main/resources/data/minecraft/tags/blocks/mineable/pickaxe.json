@@ -12,6 +12,7 @@
     "triad:bronze_turbine",
     "triad:bronze_grinder",
     "triad:bronze_furnace",
-    "triad:steel_capacitor"
+    "triad:steel_capacitor",
+    "triad:thermal_pipe"
   ]
 }
