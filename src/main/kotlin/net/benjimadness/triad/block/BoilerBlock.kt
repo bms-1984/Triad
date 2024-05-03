@@ -73,6 +73,15 @@ class BoilerBlock(properties: Properties, blockEntity: KClass<out AbstractGenera
             }
             return ItemInteractionResult.SUCCESS
         }
+        if (stack.item == Items.BUCKET) {
+            val entity = level.getBlockEntity(pos) as AbstractBoilerBlockEntity
+            if (entity.waterTank.getFluidInTank(0).amount >= 1000) {
+                entity.waterTank.drain(1000, IFluidHandler.FluidAction.EXECUTE)
+                player.setItemInHand(hand, ItemStack(Items.WATER_BUCKET))
+                return ItemInteractionResult.CONSUME
+            }
+            return ItemInteractionResult.SUCCESS
+        }
         return super.useItemOn(stack, state, level, pos, player, hand, result)
     }
 
