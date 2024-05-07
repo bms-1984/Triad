@@ -65,6 +65,10 @@ repositories {
     }
 }
 
+base {
+    archivesName = mod_id
+}
+
 minecraft {
     mappings
 }
@@ -163,5 +167,17 @@ publishing {
             from(components["java"])
             artifactId = mod_id
         }
+    }
+    repositories {
+        maven {
+            setUrl("file://${project.projectDir}/repo")
+        }
+    }
+}
+
+idea {
+    module {
+        isDownloadJavadoc = true
+        isDownloadSources = true
     }
 }
