@@ -6,6 +6,7 @@
     "#triad:machines/boilers",
     "#triad:machines/furnaces",
     "#triad:machines/pumps",
-    "#triad:machines/capacitors"
+    "#triad:machines/capacitors",
+    "#triad:machines/sawmills"
   ]
 }

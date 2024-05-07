@@ -32,11 +32,10 @@ import net.minecraft.util.RandomSource
 import net.minecraft.world.MenuProvider
 import net.minecraft.world.SimpleMenuProvider
 import net.minecraft.world.level.Level
-import net.minecraft.world.level.block.EntityBlock
 import net.minecraft.world.level.block.state.BlockState
 import kotlin.reflect.KClass
 
-class ElectricFurnaceBlock(properties: Properties, blockEntity: KClass<out AbstractMachineBlockEntity>) : AbstractMachineBlock(properties, blockEntity), EntityBlock {
+class ElectricFurnaceBlock(properties: Properties, blockEntity: KClass<out AbstractMachineBlockEntity>) : AbstractMachineBlock(properties, blockEntity) {
     @Deprecated("Deprecated in Java")
     override fun getMenuProvider(state: BlockState, level: Level, pos: BlockPos): MenuProvider =
         SimpleMenuProvider(

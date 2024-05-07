@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "triad:block/bronze_sawmill_front_running",
+    "side": "triad:block/bronze_block",
+    "top": "triad:block/bronze_block_lever",
+    "bottom": "triad:block/bronze_block"
+  }
+}

@@ -102,17 +102,17 @@ class BoilerFluidHandler(private val capacity: Int) : IFluidHandler {
     fun getSpace(tank: Int): Int = max(0, capacity - getFluidInTank(tank).amount)
 
     fun readFromNBT(lookupProvider: Provider, tag: CompoundTag): BoilerFluidHandler {
-        tanks[1].fluid = FluidStack.parseOptional(lookupProvider, tag.getCompound("Steam"))
-        tanks[0].fluid = FluidStack.parseOptional(lookupProvider, tag.getCompound("Water"))
+        tanks[0].readFromNBT(lookupProvider, tag.getCompound("Water"))
+        tanks[1].readFromNBT(lookupProvider, tag.getCompound("Steam"))
         return this
     }
 
     fun writeToNBT(lookupProvider: Provider, tag: CompoundTag): CompoundTag {
         if (!tanks[0].isEmpty) {
-            tag.put("Water", tanks[0].fluid.save(lookupProvider))
+            tag.put("Water", tanks[0].writeToNBT(lookupProvider, CompoundTag()))
         }
         if (!tanks[1].isEmpty) {
-            tag.put("Steam", tanks[1].fluid.save(lookupProvider))
+            tag.put("Steam", tanks[1].writeToNBT(lookupProvider, CompoundTag()))
         }
         return tag
     }

@@ -23,6 +23,7 @@ import net.benjimadness.triad.TriadMod
 import net.benjimadness.triad.api.block.TriadBlockStateProperties
 import net.benjimadness.triad.api.block.entity.AbstractBoilerBlockEntity
 import net.benjimadness.triad.api.block.entity.AbstractPumpBlockEntity
+import net.benjimadness.triad.api.block.entity.AbstractTankBlockEntity
 import net.benjimadness.triad.api.block.entity.AbstractTurbineBlockEntity
 import net.benjimadness.triad.api.capabilities.fluid.BoilerFluidHandler
 import net.benjimadness.triad.api.util.ComponentUtil.combine
@@ -64,7 +65,6 @@ object TheOneProbe {
             "${stack.amount} L"
         )
     )
-
 
     class GetTheOneProbe : Function<ITheOneProbe, Unit> {
         override fun apply(probe: ITheOneProbe) {
@@ -111,6 +111,14 @@ object TheOneProbe {
                             }
                             is SteelPumpBlock -> {
                                 val blockEntity = level.getBlockEntity(hitData.pos) as AbstractPumpBlockEntity
+                                val stack = blockEntity.fluidTank.getFluidInTank(0)
+                                if (stack.amount > 0) {
+                                    info.horizontal().text(fluidType(stack))
+                                    info.horizontal().text(fluidAmount(stack))
+                                }
+                            }
+                            is SteelTankBlock -> {
+                                val blockEntity = level.getBlockEntity(hitData.pos) as AbstractTankBlockEntity
                                 val stack = blockEntity.fluidTank.getFluidInTank(0)
                                 if (stack.amount > 0) {
                                     info.horizontal().text(fluidType(stack))

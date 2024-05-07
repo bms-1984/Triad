@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "contains=none": {
+      "model": "triad:block/steel_tank"
+    },
+    "contains=water": {
+      "model": "triad:block/steel_tank_water"
+    },
+    "contains=lava": {
+      "model": "triad:block/steel_tank_lava"
+    },
+    "contains=steam": {
+      "model": "triad:block/steel_tank_steam"
+    }
+  }
+}

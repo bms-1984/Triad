@@ -32,12 +32,11 @@ import net.minecraft.world.MenuProvider
 import net.minecraft.world.SimpleMenuProvider
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.Block
-import net.minecraft.world.level.block.EntityBlock
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.StateDefinition
 import kotlin.reflect.KClass
 
-class GrinderBlock(properties: Properties, blockEntity: KClass<out AbstractMachineBlockEntity>) : AbstractMachineBlock(properties, blockEntity), EntityBlock {
+class GrinderBlock(properties: Properties, blockEntity: KClass<out AbstractMachineBlockEntity>) : AbstractMachineBlock(properties, blockEntity) {
     companion object {
         private val POWERED = TriadBlockStateProperties.POWERED
         private val BLADE = TriadBlockStateProperties.BLADE

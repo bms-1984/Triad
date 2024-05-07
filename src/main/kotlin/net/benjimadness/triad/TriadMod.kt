@@ -21,10 +21,7 @@ package net.benjimadness.triad
 import com.mojang.logging.LogUtils
 import net.benjimadness.triad.compat.TheOneProbe
 import net.benjimadness.triad.config.TriadConfig
-import net.benjimadness.triad.gui.screen.BoilerScreen
-import net.benjimadness.triad.gui.screen.ElectricFurnaceScreen
-import net.benjimadness.triad.gui.screen.TurbineScreen
-import net.benjimadness.triad.gui.screen.GrinderScreen
+import net.benjimadness.triad.gui.screen.*
 import net.benjimadness.triad.registry.*
 import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.fml.common.EventBusSubscriber
@@ -128,6 +125,18 @@ object  TriadMod {
             Capabilities.EnergyStorage.BLOCK,
             TriadBlockEntities.STEEL_PUMP_BLOCK_ENTITY_TYPE
         ) { o, _ -> o.energyStorage }
+        event.registerBlockEntity(
+            Capabilities.EnergyStorage.BLOCK,
+            TriadBlockEntities.BRONZE_SAWMILL_BLOCK_ENTITY_TYPE
+        ) { o, _ -> o.energyStorage }
+        event.registerBlockEntity(
+            Capabilities.ItemHandler.BLOCK,
+            TriadBlockEntities.BRONZE_SAWMILL_BLOCK_ENTITY_TYPE
+        ) { o, _ -> o.itemHandler }
+        event.registerBlockEntity(
+            Capabilities.FluidHandler.BLOCK,
+            TriadBlockEntities.STEEL_TANK_BLOCK_ENTITY_TYPE
+        ) { o, _ -> o.fluidTank }
     }
 
     @SubscribeEvent
@@ -136,5 +145,6 @@ object  TriadMod {
         event.register(TriadMenus.FURNACE_MENU_TYPE.get(), ::ElectricFurnaceScreen)
         event.register(TriadMenus.TURBINE_MENU_TYPE.get(), ::TurbineScreen)
         event.register(TriadMenus.ITEM_BOILER_MENU_TYPE.get(), ::BoilerScreen)
+        event.register(TriadMenus.SAWMILL_MENU_TYPE.get(), ::SawmillScreen)
     }
 }

@@ -1,0 +1,11 @@
+{
+  "type": "triad:woodcutting",
+  "ingredient":
+  {
+    "tag": "minecraft:oak_logs"
+  },
+  "result": {
+    "count": 6,
+    "id": "minecraft:oak_planks"
+  }
+}

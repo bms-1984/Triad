@@ -61,7 +61,7 @@ abstract class AbstractBoilerBlockEntity(capacity: Int, private val transfer: In
 
     override fun loadAdditional(tag: CompoundTag, registry: HolderLookup.Provider) {
         super.loadAdditional(tag, registry)
-        if (tag.contains("Fluid")) fluids.readFromNBT(registry, tag.getCompound("Steam"))
+        if (tag.contains("Fluid")) fluids.readFromNBT(registry, tag.getCompound("Fluid"))
     }
 
     private fun hasWater() = !fluids.isEmpty(0)

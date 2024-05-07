@@ -15,12 +15,11 @@ import net.minecraft.world.MenuProvider
 import net.minecraft.world.SimpleMenuProvider
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.Block
-import net.minecraft.world.level.block.EntityBlock
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.StateDefinition
 import kotlin.reflect.KClass
 
-class TurbineBlock(properties: Properties, blockEntity: KClass<out AbstractGeneratorBlockEntity>) : AbstractMachineBlock(properties, blockEntity), EntityBlock {
+class TurbineBlock(properties: Properties, blockEntity: KClass<out AbstractGeneratorBlockEntity>) : AbstractMachineBlock(properties, blockEntity) {
     companion object {
         private val STEAM = TriadBlockStateProperties.STEAM
     }

@@ -13,6 +13,9 @@
     "triad:bronze_grinder",
     "triad:bronze_furnace",
     "triad:steel_capacitor",
-    "triad:thermal_pipe"
+    "triad:thermal_pipe",
+    "triad:steel_tank",
+    "triad:bronze_sawmill",
+    "triad:steel_pump"
   ]
 }

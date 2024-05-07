@@ -15,7 +15,6 @@ import net.minecraft.world.item.Items
 import net.minecraft.world.item.context.BlockPlaceContext
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.Block
-import net.minecraft.world.level.block.EntityBlock
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.StateDefinition
 import net.minecraft.world.level.material.Fluids
@@ -25,7 +24,7 @@ import net.neoforged.neoforge.fluids.capability.IFluidHandler
 import kotlin.reflect.KClass
 
 class SteelPumpBlock(properties: Properties, blockEntity: KClass<out AbstractPumpBlockEntity>) :
-    AbstractMachineBlock(properties, blockEntity), EntityBlock {
+    AbstractMachineBlock(properties, blockEntity) {
     companion object {
         @JvmStatic
         private val CONTAINS = TriadBlockStateProperties.CONTAINS
@@ -52,36 +51,38 @@ class SteelPumpBlock(properties: Properties, blockEntity: KClass<out AbstractPum
 
     override fun useItemOn(stack: ItemStack, state: BlockState, level: Level, pos: BlockPos,
                            player: Player, hand: InteractionHand, result: BlockHitResult): ItemInteractionResult {
-        if (stack.item == Items.WATER_BUCKET) {
-            val entity = level.getBlockEntity(pos) as AbstractPumpBlockEntity
-            val filled = entity.fluidTank.fill(FluidStack(Fluids.WATER, 1000), IFluidHandler.FluidAction.EXECUTE)
-            if (filled > 0) {
-                player.setItemInHand(hand, ItemStack(Items.BUCKET))
-                return ItemInteractionResult.CONSUME
+        when (stack.item) {
+            Items.WATER_BUCKET -> {
+                val entity = level.getBlockEntity(pos) as AbstractPumpBlockEntity
+                val filled = entity.fluidTank.fill(FluidStack(Fluids.WATER, 1000), IFluidHandler.FluidAction.EXECUTE)
+                if (filled > 0) {
+                    player.setItemInHand(hand, ItemStack(Items.BUCKET))
+                    return ItemInteractionResult.CONSUME
+                }
+                return ItemInteractionResult.SUCCESS
             }
-            return ItemInteractionResult.SUCCESS
-        }
-        else if (stack.item == Items.LAVA_BUCKET) {
-            val entity = level.getBlockEntity(pos) as AbstractPumpBlockEntity
-            val filled = entity.fluidTank.fill(FluidStack(Fluids.LAVA, 1000), IFluidHandler.FluidAction.EXECUTE)
-            if (filled > 0) {
-                player.setItemInHand(hand, ItemStack(Items.BUCKET))
-                return ItemInteractionResult.CONSUME
+            Items.LAVA_BUCKET -> {
+                val entity = level.getBlockEntity(pos) as AbstractPumpBlockEntity
+                val filled = entity.fluidTank.fill(FluidStack(Fluids.LAVA, 1000), IFluidHandler.FluidAction.EXECUTE)
+                if (filled > 0) {
+                    player.setItemInHand(hand, ItemStack(Items.BUCKET))
+                    return ItemInteractionResult.CONSUME
+                }
+                return ItemInteractionResult.SUCCESS
             }
-            return ItemInteractionResult.SUCCESS
-        }
-        else if (stack.item == Items.BUCKET) {
-            val entity = level.getBlockEntity(pos) as AbstractPumpBlockEntity
-            val fluid = entity.fluidTank.getFluidInTank(0)
-            if (fluid.`is`(TriadFluids.STEAM)) return ItemInteractionResult.SUCCESS
-            if (fluid.amount >= 1000) {
-                val bucket = fluid.fluid.bucket
-                entity.fluidTank.drain(1000, IFluidHandler.FluidAction.EXECUTE)
-                player.setItemInHand(hand, ItemStack(bucket))
-                return ItemInteractionResult.CONSUME
+            Items.BUCKET -> {
+                val entity = level.getBlockEntity(pos) as AbstractPumpBlockEntity
+                val fluid = entity.fluidTank.getFluidInTank(0)
+                if (fluid.`is`(TriadFluids.STEAM)) return ItemInteractionResult.SUCCESS
+                if (fluid.amount >= 1000) {
+                    val bucket = fluid.fluid.bucket
+                    entity.fluidTank.drain(1000, IFluidHandler.FluidAction.EXECUTE)
+                    player.setItemInHand(hand, ItemStack(bucket))
+                    return ItemInteractionResult.CONSUME
+                }
+                return ItemInteractionResult.SUCCESS
             }
-            return ItemInteractionResult.SUCCESS
+            else -> return super.useItemOn(stack, state, level, pos, player, hand, result)
         }
-        return super.useItemOn(stack, state, level, pos, player, hand, result)
     }
 }

@@ -9,7 +9,7 @@
       "item": "minecraft:bucket"
     },
     "@": {
-      "tag": "minecraft:piston"
+      "item": "minecraft:piston"
     }
   },
   "pattern": [

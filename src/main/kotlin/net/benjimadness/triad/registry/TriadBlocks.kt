@@ -73,9 +73,17 @@ object TriadBlocks {
         ElectricFurnaceBlock(Properties.ofFullCopy(BRONZE_BLOCK).lightLevel(calculateLightLevel(13, TriadBlockStateProperties.RUNNING)),
             BronzeFurnaceBlockEntity::class)
     }
+    val BRONZE_SAWMILL by registerBlock("bronze_sawmill") {
+        SawmillBlock(Properties.ofFullCopy(BRONZE_BLOCK),
+            BronzeSawmillBlockEntity::class)
+    }
     val STEEL_CAPACITOR by registerBlock("steel_capacitor") {
         SteelCapacitorBlock(Properties.ofFullCopy(STEEL_BLOCK).lightLevel(calculateLightLevel(13, TriadBlockStateProperties.POWERED)),
             SteelCapacitorBlockEntity::class)
+    }
+    val STEEL_TANK by registerBlock("steel_tank") {
+        SteelTankBlock(Properties.ofFullCopy(STEEL_BLOCK),
+            SteelTankBlockEntity::class)
     }
     val COPPER_WIRE by registerBlock("copper_wire") {
         CopperWireBlock(Properties.ofFullCopy(Blocks.WHITE_WOOL), CopperWireBlockEntity::class)

@@ -19,10 +19,7 @@
 package net.benjimadness.triad.registry
 
 import net.benjimadness.triad.TriadMod
-import net.benjimadness.triad.gui.menu.BoilerMenu
-import net.benjimadness.triad.gui.menu.ElectricFurnaceMenu
-import net.benjimadness.triad.gui.menu.GrinderMenu
-import net.benjimadness.triad.gui.menu.TurbineMenu
+import net.benjimadness.triad.gui.menu.*
 import net.minecraft.core.registries.Registries
 import net.minecraft.world.flag.FeatureFlags
 import net.minecraft.world.inventory.MenuType
@@ -55,6 +52,12 @@ object TriadMenus {
     val FURNACE_MENU_TYPE: DeferredHolder<MenuType<*>, MenuType<ElectricFurnaceMenu>> = register("furnace_menu") {
         MenuType(
             IContainerFactory { id, inv, data -> ElectricFurnaceMenu(id, inv, data.readBlockPos()) },
+            FeatureFlags.DEFAULT_FLAGS
+        )
+    }
+    val SAWMILL_MENU_TYPE: DeferredHolder<MenuType<*>, MenuType<SawmillMenu>> = register("sawmill_menu") {
+        MenuType(
+            IContainerFactory { id, inv, data -> SawmillMenu(id, inv, data.readBlockPos()) },
             FeatureFlags.DEFAULT_FLAGS
         )
     }

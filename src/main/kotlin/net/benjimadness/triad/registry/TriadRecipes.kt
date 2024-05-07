@@ -20,6 +20,7 @@ package net.benjimadness.triad.registry
 
 import net.benjimadness.triad.TriadMod
 import net.benjimadness.triad.recipe.GrinderRecipe
+import net.benjimadness.triad.recipe.SawmillRecipe
 import net.minecraft.core.registries.Registries
 import net.minecraft.world.item.crafting.RecipeSerializer
 import net.minecraft.world.item.crafting.RecipeType
@@ -34,6 +35,9 @@ object TriadRecipes {
 
     val GRINDER_RECIPE_TYPE: RecipeType<GrinderRecipe> by registerRecipeType("grinder_recipe_type") { object : RecipeType<GrinderRecipe>{} }
     val GRINDER_RECIPE_SERIALIZER: RecipeSerializer<*> by registerRecipeSerializer("grinding") { GrinderRecipe.Serializer() }
+
+    val SAWMILL_RECIPE_TYPE: RecipeType<SawmillRecipe> by registerRecipeType("sawmill_recipe_type") { object : RecipeType<SawmillRecipe>{} }
+    val SAWMILL_RECIPE_SERIALIZER: RecipeSerializer<*> by registerRecipeSerializer("woodcutting") { SawmillRecipe.Serializer() }
 
     private fun <T : RecipeType<*>> registerRecipeType(name: String, recipeType: Supplier<T>) =
         TYPE_REGISTRY.register(name, recipeType)
