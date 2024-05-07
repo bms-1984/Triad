@@ -43,9 +43,8 @@ abstract class AbstractPipeBlockEntity(private val transfer: Int, type: BlockEnt
     override fun addOutput(pos: BlockPos) {
         val cap = level!!.getCapability(Capabilities.FluidHandler.BLOCK, pos,null)
         val blockEntity = level!!.getBlockEntity(pos)
-        if (cap != null && blockEntity != null && canBlockEntityReceive(blockEntity)) {
+        if (cap != null && blockEntity != null && canBlockEntityReceive(blockEntity))
             outputs.add(pos)
-        }
     }
 
     abstract fun canBlockEntityReceive(blockEntity: BlockEntity): Boolean

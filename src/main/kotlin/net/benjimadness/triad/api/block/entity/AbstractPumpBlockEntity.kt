@@ -1,5 +1,8 @@
 package net.benjimadness.triad.api.block.entity
 
+import net.benjimadness.triad.api.block.Contains
+import net.benjimadness.triad.api.block.TriadBlockStateProperties
+import net.benjimadness.triad.registry.TriadFluids
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.core.HolderLookup
@@ -19,36 +22,42 @@ import kotlin.math.min
 
 abstract class AbstractPumpBlockEntity(capacity: Int, private val transfer: Int, type: BlockEntityType<*>, pos: BlockPos, state: BlockState) :
 AbstractMachineBlockEntity(type, pos, state) {
-    private var counter = 0
-    private val water = FluidTank(5000) { stack ->
-        stack.fluid == Fluids.WATER
+    private val fluid = FluidTank(5000) {
+        it.fluid == Fluids.WATER || it.fluid == Fluids.LAVA
     }
-    val waterTank: IFluidHandler by lazy { water }
+    val fluidTank: IFluidHandler by lazy { fluid }
 
     private val energy = EnergyStorage(capacity, transfer)
     val energyStorage: IEnergyStorage by lazy { energy }
 
     override fun execute() {
+        when (fluid.fluid.fluid) {
+            Fluids.WATER -> level?.setBlock(blockPos, level!!.getBlockState(blockPos).setValue(TriadBlockStateProperties.CONTAINS, Contains.WATER), Block.UPDATE_CLIENTS)
+            Fluids.LAVA -> level?.setBlock(blockPos, level!!.getBlockState(blockPos).setValue(TriadBlockStateProperties.CONTAINS, Contains.LAVA), Block.UPDATE_CLIENTS)
+            TriadFluids.STEAM -> level?.setBlock(blockPos, level!!.getBlockState(blockPos).setValue(TriadBlockStateProperties.CONTAINS, Contains.STEAM), Block.UPDATE_CLIENTS)
+            else -> level?.setBlock(blockPos, level!!.getBlockState(blockPos).setValue(TriadBlockStateProperties.CONTAINS, Contains.NONE), Block.UPDATE_CLIENTS)
+        }
         if (shouldRun()) {
-            if (water.space > 1000) {
+            if (fluid.space > 1000) {
                 val below = level?.getFluidState(blockPos.below())
-                if (below != null && below.isSourceOfType(Fluids.WATER)) {
-                    counter++
-                    water.fill(FluidStack(Fluids.WATER, 1000), IFluidHandler.FluidAction.EXECUTE)
-                    energy.extractEnergy(5, false)
-                    if (counter > 5) {
-                        level?.setBlock(blockPos.below(), Blocks.AIR.defaultBlockState(), Block.UPDATE_CLIENTS)
-                        counter = 0
-                    }
+                if (below != null && below.isSource) {
+                    fluid.fill(FluidStack(below.type, 1000), IFluidHandler.FluidAction.EXECUTE)
+                    energy.extractEnergy(100, false)
+                    level?.setBlock(blockPos.below(), Blocks.AIR.defaultBlockState(), Block.UPDATE_CLIENTS)
                 }
             }
-            if (!water.isEmpty) distribute()
         }
+        if (!fluid.isEmpty) distribute()
+    }
+
+    private fun hasFluidBelow(): Boolean {
+        val below = level?.getFluidState(blockPos.below())
+        return below != null && below.isSource
     }
 
     private fun distribute() {
         val outputs = HashSet<BlockPos>()
-        val stack = water.getFluidInTank(0)
+        val stack = fluid.getFluidInTank(0)
         for (dir in Direction.entries) {
             val pos = blockPos.relative(dir)
             val cap = level!!.getCapability(Capabilities.FluidHandler.BLOCK, pos, dir.opposite)
@@ -62,23 +71,23 @@ AbstractMachineBlockEntity(type, pos, state) {
             val cap = level!!.getCapability(Capabilities.FluidHandler.BLOCK, pos, null)
             if (cap != null) {
                 val filled = cap.fill(stack.copyWithAmount(amount), IFluidHandler.FluidAction.EXECUTE)
-                water.drain(filled, IFluidHandler.FluidAction.EXECUTE)
+                fluid.drain(filled, IFluidHandler.FluidAction.EXECUTE)
             }
         }
     }
 
     override fun saveAdditional(tag: CompoundTag, registry: HolderLookup.Provider) {
         super.saveAdditional(tag, registry)
-        tag.put("Water", water.writeToNBT(registry, CompoundTag()))
+        tag.put("Fluid", fluid.writeToNBT(registry, CompoundTag()))
         tag.put("Energy", energy.serializeNBT(registry))
     }
 
     override fun loadAdditional(tag: CompoundTag, registry: HolderLookup.Provider) {
         super.loadAdditional(tag, registry)
-        if (tag.contains("Water")) water.readFromNBT(registry, tag.getCompound("Water"))
+        if (tag.contains("Fluid")) fluid.readFromNBT(registry, tag.getCompound("Fluid"))
         if (tag.contains("Energy")) tag.get("Energy")?.let { energy.deserializeNBT(registry, it) }
     }
 
     override fun isFueled(): Boolean = energy.energyStored > 0
-    override fun shouldRun(): Boolean = super.shouldRun() && level?.hasNeighborSignal(blockPos) == false
+    override fun shouldRun(): Boolean = super.shouldRun() && level?.hasNeighborSignal(blockPos) == false && hasFluidBelow()
 }

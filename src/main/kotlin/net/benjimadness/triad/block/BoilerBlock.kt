@@ -6,6 +6,7 @@ import net.benjimadness.triad.api.block.LeverPositions
 import net.benjimadness.triad.api.block.TriadBlockStateProperties
 import net.benjimadness.triad.api.block.entity.AbstractBoilerBlockEntity
 import net.benjimadness.triad.api.block.entity.AbstractGeneratorBlockEntity
+import net.benjimadness.triad.api.capabilities.fluid.BoilerFluidHandler
 import net.benjimadness.triad.gui.menu.BoilerMenu
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
@@ -66,7 +67,8 @@ class BoilerBlock(properties: Properties, blockEntity: KClass<out AbstractGenera
     ): ItemInteractionResult {
         if (stack.item == Items.WATER_BUCKET) {
             val entity = level.getBlockEntity(pos) as AbstractBoilerBlockEntity
-            val filled = entity.waterTank.fill(FluidStack(Fluids.WATER, 1000), IFluidHandler.FluidAction.EXECUTE)
+            val tank = entity.tank as BoilerFluidHandler
+            val filled = tank.fillWater(1000, IFluidHandler.FluidAction.EXECUTE)
             if (filled > 0) {
                 player.setItemInHand(hand, ItemStack(Items.BUCKET))
                 return ItemInteractionResult.CONSUME
@@ -75,8 +77,9 @@ class BoilerBlock(properties: Properties, blockEntity: KClass<out AbstractGenera
         }
         if (stack.item == Items.BUCKET) {
             val entity = level.getBlockEntity(pos) as AbstractBoilerBlockEntity
-            if (entity.waterTank.getFluidInTank(0).amount >= 1000) {
-                entity.waterTank.drain(1000, IFluidHandler.FluidAction.EXECUTE)
+            val tank = entity.tank as BoilerFluidHandler
+            if (tank.getFluidInTank(0).amount >= 1000) {
+                tank.drainWater(1000, IFluidHandler.FluidAction.EXECUTE)
                 player.setItemInHand(hand, ItemStack(Items.WATER_BUCKET))
                 return ItemInteractionResult.CONSUME
             }
@@ -91,16 +94,8 @@ class BoilerBlock(properties: Properties, blockEntity: KClass<out AbstractGenera
             val d1 = pos.y.toDouble()
             val d2 = pos.z.toDouble() + 0.5
             if (random.nextDouble() < 0.1) {
-                level.playLocalSound(
-                    d0,
-                    d1,
-                    d2,
-                    SoundEvents.FURNACE_FIRE_CRACKLE,
-                    SoundSource.BLOCKS,
-                    1.0f,
-                    1.0f,
-                    false
-                )
+                level.playLocalSound(d0, d1, d2, SoundEvents.FURNACE_FIRE_CRACKLE, SoundSource.BLOCKS,
+                    1.0f, 1.0f, false)
             }
             val direction = state.getValue(FACING)
             val axis = direction.axis

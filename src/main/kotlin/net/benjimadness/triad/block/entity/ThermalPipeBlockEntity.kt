@@ -2,6 +2,7 @@ package net.benjimadness.triad.block.entity
 
 import net.benjimadness.triad.api.block.entity.AbstractBoilerBlockEntity
 import net.benjimadness.triad.api.block.entity.AbstractPipeBlockEntity
+import net.benjimadness.triad.api.block.entity.AbstractPumpBlockEntity
 import net.benjimadness.triad.api.util.MiscUtil.isHot
 import net.benjimadness.triad.registry.TriadBlockEntities
 import net.minecraft.core.BlockPos
@@ -18,6 +19,7 @@ AbstractPipeBlockEntity(2, TriadBlockEntities.THERMAL_PIPE_BLOCK_ENTITY_TYPE, po
 
     override fun canBlockEntityReceive(blockEntity: BlockEntity): Boolean =
         blockEntity !is AbstractBoilerBlockEntity
+                && blockEntity !is AbstractPumpBlockEntity
 
     override fun isSame(blockEntity: BlockEntity): Boolean =
         blockEntity is ThermalPipeBlockEntity

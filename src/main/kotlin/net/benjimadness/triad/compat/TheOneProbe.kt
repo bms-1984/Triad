@@ -24,9 +24,10 @@ import net.benjimadness.triad.api.block.TriadBlockStateProperties
 import net.benjimadness.triad.api.block.entity.AbstractBoilerBlockEntity
 import net.benjimadness.triad.api.block.entity.AbstractPumpBlockEntity
 import net.benjimadness.triad.api.block.entity.AbstractTurbineBlockEntity
+import net.benjimadness.triad.api.capabilities.fluid.BoilerFluidHandler
 import net.benjimadness.triad.api.util.ComponentUtil.combine
 import net.benjimadness.triad.block.*
-import net.benjimadness.triad.block.entity.SteelPumpBlock
+import net.benjimadness.triad.block.SteelPumpBlock
 import net.benjimadness.triad.registry.TriadFluids
 import net.minecraft.network.chat.Component
 import net.minecraft.resources.ResourceLocation
@@ -88,8 +89,9 @@ object TheOneProbe {
                             }
                             is BoilerBlock -> {
                                 val blockEntity = level.getBlockEntity(hitData.pos) as AbstractBoilerBlockEntity
-                                val waterStack = blockEntity.waterTank.getFluidInTank(0)
-                                val steamStack = blockEntity.steamTank.getFluidInTank(0)
+                                val tank = blockEntity.tank as BoilerFluidHandler
+                                val waterStack = tank.getWater()
+                                val steamStack = tank.getSteam()
                                 if (waterStack.amount > 0) {
                                     info.horizontal().text(fluidType(waterStack))
                                     info.horizontal().text(fluidAmount(waterStack))
@@ -101,18 +103,18 @@ object TheOneProbe {
                             }
                             is TurbineBlock -> {
                                 val blockEntity = level.getBlockEntity(hitData.pos) as AbstractTurbineBlockEntity
-                                val steamStack = blockEntity.steamTank.getFluidInTank(0)
-                                if (steamStack.amount > 0) {
-                                    info.horizontal().text(fluidType(steamStack))
-                                    info.horizontal().text(fluidAmount(steamStack))
+                                val stack = blockEntity.steamTank.getFluidInTank(0)
+                                if (stack.amount > 0) {
+                                    info.horizontal().text(fluidType(stack))
+                                    info.horizontal().text(fluidAmount(stack))
                                 }
                             }
                             is SteelPumpBlock -> {
                                 val blockEntity = level.getBlockEntity(hitData.pos) as AbstractPumpBlockEntity
-                                val waterStack = blockEntity.waterTank.getFluidInTank(0)
-                                if (waterStack.amount > 0) {
-                                    info.horizontal().text(fluidType(waterStack))
-                                    info.horizontal().text(fluidAmount(waterStack))
+                                val stack = blockEntity.fluidTank.getFluidInTank(0)
+                                if (stack.amount > 0) {
+                                    info.horizontal().text(fluidType(stack))
+                                    info.horizontal().text(fluidAmount(stack))
                                 }
                             }
                         }

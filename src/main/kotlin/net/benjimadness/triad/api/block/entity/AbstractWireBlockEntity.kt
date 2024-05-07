@@ -27,9 +27,8 @@ abstract class AbstractWireBlockEntity(private val transfer: Int, type: BlockEnt
     }
     override fun addOutput(pos: BlockPos) {
         val cap = level!!.getCapability(Capabilities.EnergyStorage.BLOCK, pos,null)
-        if (cap != null) {
+        if (cap != null)
             outputs.add(pos)
-        }
     }
 
     override fun isEmpty(): Boolean = energy.energyStored <= 0

@@ -1,7 +1,7 @@
 package net.benjimadness.triad.api.block.entity
 
 import net.benjimadness.triad.api.block.TriadBlockStateProperties
-import net.benjimadness.triad.registry.TriadFluids
+import net.benjimadness.triad.api.capabilities.fluid.BoilerFluidHandler
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.core.HolderLookup
@@ -10,24 +10,15 @@ import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.entity.BlockEntityType
 import net.minecraft.world.level.block.state.BlockState
-import net.minecraft.world.level.material.Fluids
 import net.neoforged.neoforge.capabilities.Capabilities.FluidHandler
-import net.neoforged.neoforge.fluids.FluidStack
 import net.neoforged.neoforge.fluids.capability.IFluidHandler
-import net.neoforged.neoforge.fluids.capability.templates.FluidTank
 import kotlin.math.min
 
 abstract class AbstractBoilerBlockEntity(capacity: Int, private val transfer: Int, private val gen: Int, type: BlockEntityType<*>, pos: BlockPos, state: BlockState) :
     AbstractGeneratorBlockEntity(transfer, gen, type, pos, state) {
-        private val water = FluidTank(capacity) { stack ->
-            stack.fluid == Fluids.WATER
-        }
-    private val steam = FluidTank(capacity) { stack ->
-        stack.fluid == TriadFluids.STEAM
-    }
 
-    val waterTank: IFluidHandler by lazy { water }
-    val steamTank: IFluidHandler by lazy { steam }
+    private val fluids = BoilerFluidHandler(capacity)
+    val tank: IFluidHandler by lazy { fluids }
 
     override fun serverTick(level: Level, pos: BlockPos, blockEntity: AbstractTriadBlockEntity) {
         if (hasWater()) level.setBlock(pos, level.getBlockState(pos).setValue(TriadBlockStateProperties.WATER, true), Block.UPDATE_CLIENTS)
@@ -36,9 +27,9 @@ abstract class AbstractBoilerBlockEntity(capacity: Int, private val transfer: In
     }
 
     override fun distribute() {
-        if (steam.fluidAmount > 0) {
+        if (fluids.getSteam().amount > 0) {
             val outputs = HashSet<BlockPos>()
-            val stack = steam.getFluidInTank(0)
+            val stack = fluids.getSteam()
             for (dir in Direction.entries) {
                 val pos = blockPos.relative(dir)
                 val cap = level!!.getCapability(FluidHandler.BLOCK, pos, dir.opposite)
@@ -52,32 +43,29 @@ abstract class AbstractBoilerBlockEntity(capacity: Int, private val transfer: In
                 val cap = level!!.getCapability(FluidHandler.BLOCK, pos, null)
                 if (cap != null) {
                     val filled = cap.fill(stack.copyWithAmount(amount), IFluidHandler.FluidAction.EXECUTE)
-                    water.drain(filled, IFluidHandler.FluidAction.EXECUTE)
+                    fluids.drainSteam(filled, IFluidHandler.FluidAction.EXECUTE)
                 }
             }
         }
-
     }
 
     override fun fill() {
-        steam.fill(FluidStack(TriadFluids.STEAM, gen), IFluidHandler.FluidAction.EXECUTE)
-        water.drain(gen, IFluidHandler.FluidAction.EXECUTE)
+        fluids.fillSteam(gen, IFluidHandler.FluidAction.EXECUTE)
+        fluids.drainWater(gen, IFluidHandler.FluidAction.EXECUTE)
     }
 
     override fun saveAdditional(tag: CompoundTag, registry: HolderLookup.Provider) {
         super.saveAdditional(tag, registry)
-        tag.put("Steam", steam.writeToNBT(registry, CompoundTag()))
-        tag.put("Water", water.writeToNBT(registry, CompoundTag()))
+        tag.put("Fluid", fluids.writeToNBT(registry, CompoundTag()))
     }
 
     override fun loadAdditional(tag: CompoundTag, registry: HolderLookup.Provider) {
         super.loadAdditional(tag, registry)
-        if (tag.contains("Steam")) steam.readFromNBT(registry, tag.getCompound("Steam"))
-        if (tag.contains("Water")) water.readFromNBT(registry, tag.getCompound("Water"))
+        if (tag.contains("Fluid")) fluids.readFromNBT(registry, tag.getCompound("Steam"))
     }
 
-    private fun hasWater() = !water.isEmpty
-    override fun isFull() = steam.space == 0
+    private fun hasWater() = !fluids.isEmpty(0)
+    override fun isFull() = fluids.getSpace(1) == 0
     abstract override fun getBurnTime(): Int
     override fun shouldRun(): Boolean = super.shouldRun() && hasWater()
     abstract override fun isFueled(): Boolean

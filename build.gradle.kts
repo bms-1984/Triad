@@ -116,9 +116,9 @@ dependencies {
 
     implementation("thedarkcolour:kotlinforforge-neoforge:${kotlinforforge_version}")
 
-    compileOnly("mezz.jei:jei-1.20.4-common-api:${jei_version}")
-    compileOnly("mezz.jei:jei-1.20.4-neoforge-api:${jei_version}")
-    localRuntime("mezz.jei:jei-1.20.4-neoforge:${jei_version}")
+//    compileOnly("mezz.jei:jei-1.20.4-common-api:${jei_version}")
+//    compileOnly("mezz.jei:jei-1.20.4-neoforge-api:${jei_version}")
+//    localRuntime("mezz.jei:jei-1.20.4-neoforge:${jei_version}")
 
     implementation("mcjty.theoneprobe:theoneprobe:1.20.5_neo-${top_version}")
 }

@@ -13,6 +13,7 @@ object TriadBlockStateProperties {
     val LEVER: EnumProperty<LeverPositions> = EnumProperty.create("lever", LeverPositions::class.java)
     val WATER: BooleanProperty = BooleanProperty.create("water")
     val STEAM: BooleanProperty = BooleanProperty.create("steam")
+    val CONTAINS: EnumProperty<Contains> = EnumProperty.create("contains", Contains::class.java)
 }
 
 enum class LeverPositions : StringRepresentable {
@@ -28,4 +29,10 @@ enum class Blades : StringRepresentable {
     private fun getCapitalizedName(): String = serializedName.replaceFirstChar { it.uppercase() }
     fun getComponent(): Component = Component.translatableWithFallback(
         "${TriadMod.MODID}.message.blade.${serializedName}", getCapitalizedName())
+}
+
+enum class Contains : StringRepresentable {
+    WATER, STEAM, LAVA, NONE;
+    override fun getSerializedName(): String = name.lowercase()
+    override fun toString(): String = serializedName
 }

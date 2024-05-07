@@ -79,11 +79,7 @@ object  TriadMod {
         event.registerBlockEntity(
             Capabilities.FluidHandler.BLOCK,
             TriadBlockEntities.BRONZE_ITEM_BOILER_BLOCK_ENTITY_TYPE
-        ) { o, _ -> o.steamTank}
-        event.registerBlockEntity(
-            Capabilities.FluidHandler.BLOCK,
-            TriadBlockEntities.BRONZE_ITEM_BOILER_BLOCK_ENTITY_TYPE
-        ) { o, _ -> o.waterTank}
+        ) { o, _ -> o.tank}
         event.registerBlockEntity(
             Capabilities.FluidHandler.BLOCK,
             TriadBlockEntities.BRONZE_TURBINE_BLOCK_ENTITY_TYPE
@@ -127,7 +123,7 @@ object  TriadMod {
         event.registerBlockEntity(
             Capabilities.FluidHandler.BLOCK,
             TriadBlockEntities.STEEL_PUMP_BLOCK_ENTITY_TYPE
-        ) { o, _ -> o.waterTank }
+        ) { o, _ -> o.fluidTank }
         event.registerBlockEntity(
             Capabilities.EnergyStorage.BLOCK,
             TriadBlockEntities.STEEL_PUMP_BLOCK_ENTITY_TYPE

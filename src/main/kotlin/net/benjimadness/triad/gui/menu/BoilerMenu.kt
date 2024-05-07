@@ -19,6 +19,7 @@
 package net.benjimadness.triad.gui.menu
 
 import net.benjimadness.triad.api.block.entity.AbstractItemBoilerBlockEntity
+import net.benjimadness.triad.api.capabilities.fluid.BoilerFluidHandler
 import net.benjimadness.triad.registry.TriadMenus
 import net.minecraft.core.BlockPos
 import net.minecraft.util.Mth.clamp
@@ -56,6 +57,7 @@ class BoilerMenu(
             for (x in 0 until 9) {
                 this.addSlot(Slot(playerInventory, x, 8 + x * 18, 142))
             }
+            val tank = entity.tank as BoilerFluidHandler
             addDataSlot(object : DataSlot() { // progress
                 override fun get(): Int = entity.progress
                 override fun set(p: Int) {
@@ -69,25 +71,25 @@ class BoilerMenu(
                 }
             })
             addDataSlot(object : DataSlot() { // steam
-                override fun get(): Int = entity.steamTank.getFluidInTank(0).amount
+                override fun get(): Int = tank.getSteam().amount
                 override fun set(s: Int) {
                     steam = s
                 }
             })
             addDataSlot(object : DataSlot() { // totalSteam
-                override fun get(): Int = entity.steamTank.getTankCapacity(0)
+                override fun get(): Int = tank.getTankCapacity(1)
                 override fun set(t: Int) {
                     totalSteam = t
                 }
             })
             addDataSlot(object : DataSlot() { // water
-                override fun get(): Int = entity.waterTank.getFluidInTank(0).amount
+                override fun get(): Int = tank.getWater().amount
                 override fun set(w: Int) {
                     water = w
                 }
             })
             addDataSlot(object : DataSlot() { // totalWater
-                override fun get(): Int = entity.waterTank.getTankCapacity(0)
+                override fun get(): Int = tank.getTankCapacity(0)
                 override fun set(t: Int) {
                     totalWater = t
                 }

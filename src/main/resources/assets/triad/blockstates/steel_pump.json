@@ -1,243 +1,963 @@
 {
   "variants": {
-    "facing=east,running=false,lever=none": {
+    "facing=east,running=false,contains=none,lever=none": {
       "model": "triad:block/steel_pump",
       "y": 90
     },
-    "facing=east,running=true,lever=none": {
-      "model": "triad:block/steel_pump_running",
-      "y": 90
-    },
-    "facing=north,running=false,lever=none": {
+    "facing=north,running=false,contains=none,lever=none": {
       "model": "triad:block/steel_pump"
     },
-    "facing=north,running=true,lever=none": {
-      "model": "triad:block/steel_pump_running"
-    },
-    "facing=south,running=false,lever=none": {
+    "facing=south,running=false,contains=none,lever=none": {
       "model": "triad:block/steel_pump",
       "y": 180
     },
-    "facing=south,running=true,lever=none": {
-      "model": "triad:block/steel_pump_running",
-      "y": 180
-    },
-    "facing=west,running=false,lever=none": {
+    "facing=west,running=false,contains=none,lever=none": {
       "model": "triad:block/steel_pump",
       "y": 270
     },
-    "facing=west,running=true,lever=none": {
-      "model": "triad:block/steel_pump_running",
-      "y": 270
-    },
-    "facing=east,running=false,lever=top": {
+    "facing=east,running=false,contains=none,lever=top": {
       "model": "triad:block/steel_pump_lever_top",
       "y": 90
     },
-    "facing=east,running=true,lever=top": {
-      "model": "triad:block/steel_pump_lever_top_running",
-      "y": 90
-    },
-    "facing=north,running=false,lever=top": {
+    "facing=north,running=false,contains=none,lever=top": {
       "model": "triad:block/steel_pump_lever_top"
     },
-    "facing=north,running=true,lever=top": {
-      "model": "triad:block/steel_pump_lever_top_running"
-    },
-    "facing=south,running=false,lever=top": {
+    "facing=south,running=false,contains=none,lever=top": {
       "model": "triad:block/steel_pump_lever_top",
       "y": 180
     },
-    "facing=south,running=true,lever=top": {
-      "model": "triad:block/steel_pump_lever_top_running",
-      "y": 180
-    },
-    "facing=west,running=false,lever=top": {
+    "facing=west,running=false,contains=none,lever=top": {
       "model": "triad:block/steel_pump_lever_top",
       "y": 270
     },
-    "facing=west,running=true,lever=top": {
-      "model": "triad:block/steel_pump_lever_top_running",
-      "y": 270
-    },
-    "facing=east,running=false,lever=bottom": {
+    "facing=east,running=false,contains=none,lever=bottom": {
       "model": "triad:block/steel_pump_lever_bottom",
       "y": 90
     },
-    "facing=east,running=true,lever=bottom": {
-      "model": "triad:block/steel_pump_lever_bottom_running",
-      "y": 90
-    },
-    "facing=north,running=false,lever=bottom": {
+    "facing=north,running=false,contains=none,lever=bottom": {
       "model": "triad:block/steel_pump_lever_bottom"
     },
-    "facing=north,running=true,lever=bottom": {
-      "model": "triad:block/steel_pump_lever_bottom_running"
-    },
-    "facing=south,running=false,lever=bottom": {
+    "facing=south,running=false,contains=none,lever=bottom": {
       "model": "triad:block/steel_pump_lever_bottom",
       "y": 180
     },
-    "facing=south,running=true,lever=bottom": {
-      "model": "triad:block/steel_pump_lever_bottom_running",
-      "y": 180
-    },
-    "facing=west,running=false,lever=bottom": {
+    "facing=west,running=false,contains=none,lever=bottom": {
       "model": "triad:block/steel_pump_lever_bottom",
       "y": 270
     },
-    "facing=west,running=true,lever=bottom": {
-      "model": "triad:block/steel_pump_lever_bottom_running",
-      "y": 270
-    },
-    "facing=east,running=false,lever=top_rot": {
+    "facing=east,running=false,contains=none,lever=top_rot": {
       "model": "triad:block/steel_pump_lever_top_rot",
       "y": 90
     },
-    "facing=east,running=true,lever=top_rot": {
-      "model": "triad:block/steel_pump_lever_top_rot_running",
-      "y": 90
-    },
-    "facing=north,running=false,lever=top_rot": {
+    "facing=north,running=false,contains=none,lever=top_rot": {
       "model": "triad:block/steel_pump_lever_top_rot"
     },
-    "facing=north,running=true,lever=top_rot": {
-      "model": "triad:block/steel_pump_lever_top_rot_running"
-    },
-    "facing=south,running=false,lever=top_rot": {
+    "facing=south,running=false,contains=none,lever=top_rot": {
       "model": "triad:block/steel_pump_lever_top_rot",
       "y": 180
     },
-    "facing=south,running=true,lever=top_rot": {
-      "model": "triad:block/steel_pump_lever_top_rot_running",
-      "y": 180
-    },
-    "facing=west,running=false,lever=top_rot": {
+    "facing=west,running=false,contains=none,lever=top_rot": {
       "model": "triad:block/steel_pump_lever_top_rot",
       "y": 270
     },
-    "facing=west,running=true,lever=top_rot": {
-      "model": "triad:block/steel_pump_lever_top_rot_running",
-      "y": 270
-    },
-    "facing=east,running=false,lever=bottom_rot": {
+    "facing=east,running=false,contains=none,lever=bottom_rot": {
       "model": "triad:block/steel_pump_lever_bottom_rot",
       "y": 90
     },
-    "facing=east,running=true,lever=bottom_rot": {
-      "model": "triad:block/steel_pump_lever_bottom_rot_running",
-      "y": 90
-    },
-    "facing=north,running=false,lever=bottom_rot": {
+    "facing=north,running=false,contains=none,lever=bottom_rot": {
       "model": "triad:block/steel_pump_lever_bottom_rot"
     },
-    "facing=north,running=true,lever=bottom_rot": {
-      "model": "triad:block/steel_pump_lever_bottom_rot_running"
-    },
-    "facing=south,running=false,lever=bottom_rot": {
+    "facing=south,running=false,contains=none,lever=bottom_rot": {
       "model": "triad:block/steel_pump_lever_bottom_rot",
       "y": 180
     },
-    "facing=south,running=true,lever=bottom_rot": {
-      "model": "triad:block/steel_pump_lever_bottom_rot_running",
-      "y": 180
-    },
-    "facing=west,running=false,lever=bottom_rot": {
+    "facing=west,running=false,contains=none,lever=bottom_rot": {
       "model": "triad:block/steel_pump_lever_bottom_rot",
       "y": 270
     },
-    "facing=west,running=true,lever=bottom_rot": {
-      "model": "triad:block/steel_pump_lever_bottom_rot_running",
-      "y": 270
-    },
-    "facing=east,running=false,lever=east": {
+    "facing=east,running=false,contains=none,lever=east": {
       "model": "triad:block/steel_pump_lever_east",
       "y": 90
     },
-    "facing=east,running=true,lever=east": {
-      "model": "triad:block/steel_pump_lever_east_running",
-      "y": 90
-    },
-    "facing=north,running=false,lever=east": {
+    "facing=north,running=false,contains=none,lever=east": {
       "model": "triad:block/steel_pump_lever_east"
     },
-    "facing=north,running=true,lever=east": {
-      "model": "triad:block/steel_pump_lever_east_running"
-    },
-    "facing=south,running=false,lever=east": {
+    "facing=south,running=false,contains=none,lever=east": {
       "model": "triad:block/steel_pump_lever_east",
       "y": 180
     },
-    "facing=south,running=true,lever=east": {
-      "model": "triad:block/steel_pump_lever_east_running",
-      "y": 180
-    },
-    "facing=west,running=false,lever=east": {
+    "facing=west,running=false,contains=none,lever=east": {
       "model": "triad:block/steel_pump_lever_east",
       "y": 270
     },
-    "facing=west,running=true,lever=east": {
-      "model": "triad:block/steel_pump_lever_east_running",
-      "y": 270
-    },
-    "facing=east,running=false,lever=west": {
+    "facing=east,running=false,contains=none,lever=west": {
       "model": "triad:block/steel_pump_lever_west",
       "y": 90
     },
-    "facing=east,running=true,lever=west": {
-      "model": "triad:block/steel_pump_lever_west_running",
-      "y": 90
-    },
-    "facing=north,running=false,lever=west": {
+    "facing=north,running=false,contains=none,lever=west": {
       "model": "triad:block/steel_pump_lever_west"
     },
-    "facing=north,running=true,lever=west": {
-      "model": "triad:block/steel_pump_lever_west_running"
-    },
-    "facing=south,running=false,lever=west": {
+    "facing=south,running=false,contains=none,lever=west": {
       "model": "triad:block/steel_pump_lever_west",
       "y": 180
     },
-    "facing=south,running=true,lever=west": {
-      "model": "triad:block/steel_pump_lever_west_running",
-      "y": 180
-    },
-    "facing=west,running=false,lever=west": {
+    "facing=west,running=false,contains=none,lever=west": {
       "model": "triad:block/steel_pump_lever_west",
       "y": 270
     },
-    "facing=west,running=true,lever=west": {
-      "model": "triad:block/steel_pump_lever_west_running",
-      "y": 270
-    },
-    "facing=east,running=false,lever=south": {
+    "facing=east,running=false,contains=none,lever=south": {
       "model": "triad:block/steel_pump_lever_south",
       "y": 90
     },
-    "facing=east,running=true,lever=south": {
-      "model": "triad:block/steel_pump_lever_south_running",
-      "y": 90
-    },
-    "facing=north,running=false,lever=south": {
+    "facing=north,running=false,contains=none,lever=south": {
       "model": "triad:block/steel_pump_lever_south"
     },
-    "facing=north,running=true,lever=south": {
-      "model": "triad:block/steel_pump_lever_south_running"
-    },
-    "facing=south,running=false,lever=south": {
+    "facing=south,running=false,contains=none,lever=south": {
       "model": "triad:block/steel_pump_lever_south",
       "y": 180
     },
-    "facing=south,running=true,lever=south": {
-      "model": "triad:block/steel_pump_lever_south_running",
-      "y": 180
-    },
-    "facing=west,running=false,lever=south": {
+    "facing=west,running=false,contains=none,lever=south": {
       "model": "triad:block/steel_pump_lever_south",
       "y": 270
     },
-    "facing=west,running=true,lever=south": {
-      "model": "triad:block/steel_pump_lever_south_running",
+    "facing=east,running=true,contains=none,lever=none": {
+      "model": "triad:block/steel_pump",
+      "y": 90
+    },
+    "facing=north,running=true,contains=none,lever=none": {
+      "model": "triad:block/steel_pump"
+    },
+    "facing=south,running=true,contains=none,lever=none": {
+      "model": "triad:block/steel_pump",
+      "y": 180
+    },
+    "facing=west,running=true,contains=none,lever=none": {
+      "model": "triad:block/steel_pump",
+      "y": 270
+    },
+    "facing=east,running=true,contains=none,lever=top": {
+      "model": "triad:block/steel_pump_lever_top",
+      "y": 90
+    },
+    "facing=north,running=true,contains=none,lever=top": {
+      "model": "triad:block/steel_pump_lever_top"
+    },
+    "facing=south,running=true,contains=none,lever=top": {
+      "model": "triad:block/steel_pump_lever_top",
+      "y": 180
+    },
+    "facing=west,running=true,contains=none,lever=top": {
+      "model": "triad:block/steel_pump_lever_top",
+      "y": 270
+    },
+    "facing=east,running=true,contains=none,lever=bottom": {
+      "model": "triad:block/steel_pump_lever_bottom",
+      "y": 90
+    },
+    "facing=north,running=true,contains=none,lever=bottom": {
+      "model": "triad:block/steel_pump_lever_bottom"
+    },
+    "facing=south,running=true,contains=none,lever=bottom": {
+      "model": "triad:block/steel_pump_lever_bottom",
+      "y": 180
+    },
+    "facing=west,running=true,contains=none,lever=bottom": {
+      "model": "triad:block/steel_pump_lever_bottom",
+      "y": 270
+    },
+    "facing=east,running=true,contains=none,lever=top_rot": {
+      "model": "triad:block/steel_pump_lever_top_rot",
+      "y": 90
+    },
+    "facing=north,running=true,contains=none,lever=top_rot": {
+      "model": "triad:block/steel_pump_lever_top_rot"
+    },
+    "facing=south,running=true,contains=none,lever=top_rot": {
+      "model": "triad:block/steel_pump_lever_top_rot",
+      "y": 180
+    },
+    "facing=west,running=true,contains=none,lever=top_rot": {
+      "model": "triad:block/steel_pump_lever_top_rot",
+      "y": 270
+    },
+    "facing=east,running=true,contains=none,lever=bottom_rot": {
+      "model": "triad:block/steel_pump_lever_bottom_rot",
+      "y": 90
+    },
+    "facing=north,running=true,contains=none,lever=bottom_rot": {
+      "model": "triad:block/steel_pump_lever_bottom_rot"
+    },
+    "facing=south,running=true,contains=none,lever=bottom_rot": {
+      "model": "triad:block/steel_pump_lever_bottom_rot",
+      "y": 180
+    },
+    "facing=west,running=true,contains=none,lever=bottom_rot": {
+      "model": "triad:block/steel_pump_lever_bottom_rot",
+      "y": 270
+    },
+    "facing=east,running=true,contains=none,lever=east": {
+      "model": "triad:block/steel_pump_lever_east",
+      "y": 90
+    },
+    "facing=north,running=true,contains=none,lever=east": {
+      "model": "triad:block/steel_pump_lever_east"
+    },
+    "facing=south,running=true,contains=none,lever=east": {
+      "model": "triad:block/steel_pump_lever_east",
+      "y": 180
+    },
+    "facing=west,running=true,contains=none,lever=east": {
+      "model": "triad:block/steel_pump_lever_east",
+      "y": 270
+    },
+    "facing=east,running=true,contains=none,lever=west": {
+      "model": "triad:block/steel_pump_lever_west",
+      "y": 90
+    },
+    "facing=north,running=true,contains=none,lever=west": {
+      "model": "triad:block/steel_pump_lever_west"
+    },
+    "facing=south,running=true,contains=none,lever=west": {
+      "model": "triad:block/steel_pump_lever_west",
+      "y": 180
+    },
+    "facing=west,running=true,contains=none,lever=west": {
+      "model": "triad:block/steel_pump_lever_west",
+      "y": 270
+    },
+    "facing=east,running=true,contains=none,lever=south": {
+      "model": "triad:block/steel_pump_lever_south",
+      "y": 90
+    },
+    "facing=north,running=true,contains=none,lever=south": {
+      "model": "triad:block/steel_pump_lever_south"
+    },
+    "facing=south,running=true,contains=none,lever=south": {
+      "model": "triad:block/steel_pump_lever_south",
+      "y": 180
+    },
+    "facing=west,running=true,contains=none,lever=south": {
+      "model": "triad:block/steel_pump_lever_south",
+      "y": 270
+    },
+    "facing=east,running=false,contains=water,lever=none": {
+      "model": "triad:block/steel_pump_water",
+      "y": 90
+    },
+    "facing=north,running=false,contains=water,lever=none": {
+      "model": "triad:block/steel_pump_water"
+    },
+    "facing=south,running=false,contains=water,lever=none": {
+      "model": "triad:block/steel_pump_water",
+      "y": 180
+    },
+    "facing=west,running=false,contains=water,lever=none": {
+      "model": "triad:block/steel_pump_water",
+      "y": 270
+    },
+    "facing=east,running=false,contains=water,lever=top": {
+      "model": "triad:block/steel_pump_water_lever_top",
+      "y": 90
+    },
+    "facing=north,running=false,contains=water,lever=top": {
+      "model": "triad:block/steel_pump_water_lever_top"
+    },
+    "facing=south,running=false,contains=water,lever=top": {
+      "model": "triad:block/steel_pump_water_lever_top",
+      "y": 180
+    },
+    "facing=west,running=false,contains=water,lever=top": {
+      "model": "triad:block/steel_pump_water_lever_top",
+      "y": 270
+    },
+    "facing=east,running=false,contains=water,lever=bottom": {
+      "model": "triad:block/steel_pump_water_lever_bottom",
+      "y": 90
+    },
+    "facing=north,running=false,contains=water,lever=bottom": {
+      "model": "triad:block/steel_pump_water_lever_bottom"
+    },
+    "facing=south,running=false,contains=water,lever=bottom": {
+      "model": "triad:block/steel_pump_water_lever_bottom",
+      "y": 180
+    },
+    "facing=west,running=false,contains=water,lever=bottom": {
+      "model": "triad:block/steel_pump_water_lever_bottom",
+      "y": 270
+    },
+    "facing=east,running=false,contains=water,lever=top_rot": {
+      "model": "triad:block/steel_pump_water_lever_top_rot",
+      "y": 90
+    },
+    "facing=north,running=false,contains=water,lever=top_rot": {
+      "model": "triad:block/steel_pump_water_lever_top_rot"
+    },
+    "facing=south,running=false,contains=water,lever=top_rot": {
+      "model": "triad:block/steel_pump_water_lever_top_rot",
+      "y": 180
+    },
+    "facing=west,running=false,contains=water,lever=top_rot": {
+      "model": "triad:block/steel_pump_water_lever_top_rot",
+      "y": 270
+    },
+    "facing=east,running=false,contains=water,lever=bottom_rot": {
+      "model": "triad:block/steel_pump_water_lever_bottom_rot",
+      "y": 90
+    },
+    "facing=north,running=false,contains=water,lever=bottom_rot": {
+      "model": "triad:block/steel_pump_water_lever_bottom_rot"
+    },
+    "facing=south,running=false,contains=water,lever=bottom_rot": {
+      "model": "triad:block/steel_pump_water_lever_bottom_rot",
+      "y": 180
+    },
+    "facing=west,running=false,contains=water,lever=bottom_rot": {
+      "model": "triad:block/steel_pump_water_lever_bottom_rot",
+      "y": 270
+    },
+    "facing=east,running=false,contains=water,lever=east": {
+      "model": "triad:block/steel_pump_water_lever_east",
+      "y": 90
+    },
+    "facing=north,running=false,contains=water,lever=east": {
+      "model": "triad:block/steel_pump_water_lever_east"
+    },
+    "facing=south,running=false,contains=water,lever=east": {
+      "model": "triad:block/steel_pump_water_lever_east",
+      "y": 180
+    },
+    "facing=west,running=false,contains=water,lever=east": {
+      "model": "triad:block/steel_pump_water_lever_east",
+      "y": 270
+    },
+    "facing=east,running=false,contains=water,lever=west": {
+      "model": "triad:block/steel_pump_water_lever_west",
+      "y": 90
+    },
+    "facing=north,running=false,contains=water,lever=west": {
+      "model": "triad:block/steel_pump_water_lever_west"
+    },
+    "facing=south,running=false,contains=water,lever=west": {
+      "model": "triad:block/steel_pump_water_lever_west",
+      "y": 180
+    },
+    "facing=west,running=false,contains=water,lever=west": {
+      "model": "triad:block/steel_pump_water_lever_west",
+      "y": 270
+    },
+    "facing=east,running=false,contains=water,lever=south": {
+      "model": "triad:block/steel_pump_water_lever_south",
+      "y": 90
+    },
+    "facing=north,running=false,contains=water,lever=south": {
+      "model": "triad:block/steel_pump_water_lever_south"
+    },
+    "facing=south,running=false,contains=water,lever=south": {
+      "model": "triad:block/steel_pump_water_lever_south",
+      "y": 180
+    },
+    "facing=west,running=false,contains=water,lever=south": {
+      "model": "triad:block/steel_pump_water_lever_south",
+      "y": 270
+    },
+    "facing=east,running=true,contains=water,lever=none": {
+      "model": "triad:block/steel_pump_water_running",
+      "y": 90
+    },
+    "facing=north,running=true,contains=water,lever=none": {
+      "model": "triad:block/steel_pump_water_running"
+    },
+    "facing=south,running=true,contains=water,lever=none": {
+      "model": "triad:block/steel_pump_water_running",
+      "y": 180
+    },
+    "facing=west,running=true,contains=water,lever=none": {
+      "model": "triad:block/steel_pump_water_running",
+      "y": 270
+    },
+    "facing=east,running=true,contains=water,lever=top": {
+      "model": "triad:block/steel_pump_water_running_lever_top",
+      "y": 90
+    },
+    "facing=north,running=true,contains=water,lever=top": {
+      "model": "triad:block/steel_pump_water_running_lever_top"
+    },
+    "facing=south,running=true,contains=water,lever=top": {
+      "model": "triad:block/steel_pump_water_running_lever_top",
+      "y": 180
+    },
+    "facing=west,running=true,contains=water,lever=top": {
+      "model": "triad:block/steel_pump_water_running_lever_top",
+      "y": 270
+    },
+    "facing=east,running=true,contains=water,lever=bottom": {
+      "model": "triad:block/steel_pump_water_running_lever_bottom",
+      "y": 90
+    },
+    "facing=north,running=true,contains=water,lever=bottom": {
+      "model": "triad:block/steel_pump_water_running_lever_bottom"
+    },
+    "facing=south,running=true,contains=water,lever=bottom": {
+      "model": "triad:block/steel_pump_water_running_lever_bottom",
+      "y": 180
+    },
+    "facing=west,running=true,contains=water,lever=bottom": {
+      "model": "triad:block/steel_pump_water_running_lever_bottom",
+      "y": 270
+    },
+    "facing=east,running=true,contains=water,lever=top_rot": {
+      "model": "triad:block/steel_pump_water_running_lever_top_rot",
+      "y": 90
+    },
+    "facing=north,running=true,contains=water,lever=top_rot": {
+      "model": "triad:block/steel_pump_water_running_lever_top_rot"
+    },
+    "facing=south,running=true,contains=water,lever=top_rot": {
+      "model": "triad:block/steel_pump_water_running_lever_top_rot",
+      "y": 180
+    },
+    "facing=west,running=true,contains=water,lever=top_rot": {
+      "model": "triad:block/steel_pump_water_running_lever_top_rot",
+      "y": 270
+    },
+    "facing=east,running=true,contains=water,lever=bottom_rot": {
+      "model": "triad:block/steel_pump_water_running_lever_bottom_rot",
+      "y": 90
+    },
+    "facing=north,running=true,contains=water,lever=bottom_rot": {
+      "model": "triad:block/steel_pump_water_running_lever_bottom_rot"
+    },
+    "facing=south,running=true,contains=water,lever=bottom_rot": {
+      "model": "triad:block/steel_pump_water_running_lever_bottom_rot",
+      "y": 180
+    },
+    "facing=west,running=true,contains=water,lever=bottom_rot": {
+      "model": "triad:block/steel_pump_water_running_lever_bottom_rot",
+      "y": 270
+    },
+    "facing=east,running=true,contains=water,lever=east": {
+      "model": "triad:block/steel_pump_water_running_lever_east",
+      "y": 90
+    },
+    "facing=north,running=true,contains=water,lever=east": {
+      "model": "triad:block/steel_pump_water_running_lever_east"
+    },
+    "facing=south,running=true,contains=water,lever=east": {
+      "model": "triad:block/steel_pump_water_running_lever_east",
+      "y": 180
+    },
+    "facing=west,running=true,contains=water,lever=east": {
+      "model": "triad:block/steel_pump_water_running_lever_east",
+      "y": 270
+    },
+    "facing=east,running=true,contains=water,lever=west": {
+      "model": "triad:block/steel_pump_water_running_lever_west",
+      "y": 90
+    },
+    "facing=north,running=true,contains=water,lever=west": {
+      "model": "triad:block/steel_pump_water_running_lever_west"
+    },
+    "facing=south,running=true,contains=water,lever=west": {
+      "model": "triad:block/steel_pump_water_running_lever_west",
+      "y": 180
+    },
+    "facing=west,running=true,contains=water,lever=west": {
+      "model": "triad:block/steel_pump_water_running_lever_west",
+      "y": 270
+    },
+    "facing=east,running=true,contains=water,lever=south": {
+      "model": "triad:block/steel_pump_water_running_lever_south",
+      "y": 90
+    },
+    "facing=north,running=true,contains=water,lever=south": {
+      "model": "triad:block/steel_pump_water_running_lever_south"
+    },
+    "facing=south,running=true,contains=water,lever=south": {
+      "model": "triad:block/steel_pump_water_running_lever_south",
+      "y": 180
+    },
+    "facing=west,running=true,contains=water,lever=south": {
+      "model": "triad:block/steel_pump_water_running_lever_south",
+      "y": 270
+    },
+    "facing=east,running=false,contains=lava,lever=none": {
+      "model": "triad:block/steel_pump_lava",
+      "y": 90
+    },
+    "facing=north,running=false,contains=lava,lever=none": {
+      "model": "triad:block/steel_pump_lava"
+    },
+    "facing=south,running=false,contains=lava,lever=none": {
+      "model": "triad:block/steel_pump_lava",
+      "y": 180
+    },
+    "facing=west,running=false,contains=lava,lever=none": {
+      "model": "triad:block/steel_pump_lava",
+      "y": 270
+    },
+    "facing=east,running=false,contains=lava,lever=top": {
+      "model": "triad:block/steel_pump_lava_lever_top",
+      "y": 90
+    },
+    "facing=north,running=false,contains=lava,lever=top": {
+      "model": "triad:block/steel_pump_lava_lever_top"
+    },
+    "facing=south,running=false,contains=lava,lever=top": {
+      "model": "triad:block/steel_pump_lava_lever_top",
+      "y": 180
+    },
+    "facing=west,running=false,contains=lava,lever=top": {
+      "model": "triad:block/steel_pump_lava_lever_top",
+      "y": 270
+    },
+    "facing=east,running=false,contains=lava,lever=bottom": {
+      "model": "triad:block/steel_pump_lava_lever_bottom",
+      "y": 90
+    },
+    "facing=north,running=false,contains=lava,lever=bottom": {
+      "model": "triad:block/steel_pump_lava_lever_bottom"
+    },
+    "facing=south,running=false,contains=lava,lever=bottom": {
+      "model": "triad:block/steel_pump_lava_lever_bottom",
+      "y": 180
+    },
+    "facing=west,running=false,contains=lava,lever=bottom": {
+      "model": "triad:block/steel_pump_lava_lever_bottom",
+      "y": 270
+    },
+    "facing=east,running=false,contains=lava,lever=top_rot": {
+      "model": "triad:block/steel_pump_lava_lever_top_rot",
+      "y": 90
+    },
+    "facing=north,running=false,contains=lava,lever=top_rot": {
+      "model": "triad:block/steel_pump_lava_lever_top_rot"
+    },
+    "facing=south,running=false,contains=lava,lever=top_rot": {
+      "model": "triad:block/steel_pump_lava_lever_top_rot",
+      "y": 180
+    },
+    "facing=west,running=false,contains=lava,lever=top_rot": {
+      "model": "triad:block/steel_pump_lava_lever_top_rot",
+      "y": 270
+    },
+    "facing=east,running=false,contains=lava,lever=bottom_rot": {
+      "model": "triad:block/steel_pump_lava_lever_bottom_rot",
+      "y": 90
+    },
+    "facing=north,running=false,contains=lava,lever=bottom_rot": {
+      "model": "triad:block/steel_pump_lava_lever_bottom_rot"
+    },
+    "facing=south,running=false,contains=lava,lever=bottom_rot": {
+      "model": "triad:block/steel_pump_lava_lever_bottom_rot",
+      "y": 180
+    },
+    "facing=west,running=false,contains=lava,lever=bottom_rot": {
+      "model": "triad:block/steel_pump_lava_lever_bottom_rot",
+      "y": 270
+    },
+    "facing=east,running=false,contains=lava,lever=east": {
+      "model": "triad:block/steel_pump_lava_lever_east",
+      "y": 90
+    },
+    "facing=north,running=false,contains=lava,lever=east": {
+      "model": "triad:block/steel_pump_lava_lever_east"
+    },
+    "facing=south,running=false,contains=lava,lever=east": {
+      "model": "triad:block/steel_pump_lava_lever_east",
+      "y": 180
+    },
+    "facing=west,running=false,contains=lava,lever=east": {
+      "model": "triad:block/steel_pump_lava_lever_east",
+      "y": 270
+    },
+    "facing=east,running=false,contains=lava,lever=west": {
+      "model": "triad:block/steel_pump_lava_lever_west",
+      "y": 90
+    },
+    "facing=north,running=false,contains=lava,lever=west": {
+      "model": "triad:block/steel_pump_lava_lever_west"
+    },
+    "facing=south,running=false,contains=lava,lever=west": {
+      "model": "triad:block/steel_pump_lava_lever_west",
+      "y": 180
+    },
+    "facing=west,running=false,contains=lava,lever=west": {
+      "model": "triad:block/steel_pump_lava_lever_west",
+      "y": 270
+    },
+    "facing=east,running=false,contains=lava,lever=south": {
+      "model": "triad:block/steel_pump_lava_lever_south",
+      "y": 90
+    },
+    "facing=north,running=false,contains=lava,lever=south": {
+      "model": "triad:block/steel_pump_lava_lever_south"
+    },
+    "facing=south,running=false,contains=lava,lever=south": {
+      "model": "triad:block/steel_pump_lava_lever_south",
+      "y": 180
+    },
+    "facing=west,running=false,contains=lava,lever=south": {
+      "model": "triad:block/steel_pump_lava_lever_south",
+      "y": 270
+    },
+    "facing=east,running=true,contains=lava,lever=none": {
+      "model": "triad:block/steel_pump_lava_running",
+      "y": 90
+    },
+    "facing=north,running=true,contains=lava,lever=none": {
+      "model": "triad:block/steel_pump_lava_running"
+    },
+    "facing=south,running=true,contains=lava,lever=none": {
+      "model": "triad:block/steel_pump_lava_running",
+      "y": 180
+    },
+    "facing=west,running=true,contains=lava,lever=none": {
+      "model": "triad:block/steel_pump_lava_running",
+      "y": 270
+    },
+    "facing=east,running=true,contains=lava,lever=top": {
+      "model": "triad:block/steel_pump_lava_running_lever_top",
+      "y": 90
+    },
+    "facing=north,running=true,contains=lava,lever=top": {
+      "model": "triad:block/steel_pump_lava_running_lever_top"
+    },
+    "facing=south,running=true,contains=lava,lever=top": {
+      "model": "triad:block/steel_pump_lava_running_lever_top",
+      "y": 180
+    },
+    "facing=west,running=true,contains=lava,lever=top": {
+      "model": "triad:block/steel_pump_lava_running_lever_top",
+      "y": 270
+    },
+    "facing=east,running=true,contains=lava,lever=bottom": {
+      "model": "triad:block/steel_pump_lava_running_lever_bottom",
+      "y": 90
+    },
+    "facing=north,running=true,contains=lava,lever=bottom": {
+      "model": "triad:block/steel_pump_lava_running_lever_bottom"
+    },
+    "facing=south,running=true,contains=lava,lever=bottom": {
+      "model": "triad:block/steel_pump_lava_running_lever_bottom",
+      "y": 180
+    },
+    "facing=west,running=true,contains=lava,lever=bottom": {
+      "model": "triad:block/steel_pump_lava_running_lever_bottom",
+      "y": 270
+    },
+    "facing=east,running=true,contains=lava,lever=top_rot": {
+      "model": "triad:block/steel_pump_lava_running_lever_top_rot",
+      "y": 90
+    },
+    "facing=north,running=true,contains=lava,lever=top_rot": {
+      "model": "triad:block/steel_pump_lava_running_lever_top_rot"
+    },
+    "facing=south,running=true,contains=lava,lever=top_rot": {
+      "model": "triad:block/steel_pump_lava_running_lever_top_rot",
+      "y": 180
+    },
+    "facing=west,running=true,contains=lava,lever=top_rot": {
+      "model": "triad:block/steel_pump_lava_running_lever_top_rot",
+      "y": 270
+    },
+    "facing=east,running=true,contains=lava,lever=bottom_rot": {
+      "model": "triad:block/steel_pump_lava_running_lever_bottom_rot",
+      "y": 90
+    },
+    "facing=north,running=true,contains=lava,lever=bottom_rot": {
+      "model": "triad:block/steel_pump_lava_running_lever_bottom_rot"
+    },
+    "facing=south,running=true,contains=lava,lever=bottom_rot": {
+      "model": "triad:block/steel_pump_lava_running_lever_bottom_rot",
+      "y": 180
+    },
+    "facing=west,running=true,contains=lava,lever=bottom_rot": {
+      "model": "triad:block/steel_pump_lava_running_lever_bottom_rot",
+      "y": 270
+    },
+    "facing=east,running=true,contains=lava,lever=east": {
+      "model": "triad:block/steel_pump_lava_running_lever_east",
+      "y": 90
+    },
+    "facing=north,running=true,contains=lava,lever=east": {
+      "model": "triad:block/steel_pump_lava_running_lever_east"
+    },
+    "facing=south,running=true,contains=lava,lever=east": {
+      "model": "triad:block/steel_pump_lava_running_lever_east",
+      "y": 180
+    },
+    "facing=west,running=true,contains=lava,lever=east": {
+      "model": "triad:block/steel_pump_lava_running_lever_east",
+      "y": 270
+    },
+    "facing=east,running=true,contains=lava,lever=west": {
+      "model": "triad:block/steel_pump_lava_running_lever_west",
+      "y": 90
+    },
+    "facing=north,running=true,contains=lava,lever=west": {
+      "model": "triad:block/steel_pump_lava_running_lever_west"
+    },
+    "facing=south,running=true,contains=lava,lever=west": {
+      "model": "triad:block/steel_pump_lava_running_lever_west",
+      "y": 180
+    },
+    "facing=west,running=true,contains=lava,lever=west": {
+      "model": "triad:block/steel_pump_lava_running_lever_west",
+      "y": 270
+    },
+    "facing=east,running=true,contains=lava,lever=south": {
+      "model": "triad:block/steel_pump_lava_running_lever_south",
+      "y": 90
+    },
+    "facing=north,running=true,contains=lava,lever=south": {
+      "model": "triad:block/steel_pump_lava_running_lever_south"
+    },
+    "facing=south,running=true,contains=lava,lever=south": {
+      "model": "triad:block/steel_pump_lava_running_lever_south",
+      "y": 180
+    },
+    "facing=west,running=true,contains=lava,lever=south": {
+      "model": "triad:block/steel_pump_lava_running_lever_south",
+      "y": 270
+    },
+    "facing=east,running=false,contains=steam,lever=none": {
+      "model": "triad:block/steel_pump_steam",
+      "y": 90
+    },
+    "facing=north,running=false,contains=steam,lever=none": {
+      "model": "triad:block/steel_pump_steam"
+    },
+    "facing=south,running=false,contains=steam,lever=none": {
+      "model": "triad:block/steel_pump_steam",
+      "y": 180
+    },
+    "facing=west,running=false,contains=steam,lever=none": {
+      "model": "triad:block/steel_pump_steam",
+      "y": 270
+    },
+    "facing=east,running=false,contains=steam,lever=top": {
+      "model": "triad:block/steel_pump_steam_lever_top",
+      "y": 90
+    },
+    "facing=north,running=false,contains=steam,lever=top": {
+      "model": "triad:block/steel_pump_steam_lever_top"
+    },
+    "facing=south,running=false,contains=steam,lever=top": {
+      "model": "triad:block/steel_pump_steam_lever_top",
+      "y": 180
+    },
+    "facing=west,running=false,contains=steam,lever=top": {
+      "model": "triad:block/steel_pump_steam_lever_top",
+      "y": 270
+    },
+    "facing=east,running=false,contains=steam,lever=bottom": {
+      "model": "triad:block/steel_pump_steam_lever_bottom",
+      "y": 90
+    },
+    "facing=north,running=false,contains=steam,lever=bottom": {
+      "model": "triad:block/steel_pump_steam_lever_bottom"
+    },
+    "facing=south,running=false,contains=steam,lever=bottom": {
+      "model": "triad:block/steel_pump_steam_lever_bottom",
+      "y": 180
+    },
+    "facing=west,running=false,contains=steam,lever=bottom": {
+      "model": "triad:block/steel_pump_steam_lever_bottom",
+      "y": 270
+    },
+    "facing=east,running=false,contains=steam,lever=top_rot": {
+      "model": "triad:block/steel_pump_steam_lever_top_rot",
+      "y": 90
+    },
+    "facing=north,running=false,contains=steam,lever=top_rot": {
+      "model": "triad:block/steel_pump_steam_lever_top_rot"
+    },
+    "facing=south,running=false,contains=steam,lever=top_rot": {
+      "model": "triad:block/steel_pump_steam_lever_top_rot",
+      "y": 180
+    },
+    "facing=west,running=false,contains=steam,lever=top_rot": {
+      "model": "triad:block/steel_pump_steam_lever_top_rot",
+      "y": 270
+    },
+    "facing=east,running=false,contains=steam,lever=bottom_rot": {
+      "model": "triad:block/steel_pump_steam_lever_bottom_rot",
+      "y": 90
+    },
+    "facing=north,running=false,contains=steam,lever=bottom_rot": {
+      "model": "triad:block/steel_pump_steam_lever_bottom_rot"
+    },
+    "facing=south,running=false,contains=steam,lever=bottom_rot": {
+      "model": "triad:block/steel_pump_steam_lever_bottom_rot",
+      "y": 180
+    },
+    "facing=west,running=false,contains=steam,lever=bottom_rot": {
+      "model": "triad:block/steel_pump_steam_lever_bottom_rot",
+      "y": 270
+    },
+    "facing=east,running=false,contains=steam,lever=east": {
+      "model": "triad:block/steel_pump_steam_lever_east",
+      "y": 90
+    },
+    "facing=north,running=false,contains=steam,lever=east": {
+      "model": "triad:block/steel_pump_steam_lever_east"
+    },
+    "facing=south,running=false,contains=steam,lever=east": {
+      "model": "triad:block/steel_pump_steam_lever_east",
+      "y": 180
+    },
+    "facing=west,running=false,contains=steam,lever=east": {
+      "model": "triad:block/steel_pump_steam_lever_east",
+      "y": 270
+    },
+    "facing=east,running=false,contains=steam,lever=west": {
+      "model": "triad:block/steel_pump_steam_lever_west",
+      "y": 90
+    },
+    "facing=north,running=false,contains=steam,lever=west": {
+      "model": "triad:block/steel_pump_steam_lever_west"
+    },
+    "facing=south,running=false,contains=steam,lever=west": {
+      "model": "triad:block/steel_pump_steam_lever_west",
+      "y": 180
+    },
+    "facing=west,running=false,contains=steam,lever=west": {
+      "model": "triad:block/steel_pump_steam_lever_west",
+      "y": 270
+    },
+    "facing=east,running=false,contains=steam,lever=south": {
+      "model": "triad:block/steel_pump_steam_lever_south",
+      "y": 90
+    },
+    "facing=north,running=false,contains=steam,lever=south": {
+      "model": "triad:block/steel_pump_steam_lever_south"
+    },
+    "facing=south,running=false,contains=steam,lever=south": {
+      "model": "triad:block/steel_pump_steam_lever_south",
+      "y": 180
+    },
+    "facing=west,running=false,contains=steam,lever=south": {
+      "model": "triad:block/steel_pump_steam_lever_south",
+      "y": 270
+    },
+    "facing=east,running=true,contains=steam,lever=none": {
+      "model": "triad:block/steel_pump_steam_running",
+      "y": 90
+    },
+    "facing=north,running=true,contains=steam,lever=none": {
+      "model": "triad:block/steel_pump_steam_running"
+    },
+    "facing=south,running=true,contains=steam,lever=none": {
+      "model": "triad:block/steel_pump_steam_running",
+      "y": 180
+    },
+    "facing=west,running=true,contains=steam,lever=none": {
+      "model": "triad:block/steel_pump_steam_running",
+      "y": 270
+    },
+    "facing=east,running=true,contains=steam,lever=top": {
+      "model": "triad:block/steel_pump_steam_running_lever_top",
+      "y": 90
+    },
+    "facing=north,running=true,contains=steam,lever=top": {
+      "model": "triad:block/steel_pump_steam_running_lever_top"
+    },
+    "facing=south,running=true,contains=steam,lever=top": {
+      "model": "triad:block/steel_pump_steam_running_lever_top",
+      "y": 180
+    },
+    "facing=west,running=true,contains=steam,lever=top": {
+      "model": "triad:block/steel_pump_steam_running_lever_top",
+      "y": 270
+    },
+    "facing=east,running=true,contains=steam,lever=bottom": {
+      "model": "triad:block/steel_pump_steam_running_lever_bottom",
+      "y": 90
+    },
+    "facing=north,running=true,contains=steam,lever=bottom": {
+      "model": "triad:block/steel_pump_steam_running_lever_bottom"
+    },
+    "facing=south,running=true,contains=steam,lever=bottom": {
+      "model": "triad:block/steel_pump_steam_running_lever_bottom",
+      "y": 180
+    },
+    "facing=west,running=true,contains=steam,lever=bottom": {
+      "model": "triad:block/steel_pump_steam_running_lever_bottom",
+      "y": 270
+    },
+    "facing=east,running=true,contains=steam,lever=top_rot": {
+      "model": "triad:block/steel_pump_steam_running_lever_top_rot",
+      "y": 90
+    },
+    "facing=north,running=true,contains=steam,lever=top_rot": {
+      "model": "triad:block/steel_pump_steam_running_lever_top_rot"
+    },
+    "facing=south,running=true,contains=steam,lever=top_rot": {
+      "model": "triad:block/steel_pump_steam_running_lever_top_rot",
+      "y": 180
+    },
+    "facing=west,running=true,contains=steam,lever=top_rot": {
+      "model": "triad:block/steel_pump_steam_running_lever_top_rot",
+      "y": 270
+    },
+    "facing=east,running=true,contains=steam,lever=bottom_rot": {
+      "model": "triad:block/steel_pump_steam_running_lever_bottom_rot",
+      "y": 90
+    },
+    "facing=north,running=true,contains=steam,lever=bottom_rot": {
+      "model": "triad:block/steel_pump_steam_running_lever_bottom_rot"
+    },
+    "facing=south,running=true,contains=steam,lever=bottom_rot": {
+      "model": "triad:block/steel_pump_steam_running_lever_bottom_rot",
+      "y": 180
+    },
+    "facing=west,running=true,contains=steam,lever=bottom_rot": {
+      "model": "triad:block/steel_pump_steam_running_lever_bottom_rot",
+      "y": 270
+    },
+    "facing=east,running=true,contains=steam,lever=east": {
+      "model": "triad:block/steel_pump_steam_running_lever_east",
+      "y": 90
+    },
+    "facing=north,running=true,contains=steam,lever=east": {
+      "model": "triad:block/steel_pump_steam_running_lever_east"
+    },
+    "facing=south,running=true,contains=steam,lever=east": {
+      "model": "triad:block/steel_pump_steam_running_lever_east",
+      "y": 180
+    },
+    "facing=west,running=true,contains=steam,lever=east": {
+      "model": "triad:block/steel_pump_steam_running_lever_east",
+      "y": 270
+    },
+    "facing=east,running=true,contains=steam,lever=west": {
+      "model": "triad:block/steel_pump_steam_running_lever_west",
+      "y": 90
+    },
+    "facing=north,running=true,contains=steam,lever=west": {
+      "model": "triad:block/steel_pump_steam_running_lever_west"
+    },
+    "facing=south,running=true,contains=steam,lever=west": {
+      "model": "triad:block/steel_pump_steam_running_lever_west",
+      "y": 180
+    },
+    "facing=west,running=true,contains=steam,lever=west": {
+      "model": "triad:block/steel_pump_steam_running_lever_west",
+      "y": 270
+    },
+    "facing=east,running=true,contains=steam,lever=south": {
+      "model": "triad:block/steel_pump_steam_running_lever_south",
+      "y": 90
+    },
+    "facing=north,running=true,contains=steam,lever=south": {
+      "model": "triad:block/steel_pump_steam_running_lever_south"
+    },
+    "facing=south,running=true,contains=steam,lever=south": {
+      "model": "triad:block/steel_pump_steam_running_lever_south",
+      "y": 180
+    },
+    "facing=west,running=true,contains=steam,lever=south": {
+      "model": "triad:block/steel_pump_steam_running_lever_south",
       "y": 270
     }
   }

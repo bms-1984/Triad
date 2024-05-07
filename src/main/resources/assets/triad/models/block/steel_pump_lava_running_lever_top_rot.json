@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "triad:block/steel_pump_front_lava_running",
+    "side": "triad:block/steel_block",
+    "top": "triad:block/steel_block_lever_rot",
+    "bottom": "triad:block/steel_block"
+  }
+}
