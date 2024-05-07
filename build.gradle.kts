@@ -27,7 +27,6 @@ plugins {
     kotlin("plugin.serialization") version "1.9.23"
 }
 
-val version: String by project
 val mod_group_id: String by project
 val group = mod_group_id
 val mod_id: String by project
@@ -48,6 +47,7 @@ val pack_format_id: String by project
 val jei_version: String by project
 val top_version: String by project
 val localRuntime by configurations.creating
+val version = "${minecraft_version}-${mod_version}"
 
 repositories {
     mavenLocal()
@@ -128,6 +128,19 @@ dependencies {
 }
 
 tasks {
+    withType<Jar>().configureEach {
+        manifest {
+            attributes(mapOf(
+                "Specification-Title" to mod_name,
+                "Specification-Vendor" to mod_authors,
+                "Specification-Version" to mod_version,
+                "Implementation-Title" to project.name.replaceFirstChar { it.uppercase() },
+                "Implementation-Version" to version,
+                "Implementation-Vendor" to mod_authors
+            ))
+        }
+    }
+
     withType<ProcessResources>().configureEach {
         val replaceProperties: MutableMap<String, Any> = mutableMapOf (
             "minecraft_version" to minecraft_version,
