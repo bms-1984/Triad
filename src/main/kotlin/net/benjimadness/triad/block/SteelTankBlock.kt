@@ -3,7 +3,6 @@ package net.benjimadness.triad.block
 import net.benjimadness.triad.api.block.AbstractTriadEntityBlock
 import net.benjimadness.triad.api.block.Contains
 import net.benjimadness.triad.api.block.TriadBlockStateProperties
-import net.benjimadness.triad.api.block.entity.AbstractPumpBlockEntity
 import net.benjimadness.triad.api.block.entity.AbstractTankBlockEntity
 import net.benjimadness.triad.registry.TriadFluids
 import net.minecraft.core.BlockPos
